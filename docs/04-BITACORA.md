@@ -271,3 +271,25 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pendiente:** guardar y cancelar en alta (`new.tsx`) no probados en dispositivo; repetir CP-MOV-04 según CHK-009.
 - **Autorización necesaria:** ninguna para el cierre técnico; publicación/integración no aplica (sin remoto).
 
+## CHK-011 - Guardar tarea sin bloqueo por GPS (RF-11, RF-12)
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** Guardar en alta no navegaba durante más de 50 s; causa: `getCurrentPositionAsync` sin timeout en `obtenerUbicacionActual`.
+- **Estado:** `VALIDACIÓN PARCIAL`.
+- **Requisitos asociados:** RF-11 (foto), RF-12 (ubicación). Ver `docs/01`.
+- **Pruebas asociadas:** CP-GPS-01/02 (unitarias); CP-MOV-04 pendiente.
+- **Fuentes:** https://docs.expo.dev/versions/v58.0.0/sdk/location.md (Expo SDK 58): `getCurrentPositionAsync` "may take some time"; recomienda `getLastKnownPositionAsync`. Issues oficiales https://github.com/expo/expo/issues/15478 y https://github.com/expo/expo/issues/39851 (`getCurrentPositionAsync` puede no resolver). Context7 no disponible en esta sesión.
+- **Cambio:** lectura GPS con timeout de 10 s; si vence o falla, `getLastKnownPositionAsync({ maxAge: 10 min })`; si no hay dato, `null` (tarea sin coordenadas).
+- **Commit real:** pendiente.
+- **Archivos cambiados:**
+  - `src/features/location/ubicacion.ts`
+- **Verificaciones:**
+  - `npx tsc --noEmit`, `npx jest src/features/location` (3/3), `npx eslint` y `npx prettier --check` sobre `ubicacion.ts`: sin errores.
+  - Emulador (Expo Go, `exp://127.0.0.1:8081`): alta "QA_TIME8" + Guardar -> lista en 13 s, una sola inserción.
+- **Riesgos:**
+  - Latencia de 13 s = timeout de 10 s; reducirlo es decisión del equipo.
+  - No verificado que la tarea guardada lleve coordenadas (no visible en UI).
+- **Siguiente acción:** decidir timeout (10 s vs 5 s); repetir CP-MOV-04 con GPS propagado; Guardar con descripción vacía y Cancelar en alta.
+- **Autorización necesaria:** ninguna para el cierre técnico.
+
