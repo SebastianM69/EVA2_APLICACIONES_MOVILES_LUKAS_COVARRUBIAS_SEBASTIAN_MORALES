@@ -293,3 +293,31 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Siguiente acción:** decidir timeout (10 s vs 5 s); repetir CP-MOV-04 con GPS propagado; Guardar con descripción vacía y Cancelar en alta.
 - **Autorización necesaria:** ninguna para el cierre técnico.
 
+## CHK-012 - Diagnóstico GPS: emulador no entrega posición a la app; verificado en Android físico (RF-12, CP-MOV-04)
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** cerrar la causa del timeout de lectura GPS (CHK-011) y verificar CP-MOV-04.
+- **Estado:** `VALIDACIÓN PARCIAL` (lectura GPS verificada en dispositivo físico; CP-MOV-04 completo pendiente de confirmar guardado con coordenadas).
+- **Requisitos asociados:** RF-12 de `docs/01`.
+- **Pruebas asociadas:** CP-GPS-01/02 (`npx jest src/features/location`, 3/3); CP-MOV-04 en Android físico.
+- **Hallazgos en emulador (`emulator-5554`, Expo Go, Metro 8081):**
+  - `adb emu geo fix -70.66 -33.45` sí registra la posición: `dumpsys location` muestra `last location` gps y fused en -33.45, -70.66 (mock).
+  - La app no recibe posición: `getCurrentPositionAsync` y `watchPositionAsync` (Balanced) dan timeout; `getLastKnownPositionAsync` da null.
+  - Sin efecto: fix refrescado cada 2 s, `location_mode` 1 y 3, reinicio del emulador.
+  - Causa no determinada; se asume fallo de GMS/fused en el emulador, no de la lógica de la app.
+- **Verificación en Android físico (Expo Go, `exp://192.168.1.81:8081`):** log de Metro `[ubicacion] permiso granted`, `lectura ok`, `ultima ok`.
+- **Decisión:** para RF-12 la verificación de GPS se hace en dispositivo físico, no en emulador. El emulador queda como prueba de flujo sin GPS.
+- **Commits:**
+  - `a4d0407` (`fix(ubicacion): lectura GPS en dispositivo fisico verificada`): contiene sintaxis rota; corregida en el siguiente.
+  - `654ff7f` (`test(ubicacion): mock de permisos y precision Balanced`).
+  - `fae6108` (`fix(ubicacion): completa cambios de lectura GPS del commit anterior`): versión correcta; tests 3/3, `tsc` sin errores.
+- **Archivos cambiados:** `src/features/location/ubicacion.ts`, `src/features/location/ubicacion.test.ts`.
+- **Sin commit (requiere aprobación, AGENTS §5):** `src/app/tasks/[id].tsx`, `src/features/tasks/components/TaskCard.tsx`, `src/features/tasks/model/task.ts`. Muestran coordenadas en tarjeta y detalle (`textoUbicacion`), cambio visible de UI no aprobado.
+- **Riesgos:**
+  - Latencia de hasta 10 s antes de fallback en dispositivo sin fix rápido.
+  - Commit `a4d0407` queda con HEAD roto en historial; no reescrito por regla de no usar `reset`/`rebase`.
+  - No verificado aún que la tarea guardada persista coordenadas (la UI no las muestra sin el cambio pendiente).
+- **Siguiente acción:** confirmar en el teléfono que una tarea nueva muestra `Ubicación: lat, lon`; decidir si se aprueba el cambio de UI pendiente.
+- **Autorización necesaria:** aprobación del cambio de UI (tarjeta/detalle) y de cualquier fallback por API externa.
+
