@@ -232,3 +232,23 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Autorización:** usuario conservó los cambios (2026-11-21); pruebas en Android pendientes de autorización.
 - **Commits:** `fdb007d344` (dependencias y app.json), `7427cdd4a8` (código RF-11/RF-12).
 
+## CHK-009 — Pruebas manuales CP-MOV-02 a 05 en emulador (RF-11, RF-12)
+
+- **Fecha:** 2026-11-21
+- **Autor:** agente OMP
+- **Dispositivo:** `emulator-5554` (`sdk_gphone64_x86_64`), Expo Go 58.0.5, Expo SDK 58.0.26 del proyecto, Metro en `localhost:8081`.
+- **Resultados observados:**
+  - CP-MOV-02 (foto desde formulario, detalle): PARCIAL. Tarea `QA_FOTO` guardada; detalle muestra miniatura (sin texto "Sin foto"). Imagen se ve negra (cámara virtual); contenido no verificado.
+  - CP-MOV-03 (permiso de cámara denegado, guardar): OK. Modal "Sin permiso de cámara. Puedes guardar la tarea sin foto."; tarea `QA_SIN_PERM` guardada; detalle "Sin foto".
+  - CP-MOV-04 (GPS permitido, coordenadas): FALLO. Tarea `QA_GPS_OK` guardada con "Sin ubicación registrada". Causa no determinada: `emu geo fix -70.66 -33.45` responde OK pero `dumpsys location` mantiene la posición por defecto (37.42,-122.08). El diálogo de precisión de ubicación de Google apareció durante la prueba; no se aisló como variable.
+  - CP-MOV-05 (GPS denegado, guardar): OK. Tarea `QA_SIN_PERM` guardada con "Sin ubicación registrada"; sin bloqueo.
+  - CP-MOV-01 y CP-MOV-06: NO EJECUTADO.
+- **Incidente:** `Cannot find native module 'ExpoSQLite'` en logcat (`E ReactNativeJS`, 16:10:22; también `W ExpoModulesCore: Expo Modules v2 was already installed`). Tras `am force-stop host.exp.exponent` y `am start exp://127.0.0.1:8081` no volvió a aparecer en la prueba posterior; causa no determinada.
+- **Permisos:** cámara y ubicación de Expo Go revocados con `pm revoke` para CP-MOV-03/05; quedan sin conceder.
+- **Datos de prueba:** tareas `QA_FOTO`, `QA_GPS_OK`, `QA_SIN_PERM` en la base del emulador. Eliminar solo con confirmación.
+- **Riesgos:**
+  - CP-MOV-04 sin resultado válido: falta prueba con GPS que propague.
+  - Foto con contenido negro: no se puede afirmar que la captura sea real hasta revisar en otro entorno.
+- **Siguiente acción:** repetir CP-MOV-04 tras reiniciar el emulador o usar Extended controls > Location; repetir CP-MOV-02 con imagen visible; CP-MOV-01 y CP-MOV-06 pendientes de autorización.
+- **Commits:** pendiente.
+
