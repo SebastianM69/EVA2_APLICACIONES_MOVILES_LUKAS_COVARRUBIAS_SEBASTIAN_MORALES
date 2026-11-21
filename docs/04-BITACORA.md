@@ -532,7 +532,7 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Estado:** CP-MOV-03 `APROBADO` por decisión del usuario. Defecto `ABIERTO` (no reproducido). G3 sigue `PARCIAL`.
 - **Requisitos asociados:** RF-11, RUB-02.
 - **Pruebas asociadas:** CP-MOV-03 (físico, `EV-18` y `EV-19`).
-- **Commit real:** pendiente (ver autorización).
+- **Commit real:** `4e0b3e4` (`docs: registra EV-18 y EV-19 de CP-MOV-03 y defecto abierto (CHK-023)`) y `f8ae7bf` (`docs: versiona capturas EV-18 y EV-19 de CP-MOV-03`), rama `main`, sin remoto.
 - **Evidencias:**
   - `EV-18`: `./evidencias/capturas/EV-18-telefono-fisico-cp-mov-03-permiso-camara-denegado.jpeg`. "Sin permiso de cámara. Puedes guardar la tarea sin foto.", 7:03 PM, barra de estado sin Wi-Fi ni señal. Resultado: APROBADO.
   - `EV-19`: `./evidencias/capturas/EV-19-telefono-fisico-cp-mov-03-formulario-sin-foto.jpeg`. Formulario "Nueva tarea" vacío, 7:03 PM, sin Wi-Fi ni señal. Orden respecto a `EV-18`: NO VERIFICADO. Resultado: APROBADO por decisión del usuario.
@@ -550,4 +550,4 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
   - Si el crash ocurre con build sin Metro, afectaría CP-MOV-05 y CP-MOV-06 (offline).
   - Modelo del teléfono no visible en `EV-18`/`EV-19`; se usa `EV-10` como referencia.
 - **Siguiente acción:** CP-MOV-05 (GPS denegado) y CP-MOV-06 físicos; investigar el defecto abierto con `View error log` del Xiaomi.
-- **Autorización necesaria:** commit local de `EV-18`, `EV-19`, `docs/03` y `docs/04` (permitido por `AGENTS.md` sección 5).
+- **Autorización necesaria:** ninguna para el cierre técnico de CHK-023. Pendiente: decisión del equipo sobre el defecto abierto antes de cerrar G3.
