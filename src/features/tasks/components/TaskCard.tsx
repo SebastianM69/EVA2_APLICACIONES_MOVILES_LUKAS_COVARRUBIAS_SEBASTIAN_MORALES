@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { ActionButton } from '@/components/ActionButton';
-import type { Task } from '@/features/tasks/model/task';
+import { textoUbicacion, type Task } from '@/features/tasks/model/task';
 import { colors, spacing } from '@/theme/tokens';
 
 type TaskCardProps = {
@@ -34,6 +34,7 @@ export function TaskCard({ task, onToggle, onEdit, onDelete }: TaskCardProps) {
           <Text style={styles.status}>
             {task.completed ? 'Completada' : 'Pendiente'}
           </Text>
+          <Text style={styles.ubicacion}>{textoUbicacion(task)}</Text>
         </View>
       </View>
 
@@ -102,6 +103,10 @@ const styles = StyleSheet.create({
   status: {
     color: colors.textSecondary,
     fontSize: 14,
+  },
+  ubicacion: {
+    color: colors.textSecondary,
+    fontSize: 13,
   },
   description: {
     color: colors.textSecondary,

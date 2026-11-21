@@ -3,7 +3,7 @@ import { Alert, Image, StyleSheet, Text, View } from 'react-native';
 
 import { ActionButton } from '@/components/ActionButton';
 import { TaskForm } from '@/features/tasks/components/TaskForm';
-import type { TaskInput } from '@/features/tasks/model/task';
+import { textoUbicacion, type TaskInput } from '@/features/tasks/model/task';
 import { volverAListaTareas } from '@/features/tasks/navigation';
 import { useTasks } from '@/features/tasks/tasks-context';
 import { colors, spacing } from '@/theme/tokens';
@@ -54,11 +54,7 @@ export default function EditTaskScreen() {
       ) : (
         <Text style={styles.dato}>Sin foto</Text>
       )}
-      <Text style={styles.dato}>
-        {tarea.latitud !== null && tarea.longitud !== null
-          ? `Ubicación: ${tarea.latitud.toFixed(5)}, ${tarea.longitud.toFixed(5)}`
-          : 'Sin ubicación registrada'}
-      </Text>
+      <Text style={styles.dato}>{textoUbicacion(tarea)}</Text>
     </View>
   );
 

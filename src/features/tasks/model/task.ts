@@ -18,3 +18,12 @@ export type Task = TaskInput & TaskCaptura & {
   id: number;
   completed: boolean;
 };
+
+// Texto visible de la ubicación; compartido por la tarjeta y la pantalla de edición.
+export function textoUbicacion(
+  tarea: Pick<Task, 'latitud' | 'longitud'>,
+): string {
+  return tarea.latitud !== null && tarea.longitud !== null
+    ? `Ubicación: ${tarea.latitud.toFixed(5)}, ${tarea.longitud.toFixed(5)}`
+    : 'Sin ubicación registrada';
+}
