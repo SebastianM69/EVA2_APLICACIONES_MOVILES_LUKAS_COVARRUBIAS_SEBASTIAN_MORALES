@@ -1,4 +1,4 @@
-import type { Task, TaskInput } from './model/task';
+import type { Task, TaskCaptura, TaskInput } from './model/task';
 import type { TaskRepository } from './tasks-repository';
 import { validateTaskInput, type TaskErrors } from './validation/validate-task';
 
@@ -11,12 +11,13 @@ export async function crearTarea(
   repo: TaskRepository,
   usuarioId: number,
   datos: TaskInput,
+  captura: TaskCaptura,
 ): Promise<ResultadoGuardado> {
   const validacion = validateTaskInput(datos);
   if (!validacion.valid) {
     return { ok: false, errors: validacion.errors };
   }
-  await repo.crear(usuarioId, validacion.value);
+  await repo.crear(usuarioId, validacion.value, captura);
   return { ok: true };
 }
 

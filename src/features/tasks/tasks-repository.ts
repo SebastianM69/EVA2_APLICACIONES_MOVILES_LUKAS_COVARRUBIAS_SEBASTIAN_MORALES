@@ -1,10 +1,10 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 
-import type { Task, TaskInput } from './model/task';
+import type { Task, TaskCaptura, TaskInput } from './model/task';
 
 export type TaskRepository = {
   listar(usuarioId: number): Promise<Task[]>;
-  crear(usuarioId: number, input: TaskInput): Promise<void>;
+  crear(usuarioId: number, input: TaskInput, captura: TaskCaptura): Promise<void>;
   actualizar(usuarioId: number, id: number, input: TaskInput): Promise<void>;
   cambiarCompletada(
     usuarioId: number,
@@ -19,13 +19,16 @@ type FilaTarea = {
   titulo: string;
   descripcion: string;
   completada: number;
+  latitud: number | null;
+  longitud: number | null;
+  foto_uri: string | null;
 };
 
 export function crearTaskRepository(db: SQLiteDatabase): TaskRepository {
   return {
     async listar(usuarioId) {
       const filas = await db.getAllAsync<FilaTarea>(
-        'SELECT id, titulo, descripcion, completada FROM tareas WHERE usuario_id = ? ORDER BY id DESC',
+        'SELECT id, titulo, descripcion, completada, latitud, longitud, foto_uri FROM tareas WHERE usuario_id = ? ORDER BY id DESC',
         usuarioId,
       );
       return filas.map((fila) => ({
@@ -33,15 +36,21 @@ export function crearTaskRepository(db: SQLiteDatabase): TaskRepository {
         title: fila.titulo,
         description: fila.descripcion,
         completed: fila.completada === 1,
+        latitud: fila.latitud,
+        longitud: fila.longitud,
+        fotoUri: fila.foto_uri,
       }));
     },
 
-    async crear(usuarioId, input) {
+    async crear(usuarioId, input, captura) {
       await db.runAsync(
-        'INSERT INTO tareas (usuario_id, titulo, descripcion, completada, creada_en) VALUES (?, ?, ?, 0, ?)',
+        'INSERT INTO tareas (usuario_id, titulo, descripcion, completada, latitud, longitud, foto_uri, creada_en) VALUES (?, ?, ?, 0, ?, ?, ?, ?)',
         usuarioId,
         input.title,
         input.description,
+        captura.latitud,
+        captura.longitud,
+        captura.fotoUri,
         new Date().toISOString(),
       );
     },

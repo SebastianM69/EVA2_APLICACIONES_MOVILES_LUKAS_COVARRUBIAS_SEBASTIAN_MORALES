@@ -1,17 +1,30 @@
 import { describe, expect, it, jest } from '@jest/globals';
 
-import type { Task, TaskInput } from './model/task';
+import type { Task, TaskCaptura, TaskInput } from './model/task';
 import type { TaskRepository } from './tasks-repository';
 import { crearTarea, filtrarTareas } from './tasks-service';
+
+const SIN_CAPTURA: TaskCaptura = {
+  latitud: null,
+  longitud: null,
+  fotoUri: null,
+};
 
 function repositorioEnMemoria(): TaskRepository & { filas: Task[] } {
   const filas: Task[] = [];
   return {
     filas,
     listar: jest.fn(async () => filas),
-    crear: jest.fn(async (_usuarioId: number, input: TaskInput) => {
-      filas.push({ id: filas.length + 1, ...input, completed: false });
-    }),
+    crear: jest.fn(
+      async (_usuarioId: number, input: TaskInput, captura: TaskCaptura) => {
+        filas.push({
+          id: filas.length + 1,
+          ...input,
+          ...captura,
+          completed: false,
+        });
+      },
+    ),
     actualizar: jest.fn(async () => undefined),
     cambiarCompletada: jest.fn(async () => undefined),
     eliminar: jest.fn(async () => undefined),
@@ -25,7 +38,7 @@ describe('CP-TAR-01: crear tarea con título vacío', () => {
     const resultado = await crearTarea(repo, 1, {
       title: '   ',
       description: 'Detalle',
-    });
+    }, SIN_CAPTURA);
 
     expect(resultado).toEqual({
       ok: false,
@@ -38,9 +51,9 @@ describe('CP-TAR-01: crear tarea con título vacío', () => {
 
 describe('CP-TAR-02: filtro Completadas', () => {
   const tareas: Task[] = [
-    { id: 1, title: 'A', description: 'a', completed: true },
-    { id: 2, title: 'B', description: 'b', completed: false },
-    { id: 3, title: 'C', description: 'c', completed: true },
+    { ...SIN_CAPTURA, id: 1, title: 'A', description: 'a', completed: true },
+    { ...SIN_CAPTURA, id: 2, title: 'B', description: 'b', completed: false },
+    { ...SIN_CAPTURA, id: 3, title: 'C', description: 'c', completed: true },
   ];
 
   it('devuelve solo tareas con completed = true', () => {

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, type ReactNode } from 'react';
 import {
   Alert,
   BackHandler,
@@ -31,6 +31,7 @@ type TaskFormProps = {
   initialValues?: TaskInput;
   onSave: (input: TaskInput) => Promise<boolean>;
   onCancel: () => void;
+  adjuntos?: ReactNode;
 };
 
 export function TaskForm({
@@ -39,6 +40,7 @@ export function TaskForm({
   initialValues,
   onSave,
   onCancel,
+  adjuntos,
 }: TaskFormProps) {
   const [title, setTitle] = useState(initialValues?.title ?? '');
   const [description, setDescription] = useState(
@@ -183,6 +185,8 @@ export function TaskForm({
               </Text>
             ) : null}
           </View>
+
+          {adjuntos}
 
           <View style={styles.actions}>
             <ActionButton label={submitLabel} onPress={handleSave} />

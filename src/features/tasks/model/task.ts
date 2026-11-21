@@ -7,8 +7,14 @@ export type TaskInput = {
 };
 
 // id: INTEGER PRIMARY KEY de la tabla `tareas` (docs/02 sección 3).
-// Campos usuario_id, latitud, longitud, foto_uri y creada_en se añaden con su funcionalidad.
-export type Task = TaskInput & {
+// latitud, longitud y fotoUri son null si el permiso fue denegado o la función no se usó.
+export type TaskCaptura = {
+  latitud: number | null;
+  longitud: number | null;
+  fotoUri: string | null;
+};
+
+export type Task = TaskInput & TaskCaptura & {
   id: number;
   completed: boolean;
 };

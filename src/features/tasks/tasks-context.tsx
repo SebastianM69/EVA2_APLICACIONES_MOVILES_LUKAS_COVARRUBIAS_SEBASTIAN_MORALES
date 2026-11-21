@@ -10,7 +10,7 @@ import {
 import { useSQLiteContext } from 'expo-sqlite';
 
 import { useAuth } from '@/features/auth/auth-context';
-import type { Task, TaskInput } from './model/task';
+import type { Task, TaskCaptura, TaskInput } from './model/task';
 import { crearTaskRepository } from './tasks-repository';
 import {
   crearTarea,
@@ -26,7 +26,7 @@ function tasksReducer(_state: Task[], action: TasksAction): Task[] {
 
 type TasksContextValue = {
   tareas: Task[];
-  crear(datos: TaskInput): Promise<ResultadoGuardado>;
+  crear(datos: TaskInput, captura: TaskCaptura): Promise<ResultadoGuardado>;
   editar(id: number, datos: TaskInput): Promise<ResultadoGuardado>;
   cambiarCompletada(id: number, completada: boolean): Promise<void>;
   eliminar(id: number): Promise<void>;
@@ -72,9 +72,9 @@ export function TasksProvider({ children }: { children: ReactNode }) {
   );
 
   const crear = useCallback(
-    async (datos: TaskInput) => {
+    async (datos: TaskInput, captura: TaskCaptura) => {
       const id = requerirSesion(usuarioId);
-      const resultado = await crearTarea(repo, id, datos);
+      const resultado = await crearTarea(repo, id, datos, captura);
       if (resultado.ok) {
         await recargar(id);
       }

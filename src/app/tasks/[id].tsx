@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { Alert, StyleSheet, Text, View } from 'react-native';
+import { Alert, Image, StyleSheet, Text, View } from 'react-native';
 
 import { ActionButton } from '@/components/ActionButton';
 import { TaskForm } from '@/features/tasks/components/TaskForm';
@@ -42,11 +42,31 @@ export default function EditTaskScreen() {
     }
   };
 
+  const adjuntos = (
+    <View style={styles.adjuntos}>
+      {tarea.fotoUri ? (
+        <Image
+          source={{ uri: tarea.fotoUri }}
+          style={styles.miniatura}
+          accessibilityLabel="Foto de la tarea"
+        />
+      ) : (
+        <Text style={styles.dato}>Sin foto</Text>
+      )}
+      <Text style={styles.dato}>
+        {tarea.latitud !== null && tarea.longitud !== null
+          ? `Ubicación: ${tarea.latitud.toFixed(5)}, ${tarea.longitud.toFixed(5)}`
+          : 'Sin ubicación registrada'}
+      </Text>
+    </View>
+  );
+
   return (
     <TaskForm
       heading="Editar tarea"
       submitLabel="Guardar cambios"
       initialValues={{ title: tarea.title, description: tarea.description }}
+      adjuntos={adjuntos}
       onSave={handleSave}
       onCancel={() => router.back()}
     />
@@ -66,5 +86,18 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
     fontSize: 16,
     textAlign: 'center',
+  },
+  adjuntos: {
+    gap: spacing.two,
+  },
+  miniatura: {
+    width: '100%',
+    height: 220,
+    borderRadius: spacing.two,
+    backgroundColor: colors.surface,
+  },
+  dato: {
+    color: colors.textSecondary,
+    fontSize: 15,
   },
 });
