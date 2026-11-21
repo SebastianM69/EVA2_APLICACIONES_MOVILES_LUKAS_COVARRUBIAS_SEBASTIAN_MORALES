@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "To-Do móvil ampliada",
+    "name": "TODO EVA2",
     "slug": "eva2-todo-movil",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -30,6 +30,8 @@
         }
       ],
       "expo-status-bar"
+      "expo-status-bar",
+      "expo-sqlite"
     ],
     "experiments": {
       "typedRoutes": true
