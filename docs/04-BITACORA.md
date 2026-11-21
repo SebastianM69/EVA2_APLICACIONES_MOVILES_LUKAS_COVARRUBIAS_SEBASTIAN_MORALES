@@ -551,3 +551,24 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
   - Modelo del teléfono no visible en `EV-18`/`EV-19`; se usa `EV-10` como referencia.
 - **Siguiente acción:** CP-MOV-05 (GPS denegado) y CP-MOV-06 físicos; investigar el defecto abierto con `View error log` del Xiaomi.
 - **Autorización necesaria:** ninguna para el cierre técnico de CHK-023. Pendiente: decisión del equipo sobre el defecto abierto antes de cerrar G3.
+
+## CHK-024 - EV-20: CP-MOV-03 reproducido en emulador con captura
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** cubrir con captura de emulador el estado de cámara denegada sin red, que CHK-023 solo verificó sin captura.
+- **Estado:** CP-MOV-03 en emulador: `VALIDACIÓN PARCIAL` hasta revisión humana de `EV-20`.
+- **Requisitos asociados:** RF-11, RUB-02.
+- **Pruebas asociadas:** CP-MOV-03 (emulador, `EV-20`).
+- **Commit real:** pendiente (ver autorización).
+- **Evidencias:**
+  - `EV-20`: `./evidencias/capturas/EV-20-emulador-cp-mov-03-permiso-camara-denegado.png`. Emulador, 7:09 PM, aviso "Sin permiso de cámara" tras "Tomar foto" con modo avión activo.
+- **Verificaciones (emulador):**
+  - Secuencia reproducida: app cargada con red, "Nueva tarea" abierta, `CAMERA granted=false`, `airplane_mode_on=1`, "Tomar foto".
+  - Resultado observado: diálogo idéntico a `EV-18`. No aparece "Something went wrong" en esta secuencia.
+  - Limitación: `pm revoke` cierra Expo Go; por eso la cámara se revoca antes de la navegación con Metro activo y el modo avión se activa después.
+- **Riesgos:**
+  - El defecto abierto (`Something went wrong` en Xiaomi) no se reproduce con esta secuencia en emulador. No se descarta.
+  - Revisión humana de `EV-20` pendiente; el agente no puede aprobarla.
+- **Siguiente acción:** revisión visual de `EV-20` por el equipo; restaurar permiso de cámara en el emulador tras la prueba.
+- **Autorización necesaria:** commit local de `EV-20`, `docs/03` y `docs/04` (permitido por `AGENTS.md` sección 5).
