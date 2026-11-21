@@ -523,3 +523,31 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
   - Prettier cambió tablas de documentos ya aprobados: solo formato, sin cambio de contenido.
 - **Siguiente acción:** capturas en Xiaomi de CP-MOV-03 (cámara denegada), CP-MOV-05 (GPS denegado) y CP-MOV-06 (offline con reapertura con red). Registrar como `EV-18` en adelante.
 - **Autorización necesaria:** commit local de formato y documentación (permitido por `AGENTS.md` sección 5); decisión sobre `.prettierignore` para `assets/expo.icon/icon.json`.
+
+## CHK-023 - CP-MOV-03 en Android físico con EV-18 y EV-19; defecto de cierre offline abierto
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** registrar la evidencia física de CP-MOV-03 con la evidencia actual aportada por el usuario y dejar documentado el cierre de app reportado al cortar red.
+- **Estado:** CP-MOV-03 `APROBADO` por decisión del usuario. Defecto `ABIERTO` (no reproducido). G3 sigue `PARCIAL`.
+- **Requisitos asociados:** RF-11, RUB-02.
+- **Pruebas asociadas:** CP-MOV-03 (físico, `EV-18` y `EV-19`).
+- **Commit real:** pendiente (ver autorización).
+- **Evidencias:**
+  - `EV-18`: `./evidencias/capturas/EV-18-telefono-fisico-cp-mov-03-permiso-camara-denegado.jpeg`. "Sin permiso de cámara. Puedes guardar la tarea sin foto.", 7:03 PM, barra de estado sin Wi-Fi ni señal. Resultado: APROBADO.
+  - `EV-19`: `./evidencias/capturas/EV-19-telefono-fisico-cp-mov-03-formulario-sin-foto.jpeg`. Formulario "Nueva tarea" vacío, 7:03 PM, sin Wi-Fi ni señal. Orden respecto a `EV-18`: NO VERIFICADO. Resultado: APROBADO por decisión del usuario.
+- **Verificaciones (emulador, sin captura registrada):**
+  - Ruta "Nueva tarea" abierta sin red: formulario carga, sin cierre de app.
+  - Cámara revocada (`pm revoke`), sin red, "Tomar foto": mismo diálogo que `EV-18`. Permiso restaurado después (`granted=true`).
+  - Logcat tras modo avión: avisos `ReactNativeJS` de Expo Go "Ensure that Expo dev server is running…". Sin excepción de app.
+- **Defecto abierto:**
+  - Síntoma: pantalla "Something went wrong." de Expo tras cortar red, reportada por el usuario (captura de 6:53 PM). Reporte del usuario = dato válido; no se descarta.
+  - Reproducción: no reproducido en emulador (2 intentos, rutas "Nueva tarea" y "Tomar foto" sin red).
+  - Causa: NO DETERMINADA. [INFERENCIA] Expo Go en modo desarrollo pierde la conexión con Metro (`192.168.1.81:8081`) al cortar red y muestra su pantalla de error. No verificado: la app no hace peticiones de red (`grep` sin resultados en `src/`).
+  - Pendiente: texto de `View error log` o repetición en Xiaomi.
+- **Riesgos:**
+  - CP-MOV-03 no tiene captura del paso "guardar sin foto" (`Tarea creada sin foto`). Aprobado por decisión del usuario; queda como desviación.
+  - Si el crash ocurre con build sin Metro, afectaría CP-MOV-05 y CP-MOV-06 (offline).
+  - Modelo del teléfono no visible en `EV-18`/`EV-19`; se usa `EV-10` como referencia.
+- **Siguiente acción:** CP-MOV-05 (GPS denegado) y CP-MOV-06 físicos; investigar el defecto abierto con `View error log` del Xiaomi.
+- **Autorización necesaria:** commit local de `EV-18`, `EV-19`, `docs/03` y `docs/04` (permitido por `AGENTS.md` sección 5).
