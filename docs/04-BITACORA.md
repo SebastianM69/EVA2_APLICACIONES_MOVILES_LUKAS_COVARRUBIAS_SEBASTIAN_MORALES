@@ -171,21 +171,22 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Fecha:** 2026-11-21
 - **Autor:** agente OMP (sesión con el usuario)
 - **Objetivo:** tareas por usuario con SQLite: listar, crear, editar, completar/reabrir, eliminar con confirmación, filtros y validación.
-- **Estado:** `VALIDACIÓN PARCIAL`. Código, pruebas Jest y gates técnicos OK; verificación manual en Expo Go (emulador) OK en todos los puntos, con 1 riesgo abierto de validación (exceso de longitud, ver Riesgos). Commit local autorizado; hash en `git log`. Revisión humana pendiente.
+- **Estado:** `CERRADO` por decisión del usuario (2026-11-21). Código, pruebas Jest y verificación manual Expo Go OK en todos los puntos. Riesgo de truncado silencioso resuelto (ver Decisiones técnicas y Verificación manual).
 - **Requisitos asociados:** RF-04 a RF-10. Ver `docs/01`.
-- **Pruebas asociadas:** Jest `src/features/tasks/tasks-service.test.ts` (CP-TAR-01, CP-TAR-02). Suite completa: 5 suites, 16/16 OK.
+- **Pruebas asociadas:** Jest `src/features/tasks/tasks-service.test.ts` (CP-TAR-01, CP-TAR-02) y `src/features/tasks/components/TaskForm.test.tsx`. Suite completa: 5 suites, 17/17 OK.
 - **Verificación:**
   - `npx tsc --noEmit`: exit 0.
-  - `npx jest --runInBand`: 16/16 OK.
+  - `npx jest --runInBand`: 17/17 OK (incluye test de exceso de `TaskForm`).
   - `npx eslint .`: exit 0.
   - `npx prettier --check` sobre archivos creados o reescritos en esta etapa: OK. `npm run format:check` completo sigue fallando en 8 archivos previos no tocados (`auth-*`, `hash.ts`, `hash.test.ts`, `_layout.tsx`, `login.tsx`, `register.tsx`); fuera de alcance.
 - **Decisiones técnicas:**
   - `TaskForm.onSave` pasa a `Promise<boolean>` para persistencia asíncrona; mocks de `TaskForm.test.tsx` actualizados.
   - Repositorio y servicio filtran por `usuario_id` de la sesión activa en cada consulta y mutación.
+  - Límites de título (100) y descripción (500): se quitó `maxLength` de los `TextInput` en `TaskForm.tsx`. Autorizado por el usuario (2026-11-21). El campo ya no corta; el contador muestra el exceso y `validateTaskInput` bloquea el guardado con mensaje visible (RF-10).
 - **Verificación manual Expo Go (2026-11-21, emulador `Medium_Phone_API_37.0`, `emulator-5554`):**
   - Crear cuenta `qa.rf07@example.com` y `qa.dos@example.com`; inicio de sesión OK.
   - Lista vacía: "Sin tareas por ahora." OK.
-  - Validación de nueva tarea: título y descripción vacíos muestran error y no guardan. OK. Exceso (101 y 501 caracteres): el campo corta en 100/500 por `maxLength`; el mensaje de exceso NO aparece y se guarda el valor truncado (verificado: tarea con título de 100 y descripción de 500 caracteres). Riesgo abierto.
+  - Exceso (101 y 501 caracteres): corregido. Contador `101/100`, texto conservado, al guardar aparece "El título supera el máximo de 100 caracteres" y no guarda. Con título de 100 caracteres guarda y aparece en la lista. Verificado en emulador. Caso 501 en descripción: cubierto por Jest (`TaskForm.test.tsx`), no repetido en emulador.
   - Nueva tarea válida aparece en Todas. OK. Aparece en Pendientes antes de completar. OK.
   - Completar y reabrir: sale de Pendientes; al reabrir vuelve a "Pendiente". OK.
   - Editar: título vacío muestra "Ingresa un título para la tarea". OK. Edición válida guardada. OK. Edición tras dos reinicios de la app (`force-stop`): campos cargan y el cambio persiste. OK. En un intento el campo perdió caracteres al teclear; se repitió con texto verificado antes de guardar.
@@ -194,11 +195,11 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
   - Aislamiento por usuario: QA no ve "Tarea de B"; B no ve "Tarea de QA". OK.
   - Persistencia: `force-stop` de Expo Go y reapertura conservan sesión y tarea. OK.
   - Cabecera de filtros: "Completadas" se cortaba en dos líneas. Corregido en `src/components/ActionButton.tsx` (prop `compact`: una línea, `numberOfLines={1}`, fuente 14) y `src/app/index.tsx` (`filterItem` con `flexGrow: 1`). Verificado en captura del emulador tras el cambio: "Completadas" en una línea. Captura no versionada en `docs/evidencias`.
-  - Gates tras el cambio: `npx tsc --noEmit` exit 0; `npx eslint` sobre los dos archivos exit 0; `npx prettier --check` sobre los dos archivos OK.
+  - Gates tras el cambio de `TaskForm` (maxLength): `npx tsc --noEmit` exit 0; `npx jest --runInBand` 17/17 OK; `npx eslint` y `npx prettier --check` sobre `TaskForm.tsx` y `TaskForm.test.tsx` OK.
   - Datos de prueba: tareas creadas en esta verificación eliminadas con confirmación. Quedan usuarios QA y "Tarea de QA".
 - **Riesgos:**
-  - Expo Go: crear, editar, completar, filtrar, eliminar, persistencia y aislamiento verificados en emulador. Riesgo abierto: el campo corta la entrada a 100/500 sin mensaje y guarda el valor truncado; corregir (mensaje de error en lugar de truncado) requiere autorización.
+  - Expo Go: crear, editar, completar, filtrar, eliminar, persistencia y aislamiento verificados en emulador. Riesgo de truncado silencioso cerrado (ver Verificación manual).
   - Pruebas cubren servicio con repositorio en memoria y filtro puro; no cubren SQLite real.
   - Ruta `tasks/[id]` muestra "La tarea no existe" hasta que `TasksProvider` carga el listado; al abrir edición tras reinicio puede verse un parpadeo incorrecto.
-- **Siguiente acción:** revisión humana; decidir si se corrige el truncado silencioso de título y descripción (requiere autorización). `EV-##` solo si se guardan capturas en `docs/evidencias/capturas/`.
+- **Siguiente acción:** ninguna pendiente en CHK-007. `EV-##` solo si se guardan capturas en `docs/evidencias/capturas/`.
 

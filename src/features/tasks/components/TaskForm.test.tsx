@@ -95,4 +95,37 @@ describe('TaskForm', () => {
     expect(onCancel).toHaveBeenCalledTimes(1);
     alert.mockRestore();
   });
+
+  it('keeps over-limit text and blocks save with visible errors', async () => {
+    const onSave = jest.fn(async (_input: TaskInput) => true);
+    await render(
+      <TaskForm
+        heading="Nueva tarea"
+        submitLabel="Guardar tarea"
+        onSave={onSave}
+        onCancel={jest.fn()}
+      />,
+    );
+
+    await fireEvent.changeText(
+      screen.getByLabelText('Título'),
+      'A'.repeat(101),
+    );
+    await fireEvent.changeText(
+      screen.getByLabelText('Descripción'),
+      'B'.repeat(501),
+    );
+    await fireEvent.press(
+      screen.getByRole('button', { name: 'Guardar tarea' }),
+    );
+
+    expect(
+      screen.getByText('El título supera el máximo de 100 caracteres'),
+    ).toBeTruthy();
+    expect(
+      screen.getByText('La descripción supera el máximo de 500 caracteres'),
+    ).toBeTruthy();
+    expect(screen.getByLabelText('Título').props.value).toHaveLength(101);
+    expect(onSave).not.toHaveBeenCalled();
+  });
 });

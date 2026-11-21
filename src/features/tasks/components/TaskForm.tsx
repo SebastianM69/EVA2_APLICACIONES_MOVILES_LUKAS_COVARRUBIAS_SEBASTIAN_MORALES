@@ -146,7 +146,6 @@ export function TaskForm({
               accessibilityHint="Obligatorio, máximo 100 caracteres"
               value={title}
               onChangeText={handleTitleChange}
-              maxLength={TASK_TITLE_MAX_LENGTH}
               autoCapitalize="sentences"
               returnKeyType="next"
               style={[styles.input, errors.title && styles.inputError]}
@@ -170,7 +169,6 @@ export function TaskForm({
               accessibilityHint="Obligatoria, máximo 500 caracteres"
               value={description}
               onChangeText={handleDescriptionChange}
-              maxLength={TASK_DESCRIPTION_MAX_LENGTH}
               multiline
               textAlignVertical="top"
               style={[
