@@ -49,7 +49,7 @@ Puntajes leídos de `Rúbrica_U2.pdf` (niveles Bajo / Medio / Alto / Sobresalien
 
 ## 4. Riesgo aceptado
 
-1. **APIs externas excluidas.** Decisión del equipo; el usuario indicó que la exención del profesor está justificada por escrito. El documento escrito **no está adjuntado** a este repositorio. Sin RUB-04 y RUB-05 el máximo es 52/100, por lo que **no se declara Sobresaliente** sin ese respaldo y sin implementación. Acción pendiente: obtener el documento, guardarlo como evidencia en `docs/evidencias/` y registrar la referencia en `docs/04-BITACORA.md`.
+1. **APIs externas excluidas.** Decisión del equipo, comunicada por el profesor en clases: solo APIs internas del dispositivo. No existe documento escrito de la exención. Sin RUB-04 y RUB-05 el máximo es 52/100, por lo que **no se declara Sobresaliente**. Acción pendiente: si se exige constancia escrita, solicitarla al profesor y guardarla en `docs/evidencias/`.
 2. **Stack distinto al enunciado.** El enunciado pide Ionic + Capacitor; el equipo usa React Native + Expo. La rúbrica no puntúa el stack, pero el enunciado sí lo pide. Riesgo de penalización. Debe presentarse explícitamente en la entrega junto con la comparación de `docs/02`.
 3. **Sustitución de la lista de tareas:** las funciones de la To-Do base de la Unidad 1 se rehacen sobre el nuevo modelo con usuario y SQLite.
 
@@ -66,11 +66,11 @@ Puntajes leídos de `Rúbrica_U2.pdf` (niveles Bajo / Medio / Alto / Sobresalien
 
 ## 6. Checklist de entrega (formato del enunciado)
 
-- [ ] Portada: título del trabajo, asignatura, logo institucional, nombre del profesor y de los integrantes.
+- [ ] Portada: título del trabajo, asignatura, logo institucional, nombre del profesor y de los integrantes: Lukas Covarrubias y Sebastian Morales.
 - [ ] Desarrollo de los ítems temáticos o instrucciones de la tarea.
 - [ ] Archivo Word o PDF.
-- [ ] Nombre del archivo: `EVU2_MORALES_SEBASTIAN` (ver supuesto en `docs/04`; cambiar si el grupo incluye más integrantes o el formato lo exige).
+- [ ] Nombre del archivo: `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES` (decisión del usuario; difiere de `EVU2_APELLIDO_NOMBRE` del enunciado, ver `docs/04` CHK-002).
 - [ ] Arial 12; interlineado 1,15; alineación justificada; páginas numeradas.
 - [ ] Evidencias de `docs/evidencias/` referenciadas, solo si existen.
-- [ ] Justificación escrita de la exención de APIs adjuntada.
+- [ ] Constancia escrita de la exención de APIs: no existe; decisión comunicada en clases (ver sección 4).
 - [ ] Riesgo de stack explicado.

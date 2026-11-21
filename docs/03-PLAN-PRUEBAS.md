@@ -42,7 +42,7 @@ Requieren emulador o dispositivo Android real con Expo Go o build de desarrollo.
 | G1 — Reproducibilidad | `npm ci`, `npx expo install --check`, `npx jest`, `npx expo start` ejecutados con resultados reales. | NO EJECUTADO |
 | G2 — Funciones esenciales | RF-01 a RF-13 implementados y CP-AUTH, CP-TAR, CP-PER, CP-GPS aprobados. | NO EJECUTADO |
 | G3 — UX Android | CP-MOV-01 a CP-MOV-06 con evidencia auténtica y revisión humana. | NO EJECUTADO |
-| G4 — Entrega | Checklist de `docs/01` sección 6 completo; PDF o Word con nombre `EVU2_MORALES_SEBASTIAN`. | NO EJECUTADO |
+| G4 — Entrega | Checklist de `docs/01` sección 6 completo; PDF o Word con nombre `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES`. | NO EJECUTADO |
 
 Cierre de entrega: todos los casos en `APROBADO` o en `NO EJECUTADO`/`BLOQUEADO` con motivo escrito.
 

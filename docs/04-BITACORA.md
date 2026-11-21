@@ -24,10 +24,10 @@
 
 ### Decisiones pendientes
 
-1. **Justificación escrita de la exención de APIs externas.** El usuario indica que existe por escrito. El documento NO está adjuntado. Requerido antes de entrega. Ver `docs/01` sección 4.
+1. **Constancia escrita de exención:** no existe. Decisión comunicada por el profesor en clases (CHK-002).
 2. **Conflicto de stack:** enunciado Ionic + Capacitor vs. aprobado React Native + Expo. Riesgo aceptado; requiere presentación explícita en entrega.
-3. **Dispositivo Android para GA-4:** NO VERIFICADO. Requerido antes de G3.
-4. **Nombre de entrega:** `EVU2_MORALES_SEBASTIAN`; confirmar si el grupo tiene más integrantes.
+3. **Dispositivo Android para GA-4:** emulador. AVD disponibles: `Medium_Phone_API_37.0`, `Pixel_10_Pro_XL`. Ningún dispositivo conectado. NO EJECUTADO hasta capturas reales.
+4. **Nombre de entrega:** resuelto en CHK-002.
 
 ### Riesgos
 
@@ -40,3 +40,18 @@ Commit de la etapa documental y registro del hash en esta bitácora. Luego esper
 ### Autorización necesaria
 
 Autorización expresa del usuario para iniciar la etapa de implementación.
+
+## CHK-002 — Decisiones del usuario: stack, exención, dispositivo y grupo
+
+- **Fecha:** 2026-11-21
+- **Autor:** agente OMP (sesión de planificación con el usuario)
+- **Objetivo:** registrar decisiones del usuario antes de autorizar implementación.
+- **Estado:** `EN VALIDACIÓN` (documentos editados; sin commit).
+- **Decisiones:**
+- Stack: se mantiene React Native + Expo + TypeScript, justificación en `docs/02` sección 4. Contradice el enunciado (Ionic + Capacitor); debe explicarse en la entrega.
+- APIs: el profesor comunicó en clases que solo se usan APIs internas. No hay documento escrito. RUB-04 y RUB-05 siguen sin cubrir; tope 52/100.
+- Dispositivo: emulador Android. AVD disponibles: `Medium_Phone_API_37.0`, `Pixel_10_Pro_XL`. `adb devices` sin dispositivos. GA-4 NO EJECUTADO.
+- Grupo: Lukas Covarrubias y Sebastian Morales.
+- **Nombre de entrega:** decidido por el usuario: `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES`. Difiere de `EVU2_APELLIDO_NOMBRE` del enunciado; riesgo de penalización. Confirmar con el profesor si es necesario.
+- **Pruebas asociadas:** ninguna (etapa documental).
+- **Autorización necesaria:** implementación no autorizada.

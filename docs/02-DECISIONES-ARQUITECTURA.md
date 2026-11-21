@@ -21,7 +21,7 @@
 | 12 | Alcance | CRUD, validación, completar/reabrir, filtros, confirmación de eliminación, más autenticación y periféricos. Tareas asociadas a `usuario_id`. |
 | 13 | Git | Repositorio local, rama `main`, sin remoto. Conventional Commits en español. Sin `push`, `merge`, `rebase` ni `reset --hard`. |
 | 14 | Idioma | Documentos y mensajes de UI en español. Identificadores de código en inglés (`Task`, `User`). Nombres de campo SQLite en español (sección 3). |
-| 15 | Entrega | Nombre de archivo `EVU2_MORALES_SEBASTIAN`. |
+| 15 | Entrega | Nombre de archivo `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES` (decisión del usuario, CHK-002; difiere del formato `EVU2_APELLIDO_NOMBRE` del enunciado). |
 
 ## 2. Estructura de carpetas
 
@@ -94,6 +94,6 @@ Ninguna ventaja se declara sin evidencia de la implementación. La columna se co
 
 ## 6. Riesgo aceptado
 
-- **APIs externas no implementadas.** RUB-04 y RUB-05 (48 puntos) no cubiertos. La exención del profesor, según el usuario, está justificada por escrito; el documento aún no está adjuntado. Sin ese documento y sin implementación, no se declara Sobresaliente.
+- **APIs externas no implementadas.** RUB-04 y RUB-05 (48 puntos) no cubiertos. Exención comunicada por el profesor en clases; no hay documento escrito. Sin implementación, no se declara Sobresaliente.
 - **Stack distinto del enunciado.** Ionic + Capacitor pedido; React Native + Expo aprobado. Explicar en la entrega con la tabla de la sección 4.
 - **Sin pruebas de integración de red** (no hay red que probar).

@@ -43,4 +43,4 @@ npx jest
 
 ## Entrega
 
-Archivo `EVU2_MORALES_SEBASTIAN` (Word o PDF). Checklist en [`docs/01`](./docs/01-REQUISITOS-RUBRICA.md) sección 6.
+Archivo `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES` (Word o PDF). Checklist en [`docs/01`](./docs/01-REQUISITOS-RUBRICA.md) sección 6.
