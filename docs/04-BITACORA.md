@@ -55,3 +55,23 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Nombre de entrega:** decidido por el usuario: `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES`. Difiere de `EVU2_APELLIDO_NOMBRE` del enunciado; riesgo de penalización. Confirmar con el profesor si es necesario.
 - **Pruebas asociadas:** ninguna (etapa documental).
 - **Autorización necesaria:** implementación no autorizada.
+
+## CHK-003 — Cierre de pendientes: assets, dependencias, TaskForm y bundle
+
+- **Fecha:** 2026-11-21
+- **Autor:** agente OMP
+- **Objetivo:** resolver pendientes tras commits de código base.
+- **Estado:** `PARCIAL`. Build y gates OK; ejecución en dispositivo NO EJECUTADA.
+- **Commits:**
+  - `4b468af` feat: copia assets referenciados por app.json desde EVA1 (solo archivos referenciados).
+  - `33272ad` chore: alinea dependencias Expo con `npx expo install --fix`.
+  - `fed9d23` feat: agrega formulario TaskForm usado por TaskForm.test.
+- **Verificación:**
+  - `npx expo install --check`: OK (tras fix; antes 8 paquetes desalineados).
+  - typecheck, lint, jest 5/5, format:check: OK.
+  - `npx expo export --platform android`: OK (bundle Hermes generado en directorio temporal, fuera del repo).
+- **Pruebas asociadas:** CP-PER/CP-GPS/CP-AUTH/CP-TAR de `docs/03` aún no implementadas; no hay código de periféricos ni autenticación.
+- **Evidencias `EV-##`:** ninguna.
+- **Errores/bloqueos:** `adb` no está en PATH; AVD disponibles `Medium_Phone_API_37.0`, `Pixel_10_Pro_XL`; sin dispositivo conectado.
+- **Decisiones pendientes:** ejecutar la app en emulador requiere elegir Expo Go o dev build (`expo run:android` genera carpeta `android/` nativa). Pendiente decisión del usuario.
+
