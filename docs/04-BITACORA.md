@@ -252,3 +252,22 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Siguiente acción:** repetir CP-MOV-04 tras reiniciar el emulador o usar Extended controls > Location; repetir CP-MOV-02 con imagen visible; CP-MOV-01 y CP-MOV-06 pendientes de autorización.
 - **Commits:** pendiente.
 
+## CHK-010 — Volver a la lista sin historial (edición y alta)
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** evitar toast `GO_BACK` al pulsar Volver/Guardar en edición cuando no hay historial de navegación.
+- **Estado:** `VALIDACIÓN PARCIAL` (ramas verificadas en emulador; flujo completo de alta no ejecutado en dispositivo).
+- **Requisitos asociados:** RF-02 y RF-03 de `docs/01` (edición y cancelación sin pérdida de flujo).
+- **Commit real:** `1d185c7a3c` (`fix(tareas): volver a la lista cuando no hay historial`).
+- **Archivos cambiados:**
+  - `src/features/tasks/navigation.ts` (nuevo: `volverAListaTareas`)
+  - `src/app/tasks/[id].tsx`
+  - `src/app/tasks/new.tsx`
+- **Verificaciones:**
+  - `npx tsc --noEmit`, `npx eslint` y `npx prettier --check` sobre archivos tocados: sin errores.
+  - Emulador: Editar → Volver regresa a la lista; logcat sin `GO_BACK`.
+  - Emulador: deep link `exp://127.0.0.1:8081/--/tasks/1` (sin historial) → Volver → lista de tareas.
+- **Pendiente:** guardar y cancelar en alta (`new.tsx`) no probados en dispositivo; repetir CP-MOV-04 según CHK-009.
+- **Autorización necesaria:** ninguna para el cierre técnico; publicación/integración no aplica (sin remoto).
+
