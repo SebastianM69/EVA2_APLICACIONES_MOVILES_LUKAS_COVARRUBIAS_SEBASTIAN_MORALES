@@ -106,7 +106,7 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Fecha:** 2026-11-21
 - **Autor:** agente OMP (sesión con el usuario)
 - **Objetivo:** registrar el cambio de título de cabecera y el cierre documental de la decisión 16.
-- **Estado:** `EN VALIDACIÓN` (captura tomada; revisión humana pendiente).
+- **Estado:** `VALIDADA` (EV-01 y EV-02 revisadas y aprobadas por el usuario el 2026-11-21).
 - **Requisitos asociados:** ninguno completo. Solo cambio de texto de cabecera; RF-01 a RF-13 no implementados (ver `docs/01`).
 - **Pruebas asociadas:** verificación de arranque y título; ningún caso de `docs/03` ejecutado.
 - **Commits:**
@@ -118,9 +118,9 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
   - Captura de cabecera `Inicio` (12:56): `docs/evidencias/capturas/EV-02-expo-go-titulo-tareas.png`. Versionada; revisión humana pendiente.
 - **Causa del título anterior:** bundle de entrada en caché de Metro/Expo Go; no era un fallo del código.
 - **Evidencias `EV-##`:**
-  - `EV-01` (`docs/evidencias/capturas/EV-01-expo-go-tareas-vacias.png`): versionada; revisión humana pendiente.
+  - `EV-01` (`docs/evidencias/capturas/EV-01-expo-go-tareas-vacias.png`): versionada; validada por el usuario el 2026-11-21.
   - `docs/evidencias/capturas/EV-02-expo-go-titulo-tareas.png`: reemplazada por la captura de cabecera `Inicio` (12:56). La captura anterior (spinner de carga, 12:40) se descartó y se conservó fuera del repo.
 - **Decisiones:** decisión 16 de `docs/02` confirmada por el usuario (2026-11-21). Su documentación se commitea con CHK-004 y CHK-005.
-- **Siguiente acción:** revisión humana de `EV-01` y `EV-02`; commit documental pendiente de autorización.
+- **Siguiente acción:** implementar RF-01 a RF-03 (`expo-sqlite`, `expo-crypto`) según la autorización de la sección Autorización; fuente registrada: documentación oficial Expo SDK 58.
 - **Autorización:** el usuario autorizó RF-01 a RF-03 (autenticación local con `expo-sqlite` y `expo-crypto`) el 2026-11-21, usando documentación oficial Expo SDK 58 como fuente mientras Context7 no esté configurado. Condiciones: revisión humana de `EV-01` y `EV-02` antes de avanzar; commit documental antes de implementar.
 
