@@ -321,3 +321,24 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Siguiente acción:** confirmar en el teléfono que una tarea nueva muestra `Ubicación: lat, lon`; decidir si se aprueba el cambio de UI pendiente.
 - **Autorización necesaria:** aprobación del cambio de UI (tarjeta/detalle) y de cualquier fallback por API externa.
 
+## CHK-013 - Ubicación visible en tarjeta; CP-MOV-04 verificado en Android físico (RF-12)
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** confirmar que una tarea nueva guarda y muestra coordenadas (CP-MOV-04).
+- **Estado:** `VALIDACIÓN PARCIAL` (tarjeta verificada en teléfono físico; pantalla de detalle no capturada).
+- **Requisitos asociados:** RF-12 de `docs/01`.
+- **Commits:** `66fd218` (`feat(tareas): muestra ubicacion en tarjeta y detalle (RF-12)`), aprobado por el usuario el 2026-11-21.
+- **Archivos cambiados:** `src/app/tasks/[id].tsx`, `src/features/tasks/components/TaskCard.tsx`, `src/features/tasks/model/task.ts` (sin cambios posteriores).
+- **Evidencias:**
+ - `EV-08`: `./evidencias/capturas/EV-08-telefono-fisico-tarjeta-ubicacion.jpeg`. Tarea "Prueba 1" en teléfono físico, tarjeta muestra `Ubicación: -33.05238, -71.34887`. Método: agente con captura del usuario. Revisor: pendiente de validación humana.
+ - Las tareas `QA_GPS_OK2/3/4` muestran "Sin ubicación registrada": se crearon antes del fix y no tienen coordenadas guardadas.
+- **Verificaciones:**
+ - Metro en teléfono: `[ubicacion] permiso granted`, `lectura ok`, `ultima ok`.
+ - `npx tsc --noEmit` OK; `npx jest src/features/location src/features/tasks` 12/12 OK.
+- **Riesgos:**
+ - Detalle (`[id].tsx`) no verificado con captura; usa el mismo `textoUbicacion`.
+ - Prettier marca el tipo `Task` en `src/features/tasks/model/task.ts` (código previo; no reformateado).
+- **Siguiente acción:** capturar pantalla de detalle con coordenadas (CP-MOV-04 completo).
+- **Autorización necesaria:** ninguna.
+

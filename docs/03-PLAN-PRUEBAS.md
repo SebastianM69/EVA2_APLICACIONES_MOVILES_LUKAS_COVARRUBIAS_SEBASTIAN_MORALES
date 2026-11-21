@@ -1,6 +1,6 @@
 # 03 — Plan de pruebas y gates académicos
 
-> **Estado:** CP-PER-01/02 y CP-GPS-01/02 con pruebas unitarias OK (`npx jest src/features/camera src/features/location`, 2026-11-21). Manual en emulador (2026-11-21, CHK-009): CP-MOV-03 y CP-MOV-05 OK; CP-MOV-02 parcial (miniatura visible, imagen negra); CP-MOV-01 y CP-MOV-06 NO EJECUTADO. CP-MOV-04 en emulador FALLO (coordenadas no guardadas; el emulador no entrega posición a la app, CHK-012). CP-MOV-04 en teléfono Android físico: lectura GPS OK (`lectura ok` en Metro, CHK-012); falta confirmar en pantalla que la tarea guardada muestra coordenadas.
+> **Estado:** CP-PER-01/02 y CP-GPS-01/02 con pruebas unitarias OK (`npx jest src/features/camera src/features/location`, 2026-11-21). Manual en emulador (2026-11-21, CHK-009): CP-MOV-03 y CP-MOV-05 OK; CP-MOV-02 parcial (miniatura visible, imagen negra); CP-MOV-01 y CP-MOV-06 NO EJECUTADO. CP-MOV-04 en emulador FALLO (el emulador no entrega posición a la app, CHK-012). CP-MOV-04 en teléfono Android físico: tarjeta muestra coordenadas (`EV-08`, CHK-013); detalle pendiente de captura.
 > **Referencias:** requisitos en [`docs/01`](./01-REQUISITOS-RUBRICA.md); gates de calidad por tarea en [`AGENTS.md`](../AGENTS.md) sección 8.
 
 ## 1. Pruebas automatizadas (Jest + `jest-expo` + RNTL)
@@ -41,7 +41,7 @@ Requieren emulador o dispositivo Android real con Expo Go (modalidad aprobada, `
 | G0 — Planificación | Reglas, requisitos y decisiones documentados y aprobados por el usuario. | APROBADO (2026-11-21) |
 | G1 — Reproducibilidad | `npm ci`, `npx expo install --check`, `npx jest`, `npx expo start` ejecutados con resultados reales. | PARCIAL: `expo install --check`, typecheck, lint y `jest` 5/5 OK (CHK-003); arranque de `expo start` OK (CHK-004). Falta `npm ci` limpio. |
 | G2 — Funciones esenciales | RF-01 a RF-13 implementados y CP-AUTH, CP-TAR, CP-PER, CP-GPS aprobados. | NO EJECUTADO |
-| G3 — UX Android | CP-MOV-01 a CP-MOV-06 con evidencia auténtica y revisión humana. | PARCIAL: CP-MOV-03 y CP-MOV-05 OK; CP-MOV-02 parcial; CP-MOV-04 lectura OK en teléfono físico (emulador FALLO, CHK-012); CP-MOV-01 y CP-MOV-06 NO EJECUTADO. |
+| G3 — UX Android | CP-MOV-01 a CP-MOV-06 con evidencia auténtica y revisión humana. | PARCIAL: CP-MOV-03 y CP-MOV-05 OK; CP-MOV-02 parcial; CP-MOV-04 tarjeta OK en teléfono físico (`EV-08`), detalle pendiente; CP-MOV-01 y CP-MOV-06 NO EJECUTADO. |
 | G4 — Entrega | Checklist de `docs/01` sección 6 completo; PDF o Word con nombre `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES`. | NO EJECUTADO |
 
 Cierre de entrega: todos los casos en `APROBADO` o en `NO EJECUTADO`/`BLOQUEADO` con motivo escrito.
