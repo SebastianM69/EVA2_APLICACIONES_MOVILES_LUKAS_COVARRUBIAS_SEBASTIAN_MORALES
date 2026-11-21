@@ -115,12 +115,12 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Verificación:**
   - Metro reiniciado con `-c`. `entry.bundle` contiene `title: 'Inicio'`.
   - `pm clear host.exp.exponent` en `emulator-5554` (aprobado por el usuario): borra datos de Expo Go en el emulador.
-  - Captura de cabecera `Inicio` (12:56): `C:\Users\sandr\AppData\Local\Temp\ev02-inicio4.png`. Fuera del repo; no versionada.
+  - Captura de cabecera `Inicio` (12:56): `docs/evidencias/capturas/EV-02-expo-go-titulo-tareas.png`. Versionada; revisión humana pendiente.
 - **Causa del título anterior:** bundle de entrada en caché de Metro/Expo Go; no era un fallo del código.
 - **Evidencias `EV-##`:**
   - `EV-01` (`docs/evidencias/capturas/EV-01-expo-go-tareas-vacias.png`): versionada; revisión humana pendiente.
-  - `docs/evidencias/capturas/EV-02-expo-go-titulo-tareas.png`: NO VÁLIDA. Muestra un spinner de carga, no la cabecera. Sin referencias en docs. No versionada. Pendiente decidir: reemplazar por la captura de Temp o eliminar (a Papelera).
+  - `docs/evidencias/capturas/EV-02-expo-go-titulo-tareas.png`: reemplazada por la captura de cabecera `Inicio` (12:56). La captura anterior (spinner de carga, 12:40) se descartó y se conservó fuera del repo.
 - **Decisiones:** decisión 16 de `docs/02` confirmada por el usuario (2026-11-21). Su documentación se commitea con CHK-004 y CHK-005.
-- **Siguiente acción:** registrar hash del commit de documentación; decidir destino de `EV-02`.
-- **Autorización necesaria:** autorización expresa para RF-01 a RF-03 (autenticación con SQLite y `expo-crypto`), con consulta previa a Context7 (`AGENTS.md` sección 3).
+- **Siguiente acción:** revisión humana de `EV-01` y `EV-02`; commit documental pendiente de autorización.
+- **Autorización:** el usuario autorizó RF-01 a RF-03 (autenticación local con `expo-sqlite` y `expo-crypto`) el 2026-11-21, usando documentación oficial Expo SDK 58 como fuente mientras Context7 no esté configurado. Condiciones: revisión humana de `EV-01` y `EV-02` antes de avanzar; commit documental antes de implementar.
 

@@ -23,7 +23,7 @@ Antes de la primera tarea ejecutable, el agente declara, con observaciones reale
 5. **Alcance y permisos:** tarea y rama autorizadas. No inferir permisos de publicación, instalación ni operaciones destructivas.
 6. **Carga de reglas:** confirmar que se leyó este `AGENTS.md` desde el repositorio real.
 
-**Context7 es requisito obligatorio.** Si no está disponible, registrar `CONTEXT7_NO_DISPONIBLE` y no comenzar tareas de APIs, versiones o dependencias que lo requieran.
+**Context7 es la fuente preferida.** Si no está disponible, registrar `CONTEXT7_NO_DISPONIBLE` y aplicar la sección 3 antes de tareas de APIs, versiones o dependencias.
 
 ### 1.2. Fuentes del proyecto
 
@@ -78,7 +78,7 @@ Cuando una tarea involucre una API, biblioteca, dependencia, configuración o pa
 5. Registrar: biblioteca/versión, asunto, fuente devuelta, fecha y conclusión.
 6. Aplicar cambios solo dentro de un alcance autorizado.
 
-Si Context7 no responde o no tiene la versión requerida: registrar `CONTEXT7_NO_DISPONIBLE` o `CONTEXT7_NO_VERIFICADO`, contrastar con documentación oficial como insumo adicional y **bloquear** la implementación dependiente. No afirmar que se usó una herramienta que no está disponible.
+Si Context7 no responde, no tiene la versión requerida o su respuesta es irrelevante o confusa: registrar `CONTEXT7_NO_DISPONIBLE` o `CONTEXT7_NO_VERIFICADO` y consultar en este orden: 1) documentación oficial de la biblioteca, en la versión del SDK del repositorio; 2) foros especializados (issues y discusiones oficiales, foros de Expo y React Native), contrastando con la documentación oficial. Registrar cada fuente usada y su nivel de verificación. No afirmar que se usó una herramienta que no está disponible. Bloquear solo la implementación dependiente que no quede verificada por ninguna fuente.
 
 ## 4. SOLID aplicado sin sobreingeniería
 
