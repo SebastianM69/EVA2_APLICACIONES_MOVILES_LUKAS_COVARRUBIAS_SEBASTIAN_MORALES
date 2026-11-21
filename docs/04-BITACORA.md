@@ -368,17 +368,111 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Objetivo:** verificar que una tarea con foto muestra la miniatura en la pantalla de detalle (CP-MOV-02).
 - **Estado:** `APROBADA` para CP-MOV-02 (revisión visual del usuario, `EV-11`). G3 sigue `PARCIAL` por CP-MOV-01 y CP-MOV-06.
 - **Requisitos asociados:** RF-11 de `docs/01`.
-- **Commit de código:** HEAD `2beb98a`; cambios de detalle sin commit (ver riesgos).
+- **Commit de código:** `c5f6f4d` (detalle, docs) y `013c6aab` (`task.ts`, capturas EV-11/EV-12).
 - **Evidencias:**
   - `EV-11`: `./evidencias/capturas/EV-11-telefono-fisico-detalle-miniatura.jpeg`. Detalle de "Prueba botón 1" con foto visible, `Ubicación: -33.05230, -71.34884` y botón Volver. Hora 6:05 PM visible en captura. Xiaomi 11T Pro, Android 13 (`EV-10`). Revisor: usuario del equipo. Resultado: APROBADO.
   - `EV-12`: `./evidencias/capturas/EV-12-telefono-fisico-lista-ver-detalle.jpeg`. Lista con botón "Ver detalle". Soporte de navegación, no caso propio.
 - **Verificaciones:**
   - Emulador (sesión previa): detalle sin foto muestra "Sin foto", ubicación y Volver; `tsc --noEmit`, `eslint` y `prettier --check` sin errores en `src/app/tasks/detalle/[id].tsx`.
   - `git log` al registrar: HEAD `2beb98a`. Los commits `cbd8b46`, `f7baeef`, `1d185c7` y `7427cdd` existen en el historial (`git cat-file -t` OK); el registro anterior los daba por perdidos por error de consulta (`git log -n 5`). No hubo pérdida de historial.
-- **Cambios sin commit:** `src/app/tasks/detalle/[id].tsx` (nuevo), `src/app/_layout.tsx`, `src/app/index.tsx`, `src/features/tasks/components/TaskCard.tsx` (botón "Ver detalle", registro de ruta, SafeArea).
 - **Riesgos:**
   - La tarea de la captura se llama "Prueba botón 1", no `QA_FOTO_MOV2` como pedía el protocolo. El caso se evalúa por la miniatura en detalle; el flujo completo (foto desde el formulario y guardar) no queda visible en la captura.
-  - Botón "Ver detalle" y pantalla de detalle: cambio de UI; commit requiere aprobación (AGENTS §5).
-  - Duplicado "QA FOTO MOV2" por doble toque en "Guardar tarea": causa confirmada en `src/app/tasks/new.tsx`, sin guard durante la lectura GPS (hasta 10 s). Corregido con `guardandoRef` (un guardado en curso); pendiente de verificación en teléfono.
-- **Siguiente acción:** aprobar commit del detalle o pedir cambios; luego CP-MOV-01 y CP-MOV-06.
-- **Autorización necesaria:** aprobación del usuario para commitear los cambios sin commit.
+- **Siguiente acción:** CP-MOV-01 y CP-MOV-06 (G3).
+- **Autorización necesaria:** ninguna.
+
+## CHK-016 - CP-MOV-01 OK en emulador; CP-MOV-06 parcial (reapertura offline no posible en Expo Go)
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** ejecutar CP-MOV-01 y CP-MOV-06 en emulador (Xiaomi no conectado).
+- **Estado:** CP-MOV-01 `APROBADO` en emulador, pendiente revisión humana. CP-MOV-06 `APROBADO` con desviación de criterio (decisión del usuario, 2026-11-21). G3 sigue `PARCIAL` por revisión humana de `EV-13`.
+- **Requisitos asociados:** RF-01 a RF-03 (CP-MOV-01); RF-13 (CP-MOV-06).
+- **Commit de código:** ninguno nuevo en este checkpoint. HEAD de referencia `013c6aab`.
+- **Evidencias:**
+  - `EV-13`: `./evidencias/capturas/EV-13-emulador-cp-mov-01-login-lista-vacia.png`. Emulador `Medium_Phone_API_37.0`, tras login con cuenta nueva "QA Mov01": lista "Sin tareas por ahora.". Revisor: NO VERIFICADO (pendiente equipo). Resultado: OK en emulador.
+- **Verificaciones:**
+  - CP-MOV-01: registro de cuenta nueva, cierre de sesión, login con mismas credenciales. Lista vacía. OK.
+  - CP-MOV-06: modo avión activo; creada "QA_MOV06" (Pendiente, sin ubicación), editada a "QA_MOV06_E" con descripción "Offline" y guardada, marcada como completada. Tras cerrar app con avión activo, reabrir falla: "Uncaught Error: java.io.IOException: Failed to download remote update" (pantalla "Something went wrong"). Causa: Expo Go en desarrollo descarga el bundle desde Metro; sin red no carga.
+  - Tras desactivar avión, `adb reverse tcp:8081 tcp:8081` (`exp://127.0.0.1:8081` no alcanzaba Metro en el emulador) y reabrir: "QA_MOV06_E" aparece como "Completada" con "Offline". Persistencia de los cambios offline verificada online.
+- **Riesgos:**
+  - Desviación aceptada: CP-MOV-06 se aprueba con persistencia verificada tras reinicio con red. Reabrir sin red no es posible con Expo Go en desarrollo; verificarlo requiere build nativo (`docs/02`, decisión 16, no viable hoy).
+  - Sin verificación de Xiaomi en esta sesión: dispositivo no conectado por adb.
+  - Captura EV-13 generada por agente en emulador; no es captura de teléfono físico.
+- **Siguiente acción:** revisión humana de EV-13 y decisión de commit de docs + EV-13. Conectar Xiaomi solo si se quiere repetir en físico.
+- **Autorización necesaria:** commit de docs y EV-13 (pendiente).
+
+## CHK-017 - CP-MOV-01 en Android físico: registro confirmado, login repetido pendiente
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** registrar evidencia de CP-MOV-01 en Xiaomi 11T Pro.
+- **Estado:** `PARCIAL`. Registro de cuenta y lista vacía confirmados en físico. Cierre de sesión e inicio repetido NO realizados en físico.
+- **Requisitos asociados:** RF-01 a RF-03.
+- **Commit de código:** ninguno nuevo. HEAD de referencia `013c6aab`.
+- **Evidencias:**
+  - `EV-14`: `./evidencias/capturas/EV-14-telefono-fisico-cp-mov-01-registro-lista-vacia.jpeg`. Cuenta "QA MOV01" creada desde el móvil; pantalla "Sin tareas por ahora." a las 6:29 PM. Dispositivo Xiaomi 11T Pro, Android 13 (`EV-10`). Copia de WhatsApp. Revisor: usuario (aportó la captura; validación visual explícita pendiente). Resultado: PARCIAL.
+- **Verificaciones:**
+  - Registro de cuenta en físico: confirmado por el usuario.
+  - Cierre de sesión e inicio con mismas credenciales en físico: NO realizado.
+- **Riesgos:**
+  - Nombre visible "QA MOV01" (mayúsculas) difiere de la cuenta del emulador "QA Mov01" (`EV-13`). Son cuentas distintas.
+  - CP-MOV-01 completo solo en emulador (`EV-13`).
+- **Siguiente acción:** en el Xiaomi, cerrar sesión, iniciar con las mismas credenciales y capturar la lista. Si se aprueba, registrar `EV-15`.
+- **Autorización necesaria:** ninguna.
+
+## CHK-018 - CP-MOV-01 en Android físico: inicio de sesión repetido registrado (EV-15)
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** completar evidencia física de CP-MOV-01 tras cerrar sesión e iniciar con las mismas credenciales.
+- **Estado:** `APROBADA` en físico, con reserva: el cierre de sesión no es visible en la captura; lo informó el usuario.
+- **Requisitos asociados:** RF-01 a RF-03.
+- **Commit de código:** ninguno nuevo. HEAD de referencia `013c6aab`.
+- **Evidencias:**
+  - `EV-15`: `./evidencias/capturas/EV-15-telefono-fisico-cp-mov-01-login-lista-vacia.png`. Pantalla "Sesión iniciada como QA MOV01." y "Sin tareas por ahora." a las 6:36 PM. Dispositivo Xiaomi 11T Pro, Android 13 (`EV-10`). Copia de WhatsApp. Revisor: usuario. Resultado: APROBADO.
+  - `EV-14` (CHK-017) confirmado distinto de `EV-15`: `EV-14` es 6:29 PM y byte-idéntico al archivo previo; `EV-15` tiene hora distinta.
+- **Verificaciones:**
+  - Registro de cuenta "QA MOV01" en físico: confirmado por el usuario (`EV-14`).
+  - Cierre de sesión e inicio repetido en físico: confirmado por el usuario; no hay captura del cierre.
+- **Riesgos:**
+  - Cierre de sesión sin captura propia; depende del testimonio del usuario.
+  - Cuentas distintas: "QA MOV01" en físico y "QA Mov01" en emulador (`EV-13`).
+- **Siguiente acción:** revisión humana de `EV-13`; autorizar commit de docs y evidencias `EV-13`, `EV-14`, `EV-15`.
+- **Autorización necesaria:** commit de docs y evidencias (pendiente).
+
+## CHK-019 - CP-MOV-01 en Android físico: cierre de sesión registrado (EV-16); secuencia incompleta
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** registrar el cierre de sesión de CP-MOV-01 en Xiaomi 11T Pro.
+- **Estado:** `PARCIAL`. Corrige CHK-018: `EV-15` (6:36 PM) ya mostraba sesión iniciada, así que el cierre de `EV-16` (6:37 PM) ocurrió después de `EV-15`. No hay captura que pruebe un cierre previo a `EV-15`.
+- **Requisitos asociados:** RF-01 a RF-03.
+- **Commit de código:** ninguno nuevo. HEAD de referencia `013c6aab`.
+- **Evidencias:**
+  - `EV-16`: `./evidencias/capturas/EV-16-telefono-fisico-cp-mov-01-cierre-sesion.jpeg`. Pantalla "Iniciar sesión" con campos Correo/Clave a las 6:37 PM. Dispositivo Xiaomi 11T Pro, Android 13 (`EV-10`). Copia de WhatsApp. Revisor: usuario. Resultado: registra cierre de sesión; secuencia pendiente.
+- **Verificaciones:**
+  - Cierre de sesión en físico: visible en `EV-16`.
+  - Secuencia registro → cierre → inicio: incompleta en capturas; falta inicio de sesión posterior a `EV-16`.
+- **Riesgos:**
+  - `EV-15` no prueba un cierre previo; su inicio puede venir de la cuenta ya activa tras el registro. Sin captura intermedia no se puede probar el orden.
+  - `CHK-018` queda superado en su conclusión de estado `APROBADA`.
+- **Siguiente acción:** en el Xiaomi, iniciar sesión con "QA MOV01" y la misma clave; capturar la pantalla de lista. Registrar como `EV-17`.
+- **Autorización necesaria:** ninguna.
+
+## CHK-020 - EV-13 aprobada por el usuario; pruebas móviles priorizan teléfono físico
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** registrar la revisión humana de `EV-13` (CP-MOV-01, emulador) pendiente desde CHK-016.
+- **Estado:** `APROBADA` para `EV-13`. CP-MOV-01 global sigue `PARCIAL` (ver CHK-019).
+- **Requisitos asociados:** RF-01 a RF-03.
+- **Commit de código:** ninguno nuevo. HEAD de referencia `013c6aab`.
+- **Evidencias:**
+  - `EV-13`: `./evidencias/capturas/EV-13-emulador-cp-mov-01-login-lista-vacia.png`. Revisor: usuario, aprobación explícita en sesión ("aprobado"). Resultado: APROBADO.
+- **Decisiones:**
+  - Las pruebas móviles se hacen priorizando el teléfono físico Xiaomi 11T Pro. El emulador tiene limitaciones (no entrega posición GPS a Expo Go; Expo Go en desarrollo no reabre sin red), por lo que sirve como apoyo, no como fuente principal.
+- **Riesgos aceptados por el usuario:**
+  - La barra de estado de `EV-13` tiene estilo distinto al de Android; origen de la captura tomada por el agente sin metadatos verificados.
+  - Cuentas distintas: "QA Mov01" (emulador) y "QA MOV01" (físico).
+- **Siguiente acción:** en el Xiaomi, iniciar sesión con "QA MOV01" tras `EV-16` y capturar la lista como `EV-17`.
+- **Autorización necesaria:** commit de docs y evidencias (pendiente).

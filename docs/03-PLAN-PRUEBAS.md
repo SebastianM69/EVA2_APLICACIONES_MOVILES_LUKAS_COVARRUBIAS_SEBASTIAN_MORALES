@@ -1,6 +1,6 @@
 # 03 — Plan de pruebas y gates académicos
 
-> **Estado:** CP-PER-01/02 y CP-GPS-01/02 con pruebas unitarias OK (`npx jest src/features/camera src/features/location`, 2026-11-21). Teléfono Android físico (2026-11-21): CP-MOV-02 APROBADO con `EV-11` (miniatura visible en detalle, CHK-015); CP-MOV-04 APROBADO con `EV-08` y `EV-09` (CHK-014). Emulador (CHK-009): CP-MOV-03 y CP-MOV-05 OK; CP-MOV-01 y CP-MOV-06 NO EJECUTADO. CP-MOV-04 en emulador FALLO (el emulador no entrega posición a la app, CHK-012).
+> **Estado:** CP-PER-01/02 y CP-GPS-01/02 con pruebas unitarias OK (`npx jest src/features/camera src/features/location`, 2026-11-21). Teléfono Android físico (2026-11-21, Xiaomi 11T Pro, fuente principal de pruebas móviles por limitaciones del emulador): CP-MOV-01 PARCIAL: `EV-14` (registro, 6:29 PM), `EV-15` (sesión iniciada, 6:36 PM) y `EV-16` (pantalla de inicio tras cerrar sesión, 6:37 PM); falta captura de inicio de sesión posterior a `EV-16` que cierre la secuencia (CHK-019). CP-MOV-02 APROBADO con `EV-11` (miniatura visible en detalle, CHK-015); CP-MOV-04 APROBADO con `EV-08` y `EV-09` (CHK-014). Emulador (2026-11-21, CHK-016): CP-MOV-01 OK con `EV-13` (aprobada por el usuario, CHK-020); CP-MOV-06 APROBADO con desviación (persistencia verificada tras reinicio con red; reapertura sin red no alcanzable con Expo Go en desarrollo). Emulador (CHK-009): CP-MOV-03 y CP-MOV-05 OK. CP-MOV-04 en emulador FALLO (el emulador no entrega posición a la app, CHK-012).
 > **Referencias:** requisitos en [`docs/01`](./01-REQUISITOS-RUBRICA.md); gates de calidad por tarea en [`AGENTS.md`](../AGENTS.md) sección 8.
 
 ## 1. Pruebas automatizadas (Jest + `jest-expo` + RNTL)
@@ -32,7 +32,7 @@ Requieren emulador o dispositivo Android real con Expo Go (modalidad aprobada, `
 | CP-MOV-03 | Denegar permiso de cámara → intentar tomar foto → guardar. | Tarea creada sin foto; mensaje no bloqueante. | RF-11, RUB-02 |
 | CP-MOV-04 | Crear tarea con GPS permitido → abrir detalle. | Coordenadas visibles. | RF-12 |
 | CP-MOV-05 | Denegar GPS → crear tarea → abrir detalle. | Tarea sin coordenadas; mensaje no bloqueante. | RF-12, RUB-02 |
-| CP-MOV-06 | Activar modo avión → crear, editar y completar una tarea → cerrar y reabrir la app. | Cambios persisten. | RF-13 |
+| CP-MOV-06 | Activar modo avión → crear, editar y completar una tarea → cerrar y reabrir la app. | Cambios persisten. Criterio aprobado 2026-11-21: reapertura verificada con red tras los cambios offline (CHK-016). | RF-13 |
 
 ## 3. Gates académicos
 
@@ -41,7 +41,7 @@ Requieren emulador o dispositivo Android real con Expo Go (modalidad aprobada, `
 | G0 — Planificación | Reglas, requisitos y decisiones documentados y aprobados por el usuario. | APROBADO (2026-11-21) |
 | G1 — Reproducibilidad | `npm ci`, `npx expo install --check`, `npx jest`, `npx expo start` ejecutados con resultados reales. | PARCIAL: `expo install --check`, typecheck, lint y `jest` 5/5 OK (CHK-003); arranque de `expo start` OK (CHK-004). Falta `npm ci` limpio. |
 | G2 — Funciones esenciales | RF-01 a RF-13 implementados y CP-AUTH, CP-TAR, CP-PER, CP-GPS aprobados. | NO EJECUTADO |
-| G3 — UX Android | CP-MOV-01 a CP-MOV-06 con evidencia auténtica y revisión humana. | PARCIAL: CP-MOV-02 (`EV-11`), CP-MOV-03, CP-MOV-04 (`EV-08`, `EV-09`) y CP-MOV-05 OK; CP-MOV-01 y CP-MOV-06 NO EJECUTADO. |
+| G3 — UX Android | CP-MOV-01 a CP-MOV-06 con evidencia auténtica y revisión humana. | PARCIAL: CP-MOV-01 (`EV-14`, `EV-15`, `EV-16` físico, falta login posterior a `EV-16`; `EV-13` emulador aprobada), CP-MOV-02 (`EV-11`), CP-MOV-03, CP-MOV-04 (`EV-08`, `EV-09`), CP-MOV-05 y CP-MOV-06 (desviación, CHK-016) OK. |
 | G4 — Entrega | Checklist de `docs/01` sección 6 completo; PDF o Word con nombre `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES`. | NO EJECUTADO |
 
 Cierre de entrega: todos los casos en `APROBADO` o en `NO EJECUTADO`/`BLOQUEADO` con motivo escrito.
