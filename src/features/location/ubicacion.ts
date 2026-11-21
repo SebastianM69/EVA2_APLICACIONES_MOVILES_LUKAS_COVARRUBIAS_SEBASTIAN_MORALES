@@ -22,6 +22,9 @@ export async function obtenerUbicacionActual(): Promise<UbicacionTarea | null> {
     if (permiso.status !== Location.PermissionStatus.GRANTED) {
       return null;
     }
+      Location.getCurrentPositionAsync({
+        accuracy: Location.Accuracy.Balanced,
+      }),
     const posicion =
       (await conTimeout(
         Location.getCurrentPositionAsync({
