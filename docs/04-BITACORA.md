@@ -9,7 +9,7 @@
 - **Requisitos asociados:** ninguno implementado. Ver `docs/01`.
 - **Pruebas asociadas:** ninguna (etapa documental). Ver `docs/03`.
 - **Repositorio:** `git init -b main` ejecutado en la raíz; sin remoto.
-- **Commit real:** PENDIENTE; se completa tras el commit de docs.
+- **Commit real:** `d86b7de1bb` (`docs: reglas de desarrollo y requisitos EVA2`), rama `main`, sin remoto.
 - **Archivos creados:**
   - `AGENTS.md`
   - `README.md`
