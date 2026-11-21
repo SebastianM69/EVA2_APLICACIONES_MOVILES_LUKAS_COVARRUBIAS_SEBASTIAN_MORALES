@@ -7,7 +7,7 @@ import type { TaskInput } from '@/features/tasks/model/task';
 
 describe('TaskForm', () => {
   it('shows field errors, preserves input, and submits trimmed values', async () => {
-    const onSave = jest.fn((_input: TaskInput) => true);
+    const onSave = jest.fn(async (_input: TaskInput) => true);
     const onCancel = jest.fn();
     await render(
       <TaskForm
@@ -53,7 +53,7 @@ describe('TaskForm', () => {
         heading="Editar tarea"
         submitLabel="Guardar cambios"
         initialValues={{ title: 'Título', description: 'Descripción' }}
-        onSave={() => true}
+        onSave={async () => true}
         onCancel={onCancel}
       />,
     );
@@ -68,7 +68,7 @@ describe('TaskForm', () => {
         heading="Editar tarea"
         submitLabel="Guardar cambios"
         initialValues={{ title: 'Título', description: 'Descripción' }}
-        onSave={() => true}
+        onSave={async () => true}
         onCancel={onCancel}
       />,
     );

@@ -5,6 +5,7 @@ import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 import { DATABASE_NAME, migrarBaseDeDatos } from '@/db/migrations';
 import { AuthProvider, useAuth } from '@/features/auth/auth-context';
+import { TasksProvider } from '@/features/tasks/tasks-context';
 import { colors } from '@/theme/tokens';
 
 export default function RootLayout() {
@@ -18,7 +19,9 @@ export default function RootLayout() {
     >
       <SQLiteProvider databaseName={DATABASE_NAME} onInit={migrarBaseDeDatos} useSuspense>
         <AuthProvider>
-          <AuthStack />
+          <TasksProvider>
+            <AuthStack />
+          </TasksProvider>
         </AuthProvider>
       </SQLiteProvider>
     </Suspense>
@@ -41,6 +44,8 @@ function AuthStack() {
     >
       <Stack.Protected guard={autenticado}>
         <Stack.Screen name="index" options={{ title: 'Inicio' }} />
+        <Stack.Screen name="tasks/new" options={{ headerShown: false }} />
+        <Stack.Screen name="tasks/[id]" options={{ headerShown: false }} />
       </Stack.Protected>
       <Stack.Protected guard={!autenticado}>
         <Stack.Screen name="login" options={{ title: 'Iniciar sesión' }} />

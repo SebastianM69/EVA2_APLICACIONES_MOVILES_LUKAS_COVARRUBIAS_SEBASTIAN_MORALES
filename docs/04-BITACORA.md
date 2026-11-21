@@ -166,3 +166,25 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Siguiente acción:** implementar RF-04 a RF-10 (tareas CRUD con SQLite, filtros y validación; CP-TAR-01 y CP-TAR-02). Autorizado por el usuario (2026-11-21).
 - **Autorización:** RF-04 a RF-10 autorizados; commits locales autorizados (2026-11-21).
 
+## CHK-007 — Tareas CRUD, filtros y validación (RF-04 a RF-10)
+
+- **Fecha:** 2026-11-21
+- **Autor:** agente OMP (sesión con el usuario)
+- **Objetivo:** tareas por usuario con SQLite: listar, crear, editar, completar/reabrir, eliminar con confirmación, filtros y validación.
+- **Estado:** `VALIDACIÓN PARCIAL`. Código, pruebas Jest y gates técnicos OK; verificación manual en Expo Go NO EJECUTADA.
+- **Requisitos asociados:** RF-04 a RF-10. Ver `docs/01`.
+- **Pruebas asociadas:** Jest `src/features/tasks/tasks-service.test.ts` (CP-TAR-01, CP-TAR-02). Suite completa: 5 suites, 16/16 OK.
+- **Verificación:**
+  - `npx tsc --noEmit`: exit 0.
+  - `npx jest --runInBand`: 16/16 OK.
+  - `npx eslint .`: exit 0.
+  - `npx prettier --check` sobre archivos creados o reescritos en esta etapa: OK. `npm run format:check` completo sigue fallando en 8 archivos previos no tocados (`auth-*`, `hash.ts`, `hash.test.ts`, `_layout.tsx`, `login.tsx`, `register.tsx`); fuera de alcance.
+- **Decisiones técnicas:**
+  - `TaskForm.onSave` pasa a `Promise<boolean>` para persistencia asíncrona; mocks de `TaskForm.test.tsx` actualizados.
+  - Repositorio y servicio filtran por `usuario_id` de la sesión activa en cada consulta y mutación.
+- **Riesgos:**
+  - Expo Go no verificado: crear, editar, completar, filtrar y eliminar en emulador pendientes.
+  - Pruebas cubren servicio con repositorio en memoria y filtro puro; no cubren SQLite real.
+  - Ruta `tasks/[id]` muestra "La tarea no existe" hasta que `TasksProvider` carga el listado; al abrir edición tras reinicio puede verse un parpadeo incorrecto.
+- **Siguiente acción:** verificación manual Expo Go (emulador) de RF-04 a RF-10 y registro de evidencias `EV-##`; luego revisión humana.
+

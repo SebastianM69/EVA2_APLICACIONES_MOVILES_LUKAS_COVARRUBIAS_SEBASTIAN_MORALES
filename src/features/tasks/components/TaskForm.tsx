@@ -29,7 +29,7 @@ type TaskFormProps = {
   heading: string;
   submitLabel: string;
   initialValues?: TaskInput;
-  onSave: (input: TaskInput) => boolean;
+  onSave: (input: TaskInput) => Promise<boolean>;
   onCancel: () => void;
 };
 
@@ -102,7 +102,7 @@ export function TaskForm({
     }
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     const validation = validateTaskInput({ title, description });
     if (!validation.valid) {
       setErrors(validation.errors);
@@ -110,7 +110,7 @@ export function TaskForm({
     }
 
     Keyboard.dismiss();
-    if (onSave(validation.value)) setErrors({});
+    if (await onSave(validation.value)) setErrors({});
   };
 
   return (
