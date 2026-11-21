@@ -18,20 +18,21 @@ function conTimeout<T>(promesa: Promise<T>, ms: number): Promise<T | null> {
 // Permiso denegado o fallo del GPS devuelven null: la tarea se guarda sin coordenadas.
 export async function obtenerUbicacionActual(): Promise<UbicacionTarea | null> {
   try {
-    const permiso = await Location.requestForegroundPermissionsAsync();
+    const permisoActual = await Location.getForegroundPermissionsAsync();
+    const permiso = permisoActual.granted
+      ? permisoActual
+      : await Location.requestForegroundPermissionsAsync();
     if (permiso.status !== Location.PermissionStatus.GRANTED) {
       return null;
     }
+    const lectura = await conTimeout(
       Location.getCurrentPositionAsync({
         accuracy: Location.Accuracy.Balanced,
       }),
+      TIMEOUT_LECTURA_MS,
+    );
     const posicion =
-      (await conTimeout(
-        Location.getCurrentPositionAsync({
-          accuracy: Location.Accuracy.Balanced,
-        }),
-        TIMEOUT_LECTURA_MS,
-      )) ??
+      lectura ??
       (await Location.getLastKnownPositionAsync({
         maxAge: EDAD_MAXIMA_ULTIMA_MS,
       }));
