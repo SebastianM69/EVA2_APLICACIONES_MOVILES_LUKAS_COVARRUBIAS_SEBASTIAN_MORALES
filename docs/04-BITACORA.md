@@ -476,3 +476,22 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
   - Cuentas distintas: "QA Mov01" (emulador) y "QA MOV01" (físico).
 - **Siguiente acción:** en el Xiaomi, iniciar sesión con "QA MOV01" tras `EV-16` y capturar la lista como `EV-17`.
 - **Autorización necesaria:** commit de docs y evidencias (pendiente).
+
+## CHK-021 - CP-MOV-01 en Android físico: inicio repetido registrado (EV-17); secuencia completa
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** completar la secuencia física de CP-MOV-01 con inicio de sesión posterior a `EV-16`.
+- **Estado:** `APROBADA` en físico. Cierra la secuencia pendiente de CHK-019.
+- **Requisitos asociados:** RF-01 a RF-03.
+- **Commit de código:** ninguno nuevo. HEAD de referencia `692acfb`.
+- **Evidencias:**
+  - `EV-17`: `./evidencias/capturas/EV-17-telefono-fisico-cp-mov-01-inicio-sesion-repetido.png`. Pantalla "Sesión iniciada como QA MOV01." con "Sin tareas por ahora." a las 6:41 PM. Dispositivo Xiaomi 11T Pro, Android 13 (`EV-10`). Copia del usuario. Revisor: usuario. Resultado: APROBADO.
+  - Secuencia: `EV-14` (registro, 6:29 PM), `EV-15` (sesión iniciada, 6:36 PM), `EV-16` (cierre, 6:37 PM), `EV-17` (inicio repetido, 6:41 PM).
+- **Verificaciones:**
+  - Secuencia registro → sesión → cierre → inicio: completa en capturas físicas con la misma cuenta "QA MOV01".
+- **Riesgos:**
+  - `EV-15` (6:36 PM) ya mostraba sesión iniciada; la captura de cierre `EV-16` es posterior. El orden registro → cierre queda sostenido por horas de las capturas.
+  - Cuentas distintas entre físico ("QA MOV01") y emulador ("QA Mov01"), ya aceptado en CHK-020.
+- **Siguiente acción:** commit de `EV-17` y de la actualización de `docs/03` y `docs/04` (pendiente de autorización).
+- **Autorización necesaria:** commit (pendiente).
