@@ -14,10 +14,11 @@ export type TaskCaptura = {
   fotoUri: string | null;
 };
 
-export type Task = TaskInput & TaskCaptura & {
-  id: number;
-  completed: boolean;
-};
+export type Task = TaskInput &
+  TaskCaptura & {
+    id: number;
+    completed: boolean;
+  };
 
 // Texto visible de la ubicación; compartido por la tarjeta y la pantalla de edición.
 export function textoUbicacion(
