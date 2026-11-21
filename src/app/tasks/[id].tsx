@@ -1,9 +1,10 @@
-import { router, useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router';
 import { Alert, Image, StyleSheet, Text, View } from 'react-native';
 
 import { ActionButton } from '@/components/ActionButton';
 import { TaskForm } from '@/features/tasks/components/TaskForm';
 import type { TaskInput } from '@/features/tasks/model/task';
+import { volverAListaTareas } from '@/features/tasks/navigation';
 import { useTasks } from '@/features/tasks/tasks-context';
 import { colors, spacing } from '@/theme/tokens';
 
@@ -22,7 +23,7 @@ export default function EditTaskScreen() {
           label="Volver"
           variant="secondary"
           accessibilityLabel="Volver a mis tareas"
-          onPress={() => router.back()}
+          onPress={volverAListaTareas}
         />
       </View>
     );
@@ -34,7 +35,7 @@ export default function EditTaskScreen() {
       if (!resultado.ok) {
         return false;
       }
-      router.back();
+      volverAListaTareas();
       return true;
     } catch {
       Alert.alert('No se pudo guardar', 'Intenta nuevamente.');
@@ -68,7 +69,7 @@ export default function EditTaskScreen() {
       initialValues={{ title: tarea.title, description: tarea.description }}
       adjuntos={adjuntos}
       onSave={handleSave}
-      onCancel={() => router.back()}
+      onCancel={volverAListaTareas}
     />
   );
 }

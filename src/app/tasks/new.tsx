@@ -1,4 +1,3 @@
-import { router } from 'expo-router';
 import { useState } from 'react';
 import { Alert, Image, StyleSheet, View } from 'react-native';
 
@@ -7,6 +6,7 @@ import { CameraCapture } from '@/features/camera/CameraCapture';
 import { obtenerUbicacionActual } from '@/features/location/ubicacion';
 import { TaskForm } from '@/features/tasks/components/TaskForm';
 import type { TaskInput } from '@/features/tasks/model/task';
+import { volverAListaTareas } from '@/features/tasks/navigation';
 import { useTasks } from '@/features/tasks/tasks-context';
 import { colors, spacing } from '@/theme/tokens';
 
@@ -27,7 +27,7 @@ export default function NewTaskScreen() {
       if (!resultado.ok) {
         return false;
       }
-      router.back();
+      volverAListaTareas();
       return true;
     } catch {
       Alert.alert('No se pudo guardar', 'Intenta nuevamente.');
@@ -66,7 +66,7 @@ export default function NewTaskScreen() {
       submitLabel="Guardar tarea"
       adjuntos={adjuntos}
       onSave={handleSave}
-      onCancel={() => router.back()}
+      onCancel={volverAListaTareas}
     />
   );
 }
