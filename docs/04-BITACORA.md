@@ -361,3 +361,24 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Siguiente acción:** ninguna para CP-MOV-04. Pendiente de G3: CP-MOV-01, CP-MOV-02 y CP-MOV-06.
 - **Autorización necesaria:** ninguna.
 
+## CHK-015 - CP-MOV-02 aprobado: miniatura visible en detalle en Android físico (RF-11)
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** verificar que una tarea con foto muestra la miniatura en la pantalla de detalle (CP-MOV-02).
+- **Estado:** `APROBADA` para CP-MOV-02 (revisión visual del usuario, `EV-11`). G3 sigue `PARCIAL` por CP-MOV-01 y CP-MOV-06.
+- **Requisitos asociados:** RF-11 de `docs/01`.
+- **Commit de código:** HEAD `2beb98a`; cambios de detalle sin commit (ver riesgos).
+- **Evidencias:**
+  - `EV-11`: `./evidencias/capturas/EV-11-telefono-fisico-detalle-miniatura.jpeg`. Detalle de "Prueba botón 1" con foto visible, `Ubicación: -33.05230, -71.34884` y botón Volver. Hora 6:05 PM visible en captura. Xiaomi 11T Pro, Android 13 (`EV-10`). Revisor: usuario del equipo. Resultado: APROBADO.
+  - `EV-12`: `./evidencias/capturas/EV-12-telefono-fisico-lista-ver-detalle.jpeg`. Lista con botón "Ver detalle". Soporte de navegación, no caso propio.
+- **Verificaciones:**
+  - Emulador (sesión previa): detalle sin foto muestra "Sin foto", ubicación y Volver; `tsc --noEmit`, `eslint` y `prettier --check` sin errores en `src/app/tasks/detalle/[id].tsx`.
+  - `git log` al registrar: HEAD `2beb98a`. Los commits `cbd8b46`, `f7baeef`, `1d185c7` y `7427cdd` existen en el historial (`git cat-file -t` OK); el registro anterior los daba por perdidos por error de consulta (`git log -n 5`). No hubo pérdida de historial.
+- **Cambios sin commit:** `src/app/tasks/detalle/[id].tsx` (nuevo), `src/app/_layout.tsx`, `src/app/index.tsx`, `src/features/tasks/components/TaskCard.tsx` (botón "Ver detalle", registro de ruta, SafeArea).
+- **Riesgos:**
+  - La tarea de la captura se llama "Prueba botón 1", no `QA_FOTO_MOV2` como pedía el protocolo. El caso se evalúa por la miniatura en detalle; el flujo completo (foto desde el formulario y guardar) no queda visible en la captura.
+  - Botón "Ver detalle" y pantalla de detalle: cambio de UI; commit requiere aprobación (AGENTS §5).
+  - Duplicado "QA FOTO MOV2" por doble toque en "Guardar tarea": causa confirmada en `src/app/tasks/new.tsx`, sin guard durante la lectura GPS (hasta 10 s). Corregido con `guardandoRef` (un guardado en curso); pendiente de verificación en teléfono.
+- **Siguiente acción:** aprobar commit del detalle o pedir cambios; luego CP-MOV-01 y CP-MOV-06.
+- **Autorización necesaria:** aprobación del usuario para commitear los cambios sin commit.

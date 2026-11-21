@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Alert, Image, StyleSheet, View } from 'react-native';
 
 import { ActionButton } from '@/components/ActionButton';
@@ -14,8 +14,13 @@ export default function NewTaskScreen() {
   const { crear } = useTasks();
   const [fotoUri, setFotoUri] = useState<string | null>(null);
   const [camaraAbierta, setCamaraAbierta] = useState(false);
+  const guardandoRef = useRef(false);
 
   const handleSave = async (input: TaskInput) => {
+    // Un solo guardado en curso: la lectura GPS tarda hasta 10 s y permite un segundo toque.
+    if (guardandoRef.current) return false;
+    guardandoRef.current = true;
+    let guardada = false;
     try {
       // Sin permiso de ubicación la tarea se guarda sin coordenadas.
       const ubicacion = await obtenerUbicacionActual();
@@ -27,11 +32,14 @@ export default function NewTaskScreen() {
       if (!resultado.ok) {
         return false;
       }
+      guardada = true;
       volverAListaTareas();
       return true;
     } catch {
       Alert.alert('No se pudo guardar', 'Intenta nuevamente.');
       return false;
+    } finally {
+      if (!guardada) guardandoRef.current = false;
     }
   };
 

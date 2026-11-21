@@ -46,6 +46,10 @@ function AuthStack() {
         <Stack.Screen name="index" options={{ title: 'Inicio' }} />
         <Stack.Screen name="tasks/new" options={{ headerShown: false }} />
         <Stack.Screen name="tasks/[id]" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="tasks/detalle/[id]"
+          options={{ headerShown: false }}
+        />
       </Stack.Protected>
       <Stack.Protected guard={!autenticado}>
         <Stack.Screen name="login" options={{ title: 'Iniciar sesión' }} />

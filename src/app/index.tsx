@@ -79,6 +79,12 @@ export default function TasksScreen() {
           <TaskCard
             task={item}
             onToggle={() => void cambiarCompletada(item.id, !item.completed)}
+            onView={() =>
+              router.push({
+                pathname: '/tasks/detalle/[id]',
+                params: { id: String(item.id) },
+              })
+            }
             onEdit={() =>
               router.push({
                 pathname: '/tasks/[id]',

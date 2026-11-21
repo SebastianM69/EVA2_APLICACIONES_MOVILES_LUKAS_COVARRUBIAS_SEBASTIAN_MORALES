@@ -7,11 +7,18 @@ import { colors, spacing } from '@/theme/tokens';
 type TaskCardProps = {
   task: Task;
   onToggle: () => void;
+  onView: () => void;
   onEdit: () => void;
   onDelete: () => void;
 };
 
-export function TaskCard({ task, onToggle, onEdit, onDelete }: TaskCardProps) {
+export function TaskCard({
+  task,
+  onToggle,
+  onView,
+  onEdit,
+  onDelete,
+}: TaskCardProps) {
   return (
     <View style={styles.card}>
       <View style={styles.heading}>
@@ -43,6 +50,12 @@ export function TaskCard({ task, onToggle, onEdit, onDelete }: TaskCardProps) {
       </Text>
 
       <View style={styles.actions}>
+        <ActionButton
+          label="Ver detalle"
+          variant="secondary"
+          accessibilityLabel={`Ver detalle de ${task.title}`}
+          onPress={onView}
+        />
         <ActionButton
           label="Editar"
           variant="secondary"

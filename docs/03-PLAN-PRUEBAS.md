@@ -1,6 +1,6 @@
 # 03 — Plan de pruebas y gates académicos
 
-> **Estado:** CP-PER-01/02 y CP-GPS-01/02 con pruebas unitarias OK (`npx jest src/features/camera src/features/location`, 2026-11-21). Manual en emulador (2026-11-21, CHK-009): CP-MOV-03 y CP-MOV-05 OK; CP-MOV-02 parcial (miniatura visible, imagen negra); CP-MOV-01 y CP-MOV-06 NO EJECUTADO. CP-MOV-04 en emulador FALLO (el emulador no entrega posición a la app, CHK-012). CP-MOV-04 en teléfono Android físico: APROBADO con `EV-08` (tarjeta) y `EV-09` (detalle), revisión visual del usuario (CHK-014).
+> **Estado:** CP-PER-01/02 y CP-GPS-01/02 con pruebas unitarias OK (`npx jest src/features/camera src/features/location`, 2026-11-21). Teléfono Android físico (2026-11-21): CP-MOV-02 APROBADO con `EV-11` (miniatura visible en detalle, CHK-015); CP-MOV-04 APROBADO con `EV-08` y `EV-09` (CHK-014). Emulador (CHK-009): CP-MOV-03 y CP-MOV-05 OK; CP-MOV-01 y CP-MOV-06 NO EJECUTADO. CP-MOV-04 en emulador FALLO (el emulador no entrega posición a la app, CHK-012).
 > **Referencias:** requisitos en [`docs/01`](./01-REQUISITOS-RUBRICA.md); gates de calidad por tarea en [`AGENTS.md`](../AGENTS.md) sección 8.
 
 ## 1. Pruebas automatizadas (Jest + `jest-expo` + RNTL)
@@ -41,7 +41,7 @@ Requieren emulador o dispositivo Android real con Expo Go (modalidad aprobada, `
 | G0 — Planificación | Reglas, requisitos y decisiones documentados y aprobados por el usuario. | APROBADO (2026-11-21) |
 | G1 — Reproducibilidad | `npm ci`, `npx expo install --check`, `npx jest`, `npx expo start` ejecutados con resultados reales. | PARCIAL: `expo install --check`, typecheck, lint y `jest` 5/5 OK (CHK-003); arranque de `expo start` OK (CHK-004). Falta `npm ci` limpio. |
 | G2 — Funciones esenciales | RF-01 a RF-13 implementados y CP-AUTH, CP-TAR, CP-PER, CP-GPS aprobados. | NO EJECUTADO |
-| G3 — UX Android | CP-MOV-01 a CP-MOV-06 con evidencia auténtica y revisión humana. | PARCIAL: CP-MOV-03, CP-MOV-04 (teléfono físico, `EV-08`, `EV-09`) y CP-MOV-05 OK; CP-MOV-02 parcial; CP-MOV-01 y CP-MOV-06 NO EJECUTADO. |
+| G3 — UX Android | CP-MOV-01 a CP-MOV-06 con evidencia auténtica y revisión humana. | PARCIAL: CP-MOV-02 (`EV-11`), CP-MOV-03, CP-MOV-04 (`EV-08`, `EV-09`) y CP-MOV-05 OK; CP-MOV-01 y CP-MOV-06 NO EJECUTADO. |
 | G4 — Entrega | Checklist de `docs/01` sección 6 completo; PDF o Word con nombre `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES`. | NO EJECUTADO |
 
 Cierre de entrega: todos los casos en `APROBADO` o en `NO EJECUTADO`/`BLOQUEADO` con motivo escrito.
@@ -56,6 +56,10 @@ Cierre de entrega: todos los casos en `APROBADO` o en `NO EJECUTADO`/`BLOQUEADO`
 ![EV-09 detalle con ubicación en teléfono físico](./evidencias/capturas/EV-09-telefono-fisico-detalle-ubicacion.jpeg)
 - `EV-10` — Referencia de dispositivo, no prueba funcional. Método: agente con captura del usuario. Fecha: 2026-11-21, 5:47 PM (visible en la captura). Muestra: Xiaomi 11T Pro, MIUI Global 14.0.2, Android 13 (TKQ1.220829.002), parche de seguridad 2023-04-01. Revisor: usuario del equipo. Resultado: NO APLICA (dato de dispositivo).
 ![EV-10 Acerca del teléfono en teléfono físico](./evidencias/capturas/EV-10-telefono-fisico-acerca-del-telefono.jpeg)
+- `EV-11` — CP-MOV-02, RF-11. Método: agente con captura del usuario. Fecha: 2026-11-21, 6:05 PM (visible en la captura). Dispositivo: Xiaomi 11T Pro, MIUI Global 14.0.2, Android 13 (ver `EV-10`). Modalidad: Expo Go (versión NO VERIFICADA) + Metro LAN (`exp://192.168.1.81:8081`). Código: working tree sobre `2beb98a` con cambios de detalle sin commit (CHK-015). Pasos: abrir "Ver detalle" de una tarea con foto. Esperado: miniatura visible en el detalle. Observado: fotografía visible (no negra), título "Prueba botón 1", `Ubicación: -33.05230, -71.34884`. Copia recibida por WhatsApp, sin recorte ni reescalado. Revisor: usuario del equipo. Resultado: APROBADO.
+![EV-11 detalle con miniatura en teléfono físico](./evidencias/capturas/EV-11-telefono-fisico-detalle-miniatura.jpeg)
+- `EV-12` — soporte de navegación para CP-MOV-02 (no es caso propio). Método: agente con captura del usuario. Fecha: 2026-11-21, 6:05 PM (visible en la captura). Dispositivo: ver `EV-11`. Observado: lista con botón "Ver detalle" en "Prueba botón 1" y "Prueba 2". Revisor: usuario del equipo. Resultado: NO APLICA como caso; respalda `EV-11`.
+![EV-12 lista con Ver detalle en teléfono físico](./evidencias/capturas/EV-12-telefono-fisico-lista-ver-detalle.jpeg)
 - Formato y trazabilidad: `EV-##` según `AGENTS.md` sección 8.1.
 - Ningún caso se marca `APROBADO` por mock o prueba unitaria si el caso exige Android.
 
