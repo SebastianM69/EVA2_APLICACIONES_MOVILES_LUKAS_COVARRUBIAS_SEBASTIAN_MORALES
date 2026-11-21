@@ -7,6 +7,7 @@ jest.mock('expo-location', () => ({
   PermissionStatus: { GRANTED: 'granted', DENIED: 'denied' },
   Accuracy: { Balanced: 3 },
   requestForegroundPermissionsAsync: jest.fn(),
+  getForegroundPermissionsAsync: jest.fn(),
   getCurrentPositionAsync: jest.fn(),
 }));
 
@@ -17,6 +18,12 @@ const leerPosicion = jest.mocked(Location.getCurrentPositionAsync);
 
 beforeEach(() => {
   jest.clearAllMocks();
+  jest.mocked(Location.getForegroundPermissionsAsync).mockResolvedValue({
+    granted: false,
+    canAskAgain: true,
+    expires: 'never',
+    status: Location.PermissionStatus.DENIED,
+  });
 });
 
 describe('CP-GPS-01: ubicación con permiso concedido', () => {
