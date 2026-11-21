@@ -203,3 +203,32 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
   - Ruta `tasks/[id]` muestra "La tarea no existe" hasta que `TasksProvider` carga el listado; al abrir edición tras reinicio puede verse un parpadeo incorrecto.
 - **Siguiente acción:** ninguna pendiente en CHK-007. `EV-##` solo si se guardan capturas en `docs/evidencias/capturas/`.
 
+## CHK-008 — RF-11 (foto) y RF-12 (ubicación): código y pruebas unitarias
+
+- **Fecha:** 2026-11-21
+- **Autor:** agente OMP
+- **Objetivo:** capturar foto desde el formulario y ubicación GPS al crear tarea; guardar ambos en SQLite.
+- **Estado:** `EN VALIDACIÓN`. Código y pruebas unitarias OK; ejecución en Android NO EJECUTADA.
+- **Requisitos asociados:** RF-11 (captura de foto), RF-12 (ubicación al crear). Ver `docs/01`.
+- **Pruebas asociadas:** CP-PER-01/02 (`src/features/camera/capturar-foto.test.ts`), CP-GPS-01/02 (`src/features/location/ubicacion.test.ts`). Mocks de `expo-camera`/`expo-location`: no prueban el dispositivo.
+- **Incidente de proceso:** la implementación se aplicó sin autorización previa (el usuario había pedido planificar primero). Usuario decidió conservar (2026-11-21). Dependencias `expo-camera`, `expo-file-system`, `expo-location` instaladas con `npx expo install` sin autorización previa.
+- **Cambios:**
+  - `src/features/camera/`: `CameraCapture.tsx` (modal, permiso, "Tomar foto"), `capturar-foto.ts`, `guardar-foto.ts` (copia a `documentDirectory/fotos-tareas/` con `File.copy`), tests.
+  - `src/features/location/`: `ubicacion.ts` (lectura única, precisión `Balanced`, `null` si denegado o error), test.
+  - `src/features/tasks/`: `TaskCaptura` en `model/task.ts`; `crear(usuarioId, input, captura)` en repositorio, servicio y contexto; prop `adjuntos` en `TaskForm`; `tasks-service.test.ts` actualizado.
+  - `src/db/migrations.ts`: columnas `latitud REAL`, `longitud REAL`, `foto_uri TEXT` en `CREATE TABLE` y `ALTER TABLE` idempotente por `PRAGMA table_info`.
+  - `src/app/tasks/new.tsx`, `src/app/tasks/[id].tsx`: captura al crear; detalle muestra foto y coordenadas.
+  - `package.json`/`package-lock.json`: `expo-camera ~58.0.14`, `expo-file-system ~58.0.14`, `expo-location ~58.0.22`. `app.json`: elimina línea `"expo-status-bar"` duplicada sin coma (JSON inválido en HEAD); JSON válido.
+- **Verificación:**
+  - `npx tsc --noEmit`: exit code 0.
+  - `npx jest` (suite completa): 7 suites, 22/22 OK.
+  - `app.json`: `JSON.parse` OK.
+- **Riesgos:**
+  - `expo-camera`, `expo-location`, `expo-file-system` con Expo Go SDK 58 en emulador: NO VERIFICADO.
+  - `guardar-foto.ts` no tiene prueba unitaria.
+  - Suite completa `npx jest` ejecutada: OK (ver Verificación). Prueba en dispositivo: no ejecutada.
+  - Permiso denegado: la tarea se guarda sin foto/ubicación (`null`), por decisión de diseño.
+- **Siguiente acción:** prueba en emulador CP-MOV-02 a CP-MOV-05 (requiere autorización del usuario); revisar `guardar-foto.ts` con prueba unitaria si se decide.
+- **Autorización:** usuario conservó los cambios (2026-11-21); pruebas en Android pendientes de autorización.
+- **Commits:** `fdb007d344` (dependencias y app.json), `7427cdd4a8` (código RF-11/RF-12).
+

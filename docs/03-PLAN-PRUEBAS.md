@@ -1,6 +1,6 @@
 # 03 — Plan de pruebas y gates académicos
 
-> **Estado:** casos definidos; ninguno ejecutado. Estado de todos los casos: `NO EJECUTADO`. Las verificaciones de CHK-003 y CHK-004 son de calidad y arranque, no de estos casos.
+> **Estado:** CP-PER-01/02 y CP-GPS-01/02 tienen pruebas unitarias con mocks que pasan (`npx jest src/features/camera src/features/location`, 2026-11-21); en dispositivo Android están `NO EJECUTADO`. Los demás casos siguen `NO EJECUTADO`.
 > **Referencias:** requisitos en [`docs/01`](./01-REQUISITOS-RUBRICA.md); gates de calidad por tarea en [`AGENTS.md`](../AGENTS.md) sección 8.
 
 ## 1. Pruebas automatizadas (Jest + `jest-expo` + RNTL)
