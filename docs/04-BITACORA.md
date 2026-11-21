@@ -347,15 +347,17 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Fecha:** 2026-11-21
 - **Agente:** agente OMP
 - **Objetivo:** verificar en la pantalla de detalle/edición que una tarea con GPS muestra coordenadas (CP-MOV-04).
-- **Estado:** `VALIDACIÓN PARCIAL` (tarjeta y detalle verificados en teléfono físico; validación humana de las capturas pendiente).
+- **Estado:** `APROBADA` para CP-MOV-04 (tarjeta y detalle en teléfono físico, revisión visual del usuario 2026-11-21). G3 sigue `PARCIAL` por CP-MOV-01, CP-MOV-02 y CP-MOV-06.
 - **Requisitos asociados:** RF-12 de `docs/01`.
 - **Commit de código:** `66fd218` (CHK-013).
 - **Evidencias:**
- - `EV-09`: `./evidencias/capturas/EV-09-telefono-fisico-detalle-ubicacion.jpeg`. Pantalla "Editar tarea" de "Prueba 2" muestra `Ubicación: -33.05232, -71.34884`. Método: agente con captura del usuario. Revisor: pendiente de validación humana.
- - `EV-08` (CHK-013): tarjeta de "Prueba 1" con coordenadas.
+  - `EV-09`: `./evidencias/capturas/EV-09-telefono-fisico-detalle-ubicacion.jpeg`. Pantalla "Editar tarea" de "Prueba 2", `Ubicación: -33.05232, -71.34884`. Hora de captura NO VERIFICADA (archivo WhatsApp 5.44.09 PM). Dispositivo Xiaomi 11T Pro, Android 13 (`EV-10`). Expo Go última estable de Play Store. Revisor: usuario del equipo. Resultado: APROBADO.
+  - `EV-08` (CHK-013): `./evidencias/capturas/EV-08-telefono-fisico-tarjeta-ubicacion.jpeg`. Tarjeta de "Prueba 1", `Ubicación: -33.05238, -71.34887`. Hora de captura NO VERIFICADA (archivo WhatsApp 5.41.28 PM). Mismos datos de dispositivo y modalidad. Revisor: usuario del equipo. Resultado: APROBADO.
+  - `EV-10`: `./evidencias/capturas/EV-10-telefono-fisico-acerca-del-telefono.jpeg`. Pantalla "Acerca del teléfono" (5:47 PM): Xiaomi 11T Pro, MIUI Global 14.0.2, Android 13 (TKQ1.220829.002), parche 2023-04-01. Referencia de dispositivo, no prueba funcional. Revisor: usuario del equipo. Resultado: NO APLICA.
 - **Riesgos:**
- - Prettier marca el tipo `Task` en `src/features/tasks/model/task.ts` (código previo; no reformateado).
- - Estado `VALIDACIÓN PARCIAL` hasta revisión humana de `EV-08` y `EV-09` y de RF-12 completo (CP-GPS sin gate de entrega formal).
-- **Siguiente acción:** revisión humana de `EV-08` y `EV-09`; decidir si se marca CP-MOV-04 como `APROBADO`.
-- **Autorización necesaria:** ninguna para el cierre técnico.
+  - Las capturas son copias de WhatsApp, sin original del teléfono. Usuario confirma que no se necesita mayor resolución.
+  - Número exacto de Expo Go: NO VERIFICADO.
+  - Prettier marca el tipo `Task` en `src/features/tasks/model/task.ts` (código previo; no reformateado).
+- **Siguiente acción:** ninguna para CP-MOV-04. Pendiente de G3: CP-MOV-01, CP-MOV-02 y CP-MOV-06.
+- **Autorización necesaria:** ninguna.
 
