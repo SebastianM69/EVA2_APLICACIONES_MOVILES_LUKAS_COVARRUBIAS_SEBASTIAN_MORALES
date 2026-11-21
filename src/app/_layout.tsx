@@ -9,6 +9,8 @@ export default function RootLayout() {
         headerStyle: { backgroundColor: colors.surface },
         headerTintColor: colors.textPrimary,
       }}
-    />
+    >
+      <Stack.Screen name="index" options={{ title: 'Inicio' }} />
+    </Stack>
   );
 }
