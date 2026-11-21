@@ -1,6 +1,6 @@
 # 03 — Plan de pruebas y gates académicos
 
-> **Estado:** casos definidos; ninguno ejecutado. Estado de todos los casos: `NO EJECUTADO`.
+> **Estado:** casos definidos; ninguno ejecutado. Estado de todos los casos: `NO EJECUTADO`. Las verificaciones de CHK-003 y CHK-004 son de calidad y arranque, no de estos casos.
 > **Referencias:** requisitos en [`docs/01`](./01-REQUISITOS-RUBRICA.md); gates de calidad por tarea en [`AGENTS.md`](../AGENTS.md) sección 8.
 
 ## 1. Pruebas automatizadas (Jest + `jest-expo` + RNTL)
@@ -23,7 +23,7 @@ Criterio: no escribir pruebas que solo comprueben texto del código, valores por
 
 ## 2. Pruebas manuales en Android (GA-4)
 
-Requieren emulador o dispositivo Android real con Expo Go o build de desarrollo. Cada caso con captura antes/después cuando la operación lo exige.
+Requieren emulador o dispositivo Android real con Expo Go (modalidad aprobada, `docs/02` decisión 16). Cada caso con captura antes/después cuando la operación lo exige.
 
 | ID | Pasos | Esperado | Requisito |
 |---|---|---|---|
@@ -39,7 +39,7 @@ Requieren emulador o dispositivo Android real con Expo Go o build de desarrollo.
 | Gate | Criterio | Estado |
 |---|---|---|
 | G0 — Planificación | Reglas, requisitos y decisiones documentados y aprobados por el usuario. | APROBADO (2026-11-21) |
-| G1 — Reproducibilidad | `npm ci`, `npx expo install --check`, `npx jest`, `npx expo start` ejecutados con resultados reales. | NO EJECUTADO |
+| G1 — Reproducibilidad | `npm ci`, `npx expo install --check`, `npx jest`, `npx expo start` ejecutados con resultados reales. | PARCIAL: `expo install --check`, typecheck, lint y `jest` 5/5 OK (CHK-003); arranque de `expo start` OK (CHK-004). Falta `npm ci` limpio. |
 | G2 — Funciones esenciales | RF-01 a RF-13 implementados y CP-AUTH, CP-TAR, CP-PER, CP-GPS aprobados. | NO EJECUTADO |
 | G3 — UX Android | CP-MOV-01 a CP-MOV-06 con evidencia auténtica y revisión humana. | NO EJECUTADO |
 | G4 — Entrega | Checklist de `docs/01` sección 6 completo; PDF o Word con nombre `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES`. | NO EJECUTADO |
@@ -48,6 +48,9 @@ Cierre de entrega: todos los casos en `APROBADO` o en `NO EJECUTADO`/`BLOQUEADO`
 
 ## 4. Evidencias
 
-- Ruta planificada: `./docs/evidencias/capturas/` (no existe aún; no enlazar hasta crearla).
+- Ruta: `./docs/evidencias/capturas/` desde la raíz (`./evidencias/capturas/` desde `docs/`).
+- `EV-01` (agente; emulador `Medium_Phone_API_37.0`; Expo Go; commit `a2e5b8f`): pantalla "Tareas / Sin tareas por ahora.". Revisión humana pendiente.
 - Formato y trazabilidad: `EV-##` según `AGENTS.md` sección 8.1.
 - Ningún caso se marca `APROBADO` por mock o prueba unitaria si el caso exige Android.
+
+![EV-01 Expo Go, pantalla Tareas](./evidencias/capturas/EV-01-expo-go-tareas-vacias.png)

@@ -22,6 +22,7 @@
 | 13 | Git | Repositorio local, rama `main`, sin remoto. Conventional Commits en español. Sin `push`, `merge`, `rebase` ni `reset --hard`. |
 | 14 | Idioma | Documentos y mensajes de UI en español. Identificadores de código en inglés (`Task`, `User`). Nombres de campo SQLite en español (sección 3). |
 | 15 | Entrega | Nombre de archivo `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES` (decisión del usuario, CHK-002; difiere del formato `EVU2_APELLIDO_NOMBRE` del enunciado). |
+| 16 | Ejecución | Expo Go + Metro (`npx expo start --android`) para verificar en emulador. Build nativo (`expo run:android`) descartado en el equipo actual: ruta del proyecto más `node_modules` supera el límite MAX_PATH de 260 caracteres (`LongPathsEnabled=0`; activarlo requiere administrador y no garantiza que ninja/NDK lo respeten). Aprobado por el usuario (confirmación expresa, 2026-11-21, CHK-004). |
 
 ## 2. Estructura de carpetas
 
@@ -39,6 +40,8 @@ src/
 ```
 
 Esta estructura es la única aprobada. Crear un directorio o capa nueva requiere aprobación.
+
+Estado real (CHK-004): existen `src/app/_layout.tsx`, `src/app/index.tsx`, `src/components/ActionButton.tsx`, `src/features/tasks/` (componentes, modelo, validación) y `src/theme/tokens.ts`. Pendientes de esta estructura: `src/app/login.tsx`, `register.tsx`, `tasks/new.tsx`, `tasks/[id].tsx`; `src/features/auth`, `camera`, `location`; `src/db`.
 
 ## 3. Modelo de datos (SQLite)
 
@@ -97,3 +100,4 @@ Ninguna ventaja se declara sin evidencia de la implementación. La columna se co
 - **APIs externas no implementadas.** RUB-04 y RUB-05 (48 puntos) no cubiertos. Exención comunicada por el profesor en clases; no hay documento escrito. Sin implementación, no se declara Sobresaliente.
 - **Stack distinto del enunciado.** Ionic + Capacitor pedido; React Native + Expo aprobado. Explicar en la entrega con la tabla de la sección 4.
 - **Sin pruebas de integración de red** (no hay red que probar).
+- **Expo Go como runtime.** Compatibilidad de `expo-sqlite`, `expo-camera`, `expo-location` y `expo-crypto` con Expo Go del SDK 58: NO VERIFICADO; confirmar con Context7 antes de implementar (`AGENTS.md` sección 3).

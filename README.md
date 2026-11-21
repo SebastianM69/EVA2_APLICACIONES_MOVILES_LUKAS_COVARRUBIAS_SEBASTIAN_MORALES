@@ -1,6 +1,6 @@
 # To-Do móvil ampliada — Desarrollo de Aplicaciones Móviles, Unidad 2
 
-> **Estado:** reglas de desarrollo creadas. Aplicación **no implementada** todavía.
+> **Estado:** base de código en curso. RF-01 a RF-13 **no implementados** todavía; ver [`docs/04`](./docs/04-BITACORA.md).
 
 ## Alcance
 
@@ -33,13 +33,19 @@ Decisiones completas en [`docs/02`](./docs/02-DECISIONES-ARQUITECTURA.md).
 
 ## Instalación y ejecución
 
-Ejecutar desde la raíz del repositorio. Estado: **NO VERIFICADO** hasta la etapa de implementación.
+Ejecutar desde la raíz del repositorio.
 
 ```bash
 npm ci
 npx expo start
 npx jest
 ```
+
+Android: Expo Go en emulador o dispositivo, con Metro (`npx expo start --android`). No definir `CI=true` en el entorno: desactiva la recarga en caliente.
+
+Build nativo (`expo run:android`) no viable en el equipo de desarrollo (Windows, límite MAX_PATH; ver `docs/02`, decisión 16).
+
+Verificado: `npx expo install --check`, typecheck, lint y Jest en CHK-003; arranque en emulador con Expo Go en CHK-004 (`docs/evidencias/capturas/EV-01-expo-go-tareas-vacias.png`).
 
 ## Entrega
 

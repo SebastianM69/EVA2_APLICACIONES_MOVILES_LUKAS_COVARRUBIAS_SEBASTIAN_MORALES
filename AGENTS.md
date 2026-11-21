@@ -3,8 +3,8 @@
 > **Proyecto:** To-Do móvil ampliada — Desarrollo de Aplicaciones Móviles, Unidad 2
 > **Ubicación:** raíz del repositorio Git
 > **Versión documental:** 1.0 — reglas de desarrollo aprobadas por el usuario el 2026-11-21
-> **Estado:** reglas creadas; implementación **no iniciada**
-> **Alcance inmediato:** ninguno hasta autorización expresa de la etapa de implementación.
+> **Estado:** reglas aprobadas; implementación **en curso**. Base de código y ejecución Expo Go verificadas (ver `docs/04`, CHK-003 y CHK-004).
+> **Alcance inmediato:** el indicado en el último checkpoint de `docs/04`. Etapas nuevas requieren autorización expresa (sección 5).
 
 ## 1. Propósito y aplicación
 
@@ -192,9 +192,10 @@ Un checkpoint no reemplaza un commit. No inventar identificadores, pruebas, capt
 
 No reportar como creado, probado, publicado o aprobado nada que no se haya verificado.
 
-## 12. Estado inicial
+## 12. Estado de referencia
 
 - Carpeta del proyecto: `EVA2_APLICACIONES_MOVILES_LUKAS COVARRUBIAS_SEBASTIAN  MORALES` (doble espacio antes de `MORALES`).
-- Documentos de reglas creados en esta etapa; repositorio Git local en rama `main`, sin remoto.
-- Sin código de aplicación. Sin dependencias instaladas.
-- Condición para programar: autorización expresa de la etapa de implementación, con verificación de Context7 y del entorno Android según la sección 1.1.
+- Repositorio Git local, rama `main`, sin remoto. Último commit de código: `a2e5b8f` (ver `docs/04`, CHK-003 y CHK-004).
+- Código base existente: `src/app/` (`_layout.tsx`, `index.tsx`), `src/components/`, `src/features/tasks/` (modelo, validación, formulario), `src/theme/tokens.ts`. Dependencias instaladas según `package.json` y `package-lock.json`.
+- Ejecución verificada: Expo Go + Metro (`npx expo start --android`). Build nativo no viable en el equipo actual (ver `docs/02`, decisión 16).
+- Pendiente para nuevas etapas (autenticación, SQLite, cámara, GPS): autorización expresa (sección 5) y consulta a Context7 (sección 3).
