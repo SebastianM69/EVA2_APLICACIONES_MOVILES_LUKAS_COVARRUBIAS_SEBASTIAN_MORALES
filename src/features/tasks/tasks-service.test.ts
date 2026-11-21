@@ -35,10 +35,15 @@ describe('CP-TAR-01: crear tarea con título vacío', () => {
   it('devuelve error de validación y no inserta fila', async () => {
     const repo = repositorioEnMemoria();
 
-    const resultado = await crearTarea(repo, 1, {
-      title: '   ',
-      description: 'Detalle',
-    }, SIN_CAPTURA);
+    const resultado = await crearTarea(
+      repo,
+      1,
+      {
+        title: '   ',
+        description: 'Detalle',
+      },
+      SIN_CAPTURA,
+    );
 
     expect(resultado).toEqual({
       ok: false,

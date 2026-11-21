@@ -4,7 +4,11 @@ import type { Task, TaskCaptura, TaskInput } from './model/task';
 
 export type TaskRepository = {
   listar(usuarioId: number): Promise<Task[]>;
-  crear(usuarioId: number, input: TaskInput, captura: TaskCaptura): Promise<void>;
+  crear(
+    usuarioId: number,
+    input: TaskInput,
+    captura: TaskCaptura,
+  ): Promise<void>;
   actualizar(usuarioId: number, id: number, input: TaskInput): Promise<void>;
   cambiarCompletada(
     usuarioId: number,

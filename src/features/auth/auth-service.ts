@@ -4,7 +4,8 @@ import type { Usuario, UsuarioRepository } from './auth-repository';
 export const CLAVE_MIN_LENGTH = 8;
 export const MENSAJE_CREDENCIALES = 'Correo o clave incorrectos';
 
-export type ResultadoAuth = { ok: true; usuario: Usuario } | { ok: false; error: string };
+export type ResultadoAuth =
+  { ok: true; usuario: Usuario } | { ok: false; error: string };
 
 export type DatosRegistro = { nombre: string; correo: string; clave: string };
 export type DatosLogin = { correo: string; clave: string };
@@ -71,6 +72,10 @@ export async function iniciarSesionUsuario(
   await repo.guardarSesion(encontrado.id);
   return {
     ok: true,
-    usuario: { id: encontrado.id, nombre: encontrado.nombre, correo: encontrado.correo },
+    usuario: {
+      id: encontrado.id,
+      nombre: encontrado.nombre,
+      correo: encontrado.correo,
+    },
   };
 }

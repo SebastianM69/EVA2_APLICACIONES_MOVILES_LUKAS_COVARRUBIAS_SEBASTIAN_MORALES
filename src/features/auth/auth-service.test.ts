@@ -17,7 +17,9 @@ jest.mock('expo-crypto', () => ({
     return hash.toString(16).padStart(8, '0').repeat(8);
   },
   getRandomBytesAsync: async (byteCount: number) =>
-    Uint8Array.from({ length: byteCount }, () => Math.floor(Math.random() * 256)),
+    Uint8Array.from({ length: byteCount }, () =>
+      Math.floor(Math.random() * 256),
+    ),
 }));
 
 type RepoEnMemoria = UsuarioRepository & { filas: UsuarioConClave[] };
@@ -38,7 +40,9 @@ function crearRepoEnMemoria(): RepoEnMemoria {
     },
     async obtenerSesion() {
       const fila = filas.find((item) => item.id === sesionUsuarioId);
-      return fila ? { id: fila.id, nombre: fila.nombre, correo: fila.correo } : null;
+      return fila
+        ? { id: fila.id, nombre: fila.nombre, correo: fila.correo }
+        : null;
     },
     async guardarSesion(usuarioId) {
       sesionUsuarioId = usuarioId;
@@ -70,7 +74,11 @@ describe('registrarUsuario', () => {
   });
 
   it('CP-AUTH-02: correo existente devuelve error, también con mayúsculas distintas', async () => {
-    await registrarUsuario(repo, { nombre: 'Ana', correo: 'ana@correo.cl', clave: 'clave1234' });
+    await registrarUsuario(repo, {
+      nombre: 'Ana',
+      correo: 'ana@correo.cl',
+      clave: 'clave1234',
+    });
 
     const resultado = await registrarUsuario(repo, {
       nombre: 'Otra',
@@ -102,7 +110,11 @@ describe('iniciarSesionUsuario', () => {
 
   beforeEach(async () => {
     repo = crearRepoEnMemoria();
-    await registrarUsuario(repo, { nombre: 'Ana', correo: 'ana@correo.cl', clave: 'clave1234' });
+    await registrarUsuario(repo, {
+      nombre: 'Ana',
+      correo: 'ana@correo.cl',
+      clave: 'clave1234',
+    });
     await repo.eliminarSesion();
   });
 

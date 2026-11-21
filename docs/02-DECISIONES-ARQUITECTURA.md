@@ -5,25 +5,25 @@
 
 ## 1. Decisiones aprobadas
 
-| # | Área | Decisión |
-|---|---|---|
-| 1 | Framework | React Native + Expo + TypeScript en modo estricto (`"strict": true`). Contradice el enunciado (Ionic + Capacitor); aprobado por el usuario. Riesgo en `docs/01`. |
-| 2 | Versiones | Instalar con `npx expo install <paquete>`. Verificar con `npx expo install --check`. No fijar versiones a mano. Confirmar con Context7. |
-| 3 | Navegación | Expo Router con Stack. |
-| 4 | Estilos | `StyleSheet` con tokens en `src/theme/tokens.ts`. |
-| 5 | Estado | Context + `useReducer` para tareas y sesión; `useState` local para formularios y filtros. |
-| 6 | Persistencia | `expo-sqlite`. Modelo de datos en la sección 3. |
-| 7 | Autenticación | Local, sin servidor. Hash SHA-256 de `salt + clave` con `expo-crypto` (`digestStringAsync`, `SHA256`). Salt de 16 bytes con `getRandomBytesAsync`, guardado en hex. Login con mensaje genérico. |
-| 8 | Permisos | Solicitud al ejecutar la acción (foto o creación de tarea con GPS). Si se deniega: la acción continúa sin ese dato y se muestra mensaje no bloqueante. Si está denegado permanentemente: botón "Abrir ajustes" con `Linking.openSettings()`. |
-| 9 | Cámara | `expo-camera`. Una foto por tarea; se guarda `foto_uri`. |
-| 10 | GPS | `expo-location`, precisión `Balanced`, una lectura al crear la tarea. Sin seguimiento continuo. |
-| 11 | APIs | Solo APIs internas del dispositivo (cámara, ubicación, SQLite, cripto). Sin servicios web ni APIs externas. |
-| 12 | Alcance | CRUD, validación, completar/reabrir, filtros, confirmación de eliminación, más autenticación y periféricos. Tareas asociadas a `usuario_id`. |
-| 13 | Git | Repositorio local, rama `main`, sin remoto. Conventional Commits en español. Sin `push`, `merge`, `rebase` ni `reset --hard`. |
-| 14 | Idioma | Documentos y mensajes de UI en español. Identificadores de código en inglés (`Task`, `User`). Nombres de campo SQLite en español (sección 3). |
-| 15 | Entrega | Nombre de archivo `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES` (decisión del usuario, CHK-002; difiere del formato `EVU2_APELLIDO_NOMBRE` del enunciado). |
-| 16 | Ejecución | Expo Go + Metro (`npx expo start --android`) para verificar en emulador. Build nativo (`expo run:android`) descartado en el equipo actual: ruta del proyecto más `node_modules` supera el límite MAX_PATH de 260 caracteres (`LongPathsEnabled=0`; activarlo requiere administrador y no garantiza que ninja/NDK lo respeten). Aprobado por el usuario (confirmación expresa, 2026-11-21, CHK-004). |
-| 17 | Verificación GPS | El emulador (`emulator-5554`, Expo Go) no entregó posición a la app con `getCurrentPositionAsync` ni `watchPositionAsync`, aunque `adb emu geo fix` sí la registra en el sistema (CHK-012). La lectura de RF-12 se verifica en un teléfono Android físico con Expo Go y Metro por Wi-Fi local. El emulador se usa solo para flujos sin GPS. Decisión tomada por el usuario, 2026-11-21. |
+| #   | Área             | Decisión                                                                                                                                                                                                                                                                                                                                                                                            |
+| --- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Framework        | React Native + Expo + TypeScript en modo estricto (`"strict": true`). Contradice el enunciado (Ionic + Capacitor); aprobado por el usuario. Riesgo en `docs/01`.                                                                                                                                                                                                                                    |
+| 2   | Versiones        | Instalar con `npx expo install <paquete>`. Verificar con `npx expo install --check`. No fijar versiones a mano. Confirmar con Context7.                                                                                                                                                                                                                                                             |
+| 3   | Navegación       | Expo Router con Stack.                                                                                                                                                                                                                                                                                                                                                                              |
+| 4   | Estilos          | `StyleSheet` con tokens en `src/theme/tokens.ts`.                                                                                                                                                                                                                                                                                                                                                   |
+| 5   | Estado           | Context + `useReducer` para tareas y sesión; `useState` local para formularios y filtros.                                                                                                                                                                                                                                                                                                           |
+| 6   | Persistencia     | `expo-sqlite`. Modelo de datos en la sección 3.                                                                                                                                                                                                                                                                                                                                                     |
+| 7   | Autenticación    | Local, sin servidor. Hash SHA-256 de `salt + clave` con `expo-crypto` (`digestStringAsync`, `SHA256`). Salt de 16 bytes con `getRandomBytesAsync`, guardado en hex. Login con mensaje genérico.                                                                                                                                                                                                     |
+| 8   | Permisos         | Solicitud al ejecutar la acción (foto o creación de tarea con GPS). Si se deniega: la acción continúa sin ese dato y se muestra mensaje no bloqueante. Si está denegado permanentemente: botón "Abrir ajustes" con `Linking.openSettings()`.                                                                                                                                                        |
+| 9   | Cámara           | `expo-camera`. Una foto por tarea; se guarda `foto_uri`.                                                                                                                                                                                                                                                                                                                                            |
+| 10  | GPS              | `expo-location`, precisión `Balanced`, una lectura al crear la tarea. Sin seguimiento continuo.                                                                                                                                                                                                                                                                                                     |
+| 11  | APIs             | Solo APIs internas del dispositivo (cámara, ubicación, SQLite, cripto). Sin servicios web ni APIs externas.                                                                                                                                                                                                                                                                                         |
+| 12  | Alcance          | CRUD, validación, completar/reabrir, filtros, confirmación de eliminación, más autenticación y periféricos. Tareas asociadas a `usuario_id`.                                                                                                                                                                                                                                                        |
+| 13  | Git              | Repositorio local, rama `main`, sin remoto. Conventional Commits en español. Sin `push`, `merge`, `rebase` ni `reset --hard`.                                                                                                                                                                                                                                                                       |
+| 14  | Idioma           | Documentos y mensajes de UI en español. Identificadores de código en inglés (`Task`, `User`). Nombres de campo SQLite en español (sección 3).                                                                                                                                                                                                                                                       |
+| 15  | Entrega          | Nombre de archivo `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES` (decisión del usuario, CHK-002; difiere del formato `EVU2_APELLIDO_NOMBRE` del enunciado).                                                                                                                                                                                                                        |
+| 16  | Ejecución        | Expo Go + Metro (`npx expo start --android`) para verificar en emulador. Build nativo (`expo run:android`) descartado en el equipo actual: ruta del proyecto más `node_modules` supera el límite MAX_PATH de 260 caracteres (`LongPathsEnabled=0`; activarlo requiere administrador y no garantiza que ninja/NDK lo respeten). Aprobado por el usuario (confirmación expresa, 2026-11-21, CHK-004). |
+| 17  | Verificación GPS | El emulador (`emulator-5554`, Expo Go) no entregó posición a la app con `getCurrentPositionAsync` ni `watchPositionAsync`, aunque `adb emu geo fix` sí la registra en el sistema (CHK-012). La lectura de RF-12 se verifica en un teléfono Android físico con Expo Go y Metro por Wi-Fi local. El emulador se usa solo para flujos sin GPS. Decisión tomada por el usuario, 2026-11-21.             |
 
 ## 2. Estructura de carpetas
 
@@ -79,13 +79,13 @@ sesion(
 
 ## 4. Justificación del stack frente a Capacitor (requisito del enunciado)
 
-| Función | Capacitor / Ionic (enunciado) | Expo / React Native (aprobado) | Ventaja medible |
-|---|---|---|---|
-| Cámara | Capacitor Camera | `expo-camera` | NO VERIFICADO (sin implementación) |
-| Ubicación | Capacitor Geolocation | `expo-location` | NO VERIFICADO |
-| Persistencia local | Capacitor Preferences / SQLite | `expo-sqlite` | NO VERIFICADO |
-| CLI | Ionic CLI | `npx expo start` | NO VERIFICADO |
-| UI | Componentes Ionic | Componentes RN con `StyleSheet` | NO VERIFICADO |
+| Función            | Capacitor / Ionic (enunciado)  | Expo / React Native (aprobado)  | Ventaja medible                    |
+| ------------------ | ------------------------------ | ------------------------------- | ---------------------------------- |
+| Cámara             | Capacitor Camera               | `expo-camera`                   | NO VERIFICADO (sin implementación) |
+| Ubicación          | Capacitor Geolocation          | `expo-location`                 | NO VERIFICADO                      |
+| Persistencia local | Capacitor Preferences / SQLite | `expo-sqlite`                   | NO VERIFICADO                      |
+| CLI                | Ionic CLI                      | `npx expo start`                | NO VERIFICADO                      |
+| UI                 | Componentes Ionic              | Componentes RN con `StyleSheet` | NO VERIFICADO                      |
 
 Ninguna ventaja se declara sin evidencia de la implementación. La columna se completa solo con pruebas o mediciones reales.
 

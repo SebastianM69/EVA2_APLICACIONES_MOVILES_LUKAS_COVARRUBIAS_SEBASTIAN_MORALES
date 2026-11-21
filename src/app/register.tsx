@@ -69,7 +69,11 @@ export default function RegisterScreen() {
             </Text>
           ) : null}
           <ActionButton label="Crear cuenta" onPress={handleSubmit} />
-          <ActionButton label="Ya tengo cuenta" variant="secondary" onPress={() => router.replace('/login')} />
+          <ActionButton
+            label="Ya tengo cuenta"
+            variant="secondary"
+            onPress={() => router.replace('/login')}
+          />
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

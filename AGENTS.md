@@ -49,19 +49,19 @@ Si aparece una contradicción material nueva: detener únicamente el trabajo afe
 
 ## 2. Línea base congelada
 
-| Área | Decisión aprobada que no puede cambiarse sin autorización |
-|---|---|
-| Framework | **React Native + Expo + TypeScript en modo estricto** (`"strict": true`). |
-| Navegación | **Expo Router con Stack**, no Tabs. |
-| Estilos | **StyleSheet + tokens** en `src/theme/tokens.ts`. |
-| Arquitectura | **Modular por funcionalidades** (`src/features/auth`, `tasks`, `camera`, `location`), con `src/db` y `src/components`. |
-| Estado | **Context + `useReducer`** para tareas y sesión; **`useState` local** para formularios y filtros. Contadores y filtros derivados, sin estado duplicado. |
-| Persistencia | **`expo-sqlite` local**. Sin servidor. Sin API externa. |
-| Autenticación | **Local**: registro y login contra SQLite; clave con hash SHA-256 + salt (`expo-crypto`). |
-| Periféricos | **`expo-camera`** (una foto por tarea) y **`expo-location`** (una lectura al crear tarea). Permisos solicitados al ejecutar la acción, nunca al abrir la app. |
-| Alcance funcional | RF-01 a RF-13 de `docs/01-REQUISITOS-RUBRICA.md`. |
-| Calidad | TypeScript estricto, ESLint, Prettier, Jest con `jest-expo`, React Native Testing Library. |
-| Git | Repositorio local nuevo, rama `main`, sin remoto. |
+| Área              | Decisión aprobada que no puede cambiarse sin autorización                                                                                                     |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Framework         | **React Native + Expo + TypeScript en modo estricto** (`"strict": true`).                                                                                     |
+| Navegación        | **Expo Router con Stack**, no Tabs.                                                                                                                           |
+| Estilos           | **StyleSheet + tokens** en `src/theme/tokens.ts`.                                                                                                             |
+| Arquitectura      | **Modular por funcionalidades** (`src/features/auth`, `tasks`, `camera`, `location`), con `src/db` y `src/components`.                                        |
+| Estado            | **Context + `useReducer`** para tareas y sesión; **`useState` local** para formularios y filtros. Contadores y filtros derivados, sin estado duplicado.       |
+| Persistencia      | **`expo-sqlite` local**. Sin servidor. Sin API externa.                                                                                                       |
+| Autenticación     | **Local**: registro y login contra SQLite; clave con hash SHA-256 + salt (`expo-crypto`).                                                                     |
+| Periféricos       | **`expo-camera`** (una foto por tarea) y **`expo-location`** (una lectura al crear tarea). Permisos solicitados al ejecutar la acción, nunca al abrir la app. |
+| Alcance funcional | RF-01 a RF-13 de `docs/01-REQUISITOS-RUBRICA.md`.                                                                                                             |
+| Calidad           | TypeScript estricto, ESLint, Prettier, Jest con `jest-expo`, React Native Testing Library.                                                                    |
+| Git               | Repositorio local nuevo, rama `main`, sin remoto.                                                                                                             |
 
 **Prohibido sin aprobación expresa:** sustituir tecnologías, alterar navegación, introducir funcionalidades no solicitadas, añadir bibliotecas, actualizar versiones, crear capas arquitectónicas innecesarias, modificar pruebas para hacerlas pasar, añadir servicios web o APIs externas.
 
@@ -110,13 +110,13 @@ Si Context7 no responde, no tiene la versión requerida o su respuesta es irrele
 
 **Secuencia:** detectar → conservar evidencia → identificar alcance y causa probable → evaluar riesgos → corregir solo si está autorizado → repetir comprobación → documentar.
 
-| Clase de problema | Respuesta |
-|---|---|
-| Menor (formato, tipado, importación localizada) | Diagnóstico y corrección local dentro de la tarea. |
-| Moderado (prueba o componente fallido) | Hasta **dos intentos correctivos** por el mismo defecto, con pruebas entre intentos. |
-| Ambiental (herramienta, permisos, dispositivo) | Diagnóstico no destructivo; no modificar configuración global sin autorización. |
-| Crítico (integridad, seguridad, pérdida de trabajo) | **Detener de inmediato**; preservar evidencia; pedir decisión. |
-| Arquitectónico o de dependencia | **Detener antes de modificar**; presentar alternativas. |
+| Clase de problema                                   | Respuesta                                                                            |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Menor (formato, tipado, importación localizada)     | Diagnóstico y corrección local dentro de la tarea.                                   |
+| Moderado (prueba o componente fallido)              | Hasta **dos intentos correctivos** por el mismo defecto, con pruebas entre intentos. |
+| Ambiental (herramienta, permisos, dispositivo)      | Diagnóstico no destructivo; no modificar configuración global sin autorización.      |
+| Crítico (integridad, seguridad, pérdida de trabajo) | **Detener de inmediato**; preservar evidencia; pedir decisión.                       |
+| Arquitectónico o de dependencia                     | **Detener antes de modificar**; presentar alternativas.                              |
 
 Si dos correcciones no resuelven la falla: estado **BLOQUEADO**. No reiniciar el ciclo con otro nombre ni debilitar pruebas.
 
@@ -124,14 +124,14 @@ Si dos correcciones no resuelven la falla: estado **BLOQUEADO**. No reiniciar el
 
 ## 8. Gates de calidad por tarea (GA)
 
-| Gate | Verificación | Salida requerida |
-|---|---|---|
-| **GA-0 — Alcance** | Tarea autorizada, requisitos y decisiones comprobados. | Sin contradicciones o tarea **BLOQUEADA**. |
-| **GA-1 — Calidad estática** | TypeScript estricto, ESLint, Prettier. | Resultados reales. |
-| **GA-2 — Arquitectura/SOLID** | Modularidad, responsabilidades, sin sobreingeniería. | Revisión documentada. |
-| **GA-3 — Pruebas automatizadas** | Jest/`jest-expo` y RNTL para lógica e interacciones afectadas. | Resultados reales. |
-| **GA-4 — Android/UX** | Navegación, teclado, formularios, permisos y apariencia en Android real o emulador. | Evidencia auténtica y registro, o `NO EJECUTADO`/`BLOQUEADO`. Nunca aprobado por mocks. |
-| **GA-5 — Documentación/Git** | Documentos actualizados, enlaces relativos, sin rutas absolutas, diff y estado Git. | Entrega rastreable. |
+| Gate                             | Verificación                                                                        | Salida requerida                                                                        |
+| -------------------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| **GA-0 — Alcance**               | Tarea autorizada, requisitos y decisiones comprobados.                              | Sin contradicciones o tarea **BLOQUEADA**.                                              |
+| **GA-1 — Calidad estática**      | TypeScript estricto, ESLint, Prettier.                                              | Resultados reales.                                                                      |
+| **GA-2 — Arquitectura/SOLID**    | Modularidad, responsabilidades, sin sobreingeniería.                                | Revisión documentada.                                                                   |
+| **GA-3 — Pruebas automatizadas** | Jest/`jest-expo` y RNTL para lógica e interacciones afectadas.                      | Resultados reales.                                                                      |
+| **GA-4 — Android/UX**            | Navegación, teclado, formularios, permisos y apariencia en Android real o emulador. | Evidencia auténtica y registro, o `NO EJECUTADO`/`BLOQUEADO`. Nunca aprobado por mocks. |
+| **GA-5 — Documentación/Git**     | Documentos actualizados, enlaces relativos, sin rutas absolutas, diff y estado Git. | Entrega rastreable.                                                                     |
 
 **Mínimo por tipo de tarea:** documentación → GA-0 y GA-5; lógica → GA-0, GA-1, GA-2, GA-3, GA-5; pantallas, navegación o formularios → GA-0 a GA-5; cierre de entrega → todos más los gates académicos de `docs/03`.
 
@@ -169,14 +169,14 @@ Un checkpoint no reemplaza un commit. No inventar identificadores, pruebas, capt
 
 ## 10. Actualización documental y portabilidad
 
-| Archivo | Actualizar al cambiar |
-|---|---|
-| `AGENTS.md` | Política de agentes o gobernanza aprobada. |
-| `docs/01-REQUISITOS-RUBRICA.md` | Requisitos, criterios académicos, riesgos de rúbrica o entrega. |
+| Archivo                              | Actualizar al cambiar                                              |
+| ------------------------------------ | ------------------------------------------------------------------ |
+| `AGENTS.md`                          | Política de agentes o gobernanza aprobada.                         |
+| `docs/01-REQUISITOS-RUBRICA.md`      | Requisitos, criterios académicos, riesgos de rúbrica o entrega.    |
 | `docs/02-DECISIONES-ARQUITECTURA.md` | Stack, contratos, modelo de datos, estructura o decisión aprobada. |
-| `docs/03-PLAN-PRUEBAS.md` | Casos, criterios, evidencias o gates académicos. |
-| `docs/04-BITACORA.md` | Checkpoints, incidencias, bloqueos y handoffs. |
-| `README.md` | Instalación, ejecución y alcance público. |
+| `docs/03-PLAN-PRUEBAS.md`            | Casos, criterios, evidencias o gates académicos.                   |
+| `docs/04-BITACORA.md`                | Checkpoints, incidencias, bloqueos y handoffs.                     |
+| `README.md`                          | Instalación, ejecución y alcance público.                          |
 
 **Portabilidad:** enlaces relativos al documento que los contiene; desde `AGENTS.md`, `./docs/...`; desde `docs/`, `../`. Sin rutas absolutas ni unidades locales, perfiles de usuario o nombres de directorio de una máquina. Antes de aprobar un cambio documental, comprobar que los enlaces resuelven.
 

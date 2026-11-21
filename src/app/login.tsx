@@ -60,7 +60,11 @@ export default function LoginScreen() {
             </Text>
           ) : null}
           <ActionButton label="Entrar" onPress={handleSubmit} />
-          <ActionButton label="Crear cuenta" variant="secondary" onPress={() => router.push('/register')} />
+          <ActionButton
+            label="Crear cuenta"
+            variant="secondary"
+            onPress={() => router.push('/register')}
+          />
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

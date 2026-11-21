@@ -17,7 +17,11 @@ export default function RootLayout() {
         </View>
       }
     >
-      <SQLiteProvider databaseName={DATABASE_NAME} onInit={migrarBaseDeDatos} useSuspense>
+      <SQLiteProvider
+        databaseName={DATABASE_NAME}
+        onInit={migrarBaseDeDatos}
+        useSuspense
+      >
         <AuthProvider>
           <TasksProvider>
             <AuthStack />

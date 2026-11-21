@@ -72,7 +72,10 @@ export function crearUsuarioRepository(db: SQLiteDatabase): UsuarioRepository {
     },
 
     async guardarSesion(usuarioId) {
-      await db.runAsync('INSERT OR REPLACE INTO sesion (id, usuario_id) VALUES (1, ?)', usuarioId);
+      await db.runAsync(
+        'INSERT OR REPLACE INTO sesion (id, usuario_id) VALUES (1, ?)',
+        usuarioId,
+      );
     },
 
     async eliminarSesion() {

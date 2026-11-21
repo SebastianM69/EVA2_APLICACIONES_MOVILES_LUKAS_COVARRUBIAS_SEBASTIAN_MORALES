@@ -12,7 +12,9 @@ jest.mock('expo-crypto', () => ({
     return hash.toString(16).padStart(8, '0').repeat(8);
   },
   getRandomBytesAsync: async (byteCount: number) =>
-    Uint8Array.from({ length: byteCount }, () => Math.floor(Math.random() * 256)),
+    Uint8Array.from({ length: byteCount }, () =>
+      Math.floor(Math.random() * 256),
+    ),
 }));
 
 describe('hashClave', () => {

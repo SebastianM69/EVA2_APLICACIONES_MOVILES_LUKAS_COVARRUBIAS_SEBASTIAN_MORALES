@@ -331,14 +331,14 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Commits:** `66fd218` (`feat(tareas): muestra ubicacion en tarjeta y detalle (RF-12)`), aprobado por el usuario el 2026-11-21.
 - **Archivos cambiados:** `src/app/tasks/[id].tsx`, `src/features/tasks/components/TaskCard.tsx`, `src/features/tasks/model/task.ts` (sin cambios posteriores).
 - **Evidencias:**
- - `EV-08`: `./evidencias/capturas/EV-08-telefono-fisico-tarjeta-ubicacion.jpeg`. Tarea "Prueba 1" en teléfono físico, tarjeta muestra `Ubicación: -33.05238, -71.34887`. Método: agente con captura del usuario. Revisor: pendiente de validación humana.
- - Las tareas `QA_GPS_OK2/3/4` muestran "Sin ubicación registrada": se crearon antes del fix y no tienen coordenadas guardadas.
+- `EV-08`: `./evidencias/capturas/EV-08-telefono-fisico-tarjeta-ubicacion.jpeg`. Tarea "Prueba 1" en teléfono físico, tarjeta muestra `Ubicación: -33.05238, -71.34887`. Método: agente con captura del usuario. Revisor: pendiente de validación humana.
+- Las tareas `QA_GPS_OK2/3/4` muestran "Sin ubicación registrada": se crearon antes del fix y no tienen coordenadas guardadas.
 - **Verificaciones:**
- - Metro en teléfono: `[ubicacion] permiso granted`, `lectura ok`, `ultima ok`.
- - `npx tsc --noEmit` OK; `npx jest src/features/location src/features/tasks` 12/12 OK.
+- Metro en teléfono: `[ubicacion] permiso granted`, `lectura ok`, `ultima ok`.
+- `npx tsc --noEmit` OK; `npx jest src/features/location src/features/tasks` 12/12 OK.
 - **Riesgos:**
- - Detalle (`[id].tsx`) no verificado con captura; usa el mismo `textoUbicacion`.
- - Prettier marca el tipo `Task` en `src/features/tasks/model/task.ts` (código previo; no reformateado).
+- Detalle (`[id].tsx`) no verificado con captura; usa el mismo `textoUbicacion`.
+- Prettier marca el tipo `Task` en `src/features/tasks/model/task.ts` (código previo; no reformateado).
 - **Siguiente acción:** capturar pantalla de detalle con coordenadas (CP-MOV-04 completo).
 - **Autorización necesaria:** ninguna.
 
@@ -495,3 +495,31 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
   - Cuentas distintas entre físico ("QA MOV01") y emulador ("QA Mov01"), ya aceptado en CHK-020.
 - **Siguiente acción:** commit de `EV-17` y de la actualización de `docs/03` y `docs/04` (pendiente de autorización).
 - **Autorización necesaria:** commit (pendiente).
+
+## CHK-022 - G1 y G2 automáticos verificados; formato Prettier; CP-MOV-03, 05 y 06 físicos pendientes
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** cerrar G1 y G2 con resultados reales; aplicar decisiones del usuario: acepta desviación de CP-MOV-06; capturas físicas de CP-MOV-03, 05 y 06 en Xiaomi; constancia escrita de APIs no requerida (orden explícita del profesor en clases).
+- **Estado:** `PARCIAL` (G1 y G2 parciales; G3 y G4 pendientes).
+- **Requisitos asociados:** RF-01 a RF-13; RUB-01 a RUB-03.
+- **Pruebas asociadas:** CP-AUTH-01 a 03, CP-TAR-01/02, CP-PER-01/02, CP-GPS-01/02 (Jest, aprobadas); CP-MOV-03, CP-MOV-05, CP-MOV-06 (físico, pendientes).
+- **Commit real:** pendiente.
+- **Comandos y resultados:**
+  - `npm ci`: exit 0, 1281 paquetes. Aviso no bloqueante: `@parcel/watcher` con scripts de instalación no aprobados.
+  - `npx jest`: 7/7 suites, 22/22 pruebas, OK.
+  - `npx tsc --noEmit`: exit 0.
+  - `npm run lint`: exit 0.
+  - `npx prettier --write` sobre 16 archivos. Tablas de `AGENTS.md`, `docs/01`, `docs/02`, `docs/03`, `docs/04`: solo filas separadoras. 10 archivos de `src/`: formato. Tras formatear, jest, tsc y lint repetidos con mismo resultado.
+  - `npx prettier --check .`: exit 1; único archivo: `assets/expo.icon/icon.json` (asset generado por Expo). Restaurado desde HEAD sin formatear.
+- **Archivos cambiados:**
+  - `docs/01-REQUISITOS-RUBRICA.md`: riesgo 1 y checklist de APIs (exención por orden explícita del profesor).
+  - `docs/03-PLAN-PRUEBAS.md`: G1 y G2.
+  - `docs/04-BITACORA.md`: CHK-022.
+  - `AGENTS.md`, `docs/02-DECISIONES-ARQUITECTURA.md`: formato de tablas.
+  - `src/app/_layout.tsx`, `src/app/login.tsx`, `src/app/register.tsx`, `src/features/auth/auth-repository.ts`, `src/features/auth/auth-service.ts`, `src/features/auth/auth-service.test.ts`, `src/features/auth/hash.ts`, `src/features/auth/hash.test.ts`, `src/features/tasks/tasks-repository.ts`, `src/features/tasks/tasks-service.test.ts`: formato.
+- **Riesgos:**
+  - `prettier --check .` no pasa hasta decidir `assets/expo.icon/icon.json`. Excluirlo requiere `.prettierignore`, que es cambio de regla de calidad.
+  - Prettier cambió tablas de documentos ya aprobados: solo formato, sin cambio de contenido.
+- **Siguiente acción:** capturas en Xiaomi de CP-MOV-03 (cámara denegada), CP-MOV-05 (GPS denegado) y CP-MOV-06 (offline con reapertura con red). Registrar como `EV-18` en adelante.
+- **Autorización necesaria:** commit local de formato y documentación (permitido por `AGENTS.md` sección 5); decisión sobre `.prettierignore` para `assets/expo.icon/icon.json`.
