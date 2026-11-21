@@ -342,3 +342,20 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Siguiente acción:** capturar pantalla de detalle con coordenadas (CP-MOV-04 completo).
 - **Autorización necesaria:** ninguna.
 
+## CHK-014 - CP-MOV-04 completo: detalle muestra coordenadas en Android físico (RF-12)
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** verificar en la pantalla de detalle/edición que una tarea con GPS muestra coordenadas (CP-MOV-04).
+- **Estado:** `VALIDACIÓN PARCIAL` (tarjeta y detalle verificados en teléfono físico; validación humana de las capturas pendiente).
+- **Requisitos asociados:** RF-12 de `docs/01`.
+- **Commit de código:** `66fd218` (CHK-013).
+- **Evidencias:**
+ - `EV-09`: `./evidencias/capturas/EV-09-telefono-fisico-detalle-ubicacion.jpeg`. Pantalla "Editar tarea" de "Prueba 2" muestra `Ubicación: -33.05232, -71.34884`. Método: agente con captura del usuario. Revisor: pendiente de validación humana.
+ - `EV-08` (CHK-013): tarjeta de "Prueba 1" con coordenadas.
+- **Riesgos:**
+ - Prettier marca el tipo `Task` en `src/features/tasks/model/task.ts` (código previo; no reformateado).
+ - Estado `VALIDACIÓN PARCIAL` hasta revisión humana de `EV-08` y `EV-09` y de RF-12 completo (CP-GPS sin gate de entrega formal).
+- **Siguiente acción:** revisión humana de `EV-08` y `EV-09`; decidir si se marca CP-MOV-04 como `APROBADO`.
+- **Autorización necesaria:** ninguna para el cierre técnico.
+
