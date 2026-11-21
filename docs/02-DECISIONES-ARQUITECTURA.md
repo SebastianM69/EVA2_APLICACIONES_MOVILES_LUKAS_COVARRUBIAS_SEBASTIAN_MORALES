@@ -23,6 +23,7 @@
 | 14 | Idioma | Documentos y mensajes de UI en español. Identificadores de código en inglés (`Task`, `User`). Nombres de campo SQLite en español (sección 3). |
 | 15 | Entrega | Nombre de archivo `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES` (decisión del usuario, CHK-002; difiere del formato `EVU2_APELLIDO_NOMBRE` del enunciado). |
 | 16 | Ejecución | Expo Go + Metro (`npx expo start --android`) para verificar en emulador. Build nativo (`expo run:android`) descartado en el equipo actual: ruta del proyecto más `node_modules` supera el límite MAX_PATH de 260 caracteres (`LongPathsEnabled=0`; activarlo requiere administrador y no garantiza que ninja/NDK lo respeten). Aprobado por el usuario (confirmación expresa, 2026-11-21, CHK-004). |
+| 17 | Verificación GPS | El emulador (`emulator-5554`, Expo Go) no entregó posición a la app con `getCurrentPositionAsync` ni `watchPositionAsync`, aunque `adb emu geo fix` sí la registra en el sistema (CHK-012). La lectura de RF-12 se verifica en un teléfono Android físico con Expo Go y Metro por Wi-Fi local. El emulador se usa solo para flujos sin GPS. Decisión tomada por el usuario, 2026-11-21. |
 
 ## 2. Estructura de carpetas
 
