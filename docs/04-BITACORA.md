@@ -124,3 +124,45 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Siguiente acción:** implementar RF-01 a RF-03 (`expo-sqlite`, `expo-crypto`) según la autorización de la sección Autorización; fuente registrada: documentación oficial Expo SDK 58.
 - **Autorización:** el usuario autorizó RF-01 a RF-03 (autenticación local con `expo-sqlite` y `expo-crypto`) el 2026-11-21, usando documentación oficial Expo SDK 58 como fuente mientras Context7 no esté configurado. Condiciones: revisión humana de `EV-01` y `EV-02` antes de avanzar; commit documental antes de implementar.
 
+## CHK-006 — Autenticación local RF-01 a RF-03 (código y pruebas unitarias)
+
+- **Fecha:** 2026-11-21
+- **Autor:** agente OMP (sesión con el usuario)
+- **Objetivo:** implementar registro e inicio de sesión locales con SQLite y hash SHA-256 + salt.
+- **Estado:** `VALIDACIÓN PARCIAL`. Código, pruebas Jest y verificación manual en Expo Go (emulador `Medium_Phone_API_37.0`) OK; revisión humana de `EV-03` a `EV-07` OK (2026-11-21). Ejecución en dispositivo físico NO EJECUTADA.
+- **Requisitos asociados:** RF-01 a RF-03 (registro, inicio de sesión, almacenamiento de clave hasheada). Ver `docs/01`.
+- **Pruebas asociadas:** Jest `src/features/auth`: 2 suites, 8/8 OK (incluye nombres CP-AUTH-02 y CP-AUTH-03 de `docs/03`). Sin ejecución en dispositivo.
+- **Commits:**
+  - `75fa30b` feat: autenticación local con SQLite y hash SHA-256 (RF-01 a RF-03): `app.json` (solo plugin `expo-sqlite`), `package.json`, `package-lock.json`, `src/app/`, `src/db/`, `src/features/auth/`.
+  - Commit documental con esta bitácora y capturas `EV-03` a `EV-07`: posterior a `75fa30b`.
+- **Pendiente fuera de alcance:** cambio de `name` en `app.json` ("To-Do móvil ampliada" → "TODO EVA2") no atribuido a este checkpoint; no incluido en commits.
+- **Verificación:**
+  - `npx tsc --noEmit`: exit 0 (tras regenerar `.expo/types/router.d.ts` con `expo start` en puerto 8092; `.expo/` gitignored).
+  - `npx jest src/features/auth`: 8/8 OK.
+  - `npx eslint src/app src/db src/features/auth`: 0 errores, 0 warnings.
+- **Decisiones técnicas:**
+  - Hash real `expo-crypto` SHA-256 en `src/features/auth/hash.ts`. Los tests de auth usan mock determinista de `expo-crypto`: `@types/node` no está incluido en `tsconfig` (hereda base de Expo), y no se modificó la configuración del proyecto.
+- **Evidencias `EV-##`:** `docs/evidencias/capturas/` (agente; emulador `Medium_Phone_API_37.0`; Expo Go; capturas de la app real; revisión humana pendiente):
+  - `EV-03-expo-go-clave-incorrecta.png`: login con clave incorrecta muestra "Correo o clave incorrectos".
+  - `EV-04-expo-go-clave-corta.png`: registro con clave de 3 caracteres muestra "La clave debe tener al menos 8 caracteres".
+  - `EV-05-expo-go-tareas-sin-flecha.png`: pantalla Tareas tras iniciar sesión, sin flecha de retroceso.
+  - `EV-06-expo-go-sesion-tras-reabrir.png`: pantalla Tareas tras cerrar y reabrir Expo Go; sesión mantenida.
+- **Errores/bloqueos:**
+  - Puerto 8081 ocupado por proceso previo; se usó 8092. Procesos `node.exe` ajenos a esta sesión no se cerraron.
+  - Comando `timeout` de shell devolvió salida vacía en este entorno; no afectó resultados posteriores.
+- **Riesgos:**
+  - Compatibilidad de `expo-sqlite` y `expo-crypto` con Expo Go SDK 58: verificada en emulador `Medium_Phone_API_37.0` (registro, login, cierre de sesión y persistencia funcionan). Dispositivo físico NO VERIFICADO.
+  - Mock de `expo-crypto` en tests no prueba el digest real; el digest real solo se valida en ejecución nativa/Expo Go.
+- **Verificación manual Expo Go (2026-11-21, emulador):** resultados por paso:
+  - Paso 1, clave corta (3 caracteres): error de clave mínima, sin sesión. OK (`EV-04`).
+  - Paso 2, registro válido: entra a Tareas con "Sesión iniciada como Sebastian". OK.
+  - Paso 3, cerrar sesión: vuelve a Iniciar sesión. OK.
+  - Paso 4, clave incorrecta: "Correo o clave incorrectos", sin sesión. OK (`EV-03`).
+  - Paso 5, clave correcta: entra a Tareas. OK.
+  - Paso 6, cerrar y reabrir Expo Go: sesión mantenida. OK (`EV-06`).
+  - Flecha de retroceso: desde Crear cuenta vuelve a Iniciar sesión. OK. Desde Tareas no aparece flecha (`EV-05`).
+- **Corrección de flecha tras registro:** `src/app/_layout.tsx` usa `Stack.Protected` (guards `autenticado` / `!autenticado`, Expo Router 58 docs oficiales); se quitaron los `Redirect` manuales de `index`, `login` y `register`. Verificado: tsc OK, Jest auth 8/8 OK, eslint `src/app` OK. Expo Go (emulador, 2026-11-21 14:29): registro de cuenta nueva "Lukas" entra a Tareas sin flecha "<-" (`EV-07`). OK.
+- **Distribución de pantallas (ajuste posterior, 2026-11-21 14:33, emulador):** login y registro: formulario en columna con ancho máximo 420, centrado, con `KeyboardAvoidingView` + `ScrollView` (patrón de `TaskForm`). Tareas: cabecera arriba, estado vacío centrado, "Cerrar sesión" abajo. Capturas revisadas en emulador: Tareas, login y registro. Comportamiento con teclado: fuera de alcance de verificación por decisión del usuario (no aplica al emulador). Captura guardada en `docs/evidencias`: NO.
+- **Siguiente acción:** implementar RF-04 a RF-10 (tareas CRUD con SQLite, filtros y validación; CP-TAR-01 y CP-TAR-02). Autorizado por el usuario (2026-11-21).
+- **Autorización:** RF-04 a RF-10 autorizados; commits locales autorizados (2026-11-21).
+
