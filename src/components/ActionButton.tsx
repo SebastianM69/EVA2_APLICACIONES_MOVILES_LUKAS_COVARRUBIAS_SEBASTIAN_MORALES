@@ -7,6 +7,7 @@ type ActionButtonProps = {
   onPress: () => void;
   variant?: 'primary' | 'secondary' | 'danger';
   accessibilityLabel?: string;
+  compact?: boolean;
 };
 
 export function ActionButton({
@@ -14,6 +15,7 @@ export function ActionButton({
   onPress,
   variant = 'primary',
   accessibilityLabel,
+  compact = false,
 }: ActionButtonProps) {
   return (
     <Pressable
@@ -22,13 +24,16 @@ export function ActionButton({
       onPress={onPress}
       style={({ pressed }) => [
         styles.button,
+        compact && styles.compact,
         styles[variant],
         pressed && styles.pressed,
       ]}
     >
       <Text
+        numberOfLines={compact ? 1 : undefined}
         style={[
           styles.label,
+          compact && styles.compactLabel,
           variant === 'primary' && styles.primaryLabel,
           variant === 'danger' && styles.dangerLabel,
         ]}
@@ -63,6 +68,13 @@ const styles = StyleSheet.create({
   },
   pressed: {
     opacity: 0.78,
+  },
+  compact: {
+    paddingHorizontal: spacing.two,
+    minHeight: 44,
+  },
+  compactLabel: {
+    fontSize: 14,
   },
   label: {
     color: colors.textPrimary,

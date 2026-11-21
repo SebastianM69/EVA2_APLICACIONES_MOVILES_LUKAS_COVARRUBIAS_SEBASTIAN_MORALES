@@ -56,6 +56,7 @@ export default function TasksScreen() {
               label={etiqueta}
               variant={filtro === valor ? 'primary' : 'secondary'}
               accessibilityLabel={`Filtrar tareas: ${etiqueta}`}
+              compact
               onPress={() => setFiltro(valor)}
             />
           </View>
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
     gap: spacing.one,
   },
   filterItem: {
-    flex: 1,
+    flexGrow: 1,
   },
   list: {
     flex: 1,

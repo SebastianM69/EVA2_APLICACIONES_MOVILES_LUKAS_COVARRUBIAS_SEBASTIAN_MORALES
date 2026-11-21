@@ -171,7 +171,7 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Fecha:** 2026-11-21
 - **Autor:** agente OMP (sesión con el usuario)
 - **Objetivo:** tareas por usuario con SQLite: listar, crear, editar, completar/reabrir, eliminar con confirmación, filtros y validación.
-- **Estado:** `VALIDACIÓN PARCIAL`. Código, pruebas Jest y gates técnicos OK; verificación manual en Expo Go NO EJECUTADA.
+- **Estado:** `VALIDACIÓN PARCIAL`. Código, pruebas Jest y gates técnicos OK; verificación manual en Expo Go (emulador) OK en todos los puntos, con 1 riesgo abierto de validación (exceso de longitud, ver Riesgos). Commit local autorizado; hash en `git log`. Revisión humana pendiente.
 - **Requisitos asociados:** RF-04 a RF-10. Ver `docs/01`.
 - **Pruebas asociadas:** Jest `src/features/tasks/tasks-service.test.ts` (CP-TAR-01, CP-TAR-02). Suite completa: 5 suites, 16/16 OK.
 - **Verificación:**
@@ -182,9 +182,23 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Decisiones técnicas:**
   - `TaskForm.onSave` pasa a `Promise<boolean>` para persistencia asíncrona; mocks de `TaskForm.test.tsx` actualizados.
   - Repositorio y servicio filtran por `usuario_id` de la sesión activa en cada consulta y mutación.
+- **Verificación manual Expo Go (2026-11-21, emulador `Medium_Phone_API_37.0`, `emulator-5554`):**
+  - Crear cuenta `qa.rf07@example.com` y `qa.dos@example.com`; inicio de sesión OK.
+  - Lista vacía: "Sin tareas por ahora." OK.
+  - Validación de nueva tarea: título y descripción vacíos muestran error y no guardan. OK. Exceso (101 y 501 caracteres): el campo corta en 100/500 por `maxLength`; el mensaje de exceso NO aparece y se guarda el valor truncado (verificado: tarea con título de 100 y descripción de 500 caracteres). Riesgo abierto.
+  - Nueva tarea válida aparece en Todas. OK. Aparece en Pendientes antes de completar. OK.
+  - Completar y reabrir: sale de Pendientes; al reabrir vuelve a "Pendiente". OK.
+  - Editar: título vacío muestra "Ingresa un título para la tarea". OK. Edición válida guardada. OK. Edición tras dos reinicios de la app (`force-stop`): campos cargan y el cambio persiste. OK. En un intento el campo perdió caracteres al teclear; se repitió con texto verificado antes de guardar.
+  - Eliminar: Cancelar conserva la tarea; ELIMINAR la borra. OK.
+  - Filtro sin resultados: "No hay tareas en este filtro." OK.
+  - Aislamiento por usuario: QA no ve "Tarea de B"; B no ve "Tarea de QA". OK.
+  - Persistencia: `force-stop` de Expo Go y reapertura conservan sesión y tarea. OK.
+  - Cabecera de filtros: "Completadas" se cortaba en dos líneas. Corregido en `src/components/ActionButton.tsx` (prop `compact`: una línea, `numberOfLines={1}`, fuente 14) y `src/app/index.tsx` (`filterItem` con `flexGrow: 1`). Verificado en captura del emulador tras el cambio: "Completadas" en una línea. Captura no versionada en `docs/evidencias`.
+  - Gates tras el cambio: `npx tsc --noEmit` exit 0; `npx eslint` sobre los dos archivos exit 0; `npx prettier --check` sobre los dos archivos OK.
+  - Datos de prueba: tareas creadas en esta verificación eliminadas con confirmación. Quedan usuarios QA y "Tarea de QA".
 - **Riesgos:**
-  - Expo Go no verificado: crear, editar, completar, filtrar y eliminar en emulador pendientes.
+  - Expo Go: crear, editar, completar, filtrar, eliminar, persistencia y aislamiento verificados en emulador. Riesgo abierto: el campo corta la entrada a 100/500 sin mensaje y guarda el valor truncado; corregir (mensaje de error en lugar de truncado) requiere autorización.
   - Pruebas cubren servicio con repositorio en memoria y filtro puro; no cubren SQLite real.
   - Ruta `tasks/[id]` muestra "La tarea no existe" hasta que `TasksProvider` carga el listado; al abrir edición tras reinicio puede verse un parpadeo incorrecto.
-- **Siguiente acción:** verificación manual Expo Go (emulador) de RF-04 a RF-10 y registro de evidencias `EV-##`; luego revisión humana.
+- **Siguiente acción:** revisión humana; decidir si se corrige el truncado silencioso de título y descripción (requiere autorización). `EV-##` solo si se guardan capturas en `docs/evidencias/capturas/`.
 
