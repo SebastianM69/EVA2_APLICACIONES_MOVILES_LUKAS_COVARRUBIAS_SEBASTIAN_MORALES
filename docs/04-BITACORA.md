@@ -572,3 +572,30 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
   - Revisión humana de `EV-20` pendiente; el agente no puede aprobarla.
 - **Siguiente acción:** revisión visual de `EV-20` por el equipo; restaurar permiso de cámara en el emulador tras la prueba.
 - **Autorización necesaria:** commit local de `EV-20`, `docs/03` y `docs/04` (permitido por `AGENTS.md` sección 5).
+
+## CHK-025 - Capturas Xiaomi de CP-MOV-03: EV-21 a EV-24
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** registrar las capturas físicas del Xiaomi enviadas por el usuario y dejar pendiente su revisión visual.
+- **Estado:** CP-MOV-03 en Android físico: `VALIDACIÓN PARCIAL` hasta revisión humana de `EV-21` a `EV-24`.
+- **Requisitos asociados:** RF-11, RUB-02.
+- **Pruebas asociadas:** CP-MOV-03 (Xiaomi físico, `EV-21` a `EV-24`).
+- **Commit real:** pendiente (ver autorización).
+- **Evidencias:**
+ - `EV-21`: `./evidencias/capturas/EV-21-telefono-fisico-cp-mov-03-inicio-sesion-qa-mov01.jpeg`. Inicio con "QA MOV01", sin tareas.
+ - `EV-22`: `./evidencias/capturas/EV-22-telefono-fisico-cp-mov-03-formulario-con-datos.jpeg`. Formulario con datos antes de `Tomar foto`.
+ - `EV-23`: `./evidencias/capturas/EV-23-telefono-fisico-cp-mov-03-permiso-camara-denegado-con-red.jpeg`. Aviso de cámara denegada con red.
+ - `EV-24`: `./evidencias/capturas/EV-24-telefono-fisico-cp-mov-03-permiso-camara-denegado-modo-avion.jpeg`. Aviso de cámara denegada en modo avión.
+- **Verificaciones:**
+ - Archivos JPEG 720x1600 confirmados con `file`; copias sin recorte.
+ - Las capturas se revisaron visualmente por el agente; no se aprueban.
+ - Teléfono no conectado a ADB (`adb devices` solo lista `emulator-5554`); no se reprodujo en el dispositivo.
+- **Riesgos:**
+ - `EV-21` y `EV-22` no muestran el aviso; sirven como contexto del paso previo.
+ - Pasos previos y modelo/Android del Xiaomi: NO VERIFICADO.
+ - `EV-23` y `EV-24` no muestran el toque de `Tomar foto`; el orden de acciones queda sin registrar.
+ - El defecto abierto (`Something went wrong` en Xiaomi) no se reproduce en estas capturas. No se descarta.
+ - Revisión humana pendiente; el agente no puede aprobar.
+- **Siguiente acción:** revisión visual del equipo de `EV-20` a `EV-24`; decidir si `EV-24` sustituye a `EV-20` como evidencia física de CP-MOV-03.
+- **Autorización necesaria:** commit local de `EV-21` a `EV-24`, `docs/03` y `docs/04` (permitido por `AGENTS.md` sección 5).
