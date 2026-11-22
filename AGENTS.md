@@ -61,7 +61,7 @@ Si aparece una contradicción material nueva: detener únicamente el trabajo afe
 | Periféricos       | **`expo-camera`** (una foto por tarea) y **`expo-location`** (una lectura al crear tarea). Permisos solicitados al ejecutar la acción, nunca al abrir la app. |
 | Alcance funcional | RF-01 a RF-13 de `docs/01-REQUISITOS-RUBRICA.md`.                                                                                                             |
 | Calidad           | TypeScript estricto, ESLint, Prettier, Jest con `jest-expo`, React Native Testing Library.                                                                    |
-| Git               | Repositorio local nuevo, rama `main`, sin remoto.                                                                                                             |
+| Git               | Repositorio local, rama `main`, remoto `origin` (GitHub). Push solo con autorización expresa del equipo.                                                      |
 
 **Prohibido sin aprobación expresa:** sustituir tecnologías, alterar navegación, introducir funcionalidades no solicitadas, añadir bibliotecas, actualizar versiones, crear capas arquitectónicas innecesarias, modificar pruebas para hacerlas pasar, añadir servicios web o APIs externas.
 
@@ -99,10 +99,10 @@ Si Context7 no responde, no tiene la versión requerida o su respuesta es irrele
 ## 6. Política Git
 
 1. Antes de modificar: comprobar rama, estado del árbol y cambios preexistentes.
-2. Rama de trabajo: `main` mientras no existan ramas de tarea. Sin remoto.
+2. Rama de trabajo: `main` mientras no existan ramas de tarea. Remoto: `origin`; `push` solo con autorización expresa del equipo.
 3. Versionar solo archivos de la tarea autorizada; inspeccionar `git diff --cached --stat` antes de cada commit.
 4. Commits con Conventional Commits en español: `docs:`, `feat:`, `test:`, `chore:`, `fix:`. Asunto descriptivo y cuerpo con requisito o propósito.
-5. **No hacer:** `push`, `merge`, `rebase` de historial compartido, `push --force`, `reset --hard`, `clean` destructivo, borrado de ramas compartidas, sobrescritura de trabajo ajeno.
+5. **No hacer sin autorización:** `push`, `merge`, `rebase` de historial compartido, `push --force`, `reset --hard`, `clean` destructivo, borrado de ramas compartidas, sobrescritura de trabajo ajeno.
 6. Versionar `package-lock.json` cuando exista. Excluir `node_modules`, cachés, `.expo/`, `dist/`, `.env*.local` y secretos (ver `.gitignore`).
 7. Antes de integrar: resumen de cambios, commits reales, pruebas y pendientes. Solo el equipo autoriza integración o publicación.
 
@@ -195,7 +195,7 @@ No reportar como creado, probado, publicado o aprobado nada que no se haya verif
 ## 12. Estado de referencia
 
 - Carpeta del proyecto: `EVA2_APLICACIONES_MOVILES_LUKAS COVARRUBIAS_SEBASTIAN  MORALES` (doble espacio antes de `MORALES`).
-- Repositorio Git local, rama `main`, sin remoto. Último commit de código: `a2e5b8f` (ver `docs/04`, CHK-003 y CHK-004).
+- Repositorio Git, rama `main`, remoto `origin` (GitHub). Último commit de código: `a2e5b8f` (ver `docs/04`, CHK-003 y CHK-004).
 - Código base existente: `src/app/` (`_layout.tsx`, `index.tsx`), `src/components/`, `src/features/tasks/` (modelo, validación, formulario), `src/theme/tokens.ts`. Dependencias instaladas según `package.json` y `package-lock.json`.
 - Ejecución verificada: Expo Go + Metro (`npx expo start --android`). Build nativo no viable en el equipo actual (ver `docs/02`, decisión 16).
 - Pendiente para nuevas etapas (autenticación, SQLite, cámara, GPS): autorización expresa (sección 5) y consulta a Context7 (sección 3).

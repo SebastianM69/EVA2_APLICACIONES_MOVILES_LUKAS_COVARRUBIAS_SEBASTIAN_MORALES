@@ -531,9 +531,9 @@ Los pendientes de decisión y bloqueos se registran en [`docs/04`](./docs/04-BIT
 
 ## 14. Control de versiones
 
-- Repositorio Git local, rama `main`, sin remoto.
+- Repositorio Git con remoto `origin` (GitHub) y rama `main`.
 - Conventional Commits en español (`feat:`, `fix:`, `docs:`, `test:`, `chore:`).
-- Sin `push`, `merge` ni operaciones destructivas en historial compartido (`AGENTS.md`, sección 6).
+- `push` a `origin/main` solo con autorización expresa del equipo; `merge` y operaciones destructivas en historial compartido no aplican (`AGENTS.md`, sección 6).
 - Cada checkpoint de avance se registra en [`docs/04`](./docs/04-BITACORA.md) con su commit real.
 
 ---

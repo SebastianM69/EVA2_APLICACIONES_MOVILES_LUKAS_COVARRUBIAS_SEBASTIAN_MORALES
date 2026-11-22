@@ -1105,3 +1105,25 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - Riesgos de CHK-047 sin cambio.
 - **Siguiente acción:** ninguna en el repositorio. Revisión humana final del equipo.
 - **Autorización necesaria:** push, merge o publicación no realizados; requieren autorización del equipo.
+
+## CHK-049 - Actualización de remoto en documentación y push a origin/main
+
+- **Fecha:** 2026-11-22
+- **Agente:** agente OMP
+- **Objetivo:** corregir las menciones "sin remoto" vigentes y publicar el trabajo en `origin/main` con autorización del usuario.
+- **Estado:** `VALIDACIÓN PARCIAL` (G4 `PARCIAL`: entrega en Word/PDF no hecha; G1 resuelto en CHK-048 y commit `7e20960`).
+- **Requisitos asociados:** RF-01 a RF-13 (estado); entrega académica (sección 16 del README).
+- **Pruebas asociadas:** `npx prettier --check .`: `All matched files use Prettier code style!`. Sin pruebas funcionales nuevas (cambio documental).
+- **Commit real:** este checkpoint y las correcciones de remoto se commitean juntos; hash visible en `git log` y en `origin/main`.
+- **Archivos cambiados:**
+- `AGENTS.md`: líneas 64, 102, 105 y 198 (remoto `origin`; push con autorización).
+- `README.md`: líneas 534 y 536 (sección 14, control de versiones).
+- `docs/02-DECISIONES-ARQUITECTURA.md`: decisión 13 (Git).
+- `docs/04-BITACORA.md`: `CHK-049`.
+- **Decisiones del usuario:** publicar con `git push -u origin main` a `origin` (`https://github.com/SebastianM69/EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES.git`).
+- **Verificaciones:** push `b4f9a8a..7e20960 main -> main` (exit 0, CHK-048); árbol limpio tras commit.
+- **Riesgos:**
+- Historial de CHK-001 a CHK-048 conserva "sin remoto" como registro histórico; no se reescribe.
+- Cierre de la app al cortar red: aceptado (CHK-047).
+- **Siguiente acción:** ninguna en el repositorio. Revisión humana final del equipo y decisión sobre formato Word/PDF (G4).
+- **Autorización necesaria:** ninguna adicional para este commit; cualquier nuevo `push` requiere autorización expresa.
