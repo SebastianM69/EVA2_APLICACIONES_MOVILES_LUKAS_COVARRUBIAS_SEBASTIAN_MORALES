@@ -306,7 +306,7 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
   - La app no recibe posición: `getCurrentPositionAsync` y `watchPositionAsync` (Balanced) dan timeout; `getLastKnownPositionAsync` da null.
   - Sin efecto: fix refrescado cada 2 s, `location_mode` 1 y 3, reinicio del emulador.
   - Causa no determinada; se asume fallo de GMS/fused en el emulador, no de la lógica de la app.
-- **Verificación en Android físico (Expo Go, `exp://192.168.1.81:8081`):** log de Metro `[ubicacion] permiso granted`, `lectura ok`, `ultima ok`.
+- **Verificación en Android físico (Expo Go, `exp://<IP-LAN-REDACTADA>:8081`):** log de Metro `[ubicacion] permiso granted`, `lectura ok`, `ultima ok`.
 - **Decisión:** para RF-12 la verificación de GPS se hace en dispositivo físico, no en emulador. El emulador queda como prueba de flujo sin GPS.
 - **Commits:**
   - `a4d0407` (`fix(ubicacion): lectura GPS en dispositivo fisico verificada`): contiene sintaxis rota; corregida en el siguiente.
@@ -543,7 +543,7 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Defecto abierto:**
   - Síntoma: pantalla "Something went wrong." de Expo tras cortar red, reportada por el usuario (captura de 6:53 PM). Reporte del usuario = dato válido; no se descarta.
   - Reproducción: no reproducido en emulador (2 intentos, rutas "Nueva tarea" y "Tomar foto" sin red).
-  - Causa: NO DETERMINADA. [INFERENCIA] Expo Go en modo desarrollo pierde la conexión con Metro (`192.168.1.81:8081`) al cortar red y muestra su pantalla de error. No verificado: la app no hace peticiones de red (`grep` sin resultados en `src/`).
+  - Causa: NO DETERMINADA. [INFERENCIA] Expo Go en modo desarrollo pierde la conexión con Metro (`<IP-LAN-REDACTADA>:8081`) al cortar red y muestra su pantalla de error. No verificado: la app no hace peticiones de red (`grep` sin resultados en `src/`).
   - Pendiente: texto de `View error log` o repetición en Xiaomi.
 - **Riesgos:**
   - CP-MOV-03 no tiene captura del paso "guardar sin foto" (`Tarea creada sin foto`). Aprobado por decisión del usuario; queda como desviación.
@@ -1034,10 +1034,27 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
  - `docs/04-BITACORA.md`: `CHK-045`.
 - **Verificaciones:**
  - Script sobre `README.md`, `AGENTS.md` y `docs/*.md`: 6 archivos, 75 enlaces relativos, 0 rotos, 0 absolutos (`/`, `C:`, `\`).
- - `grep` de rutas de usuario y unidades (`Desktop`, `sandr`, `Users`, `C:\`): sin coincidencias en `README.md`; coincidencias en `docs/03` y `docs/04` solo en IP LAN de Metro (`192.168.1.81`) y `localhost`/`127.0.0.1` dentro de registros históricos de evidencias.
+ - `grep` de rutas de usuario y unidades (`Desktop`, `sandr`, `Users`, `C:\`): sin coincidencias en `README.md`; coincidencias en `docs/03` y `docs/04` solo en IP LAN de Metro (redactada en CHK-046) y `localhost`/`127.0.0.1` dentro de registros históricos de evidencias.
 - **Riesgos:**
  - Entrega sin Word o PDF: incumple el formato del enunciado; aceptado por el usuario.
- - IP LAN `192.168.1.81` en `docs/03` y `docs/04` (registros de evidencia); no es ruta de archivo, pero identifica la red local. Decisión del equipo si se redacta antes de publicar.
+ - IP LAN de Metro: redactada en `docs/03` y `docs/04` (CHK-046). Riesgo cerrado.
  - Riesgos abiertos de CHK-043 sin cambio.
-- **Siguiente acción:** equipo: decidir si se redacta la IP LAN en los registros históricos; revisión final del README.
+- **Siguiente acción:** equipo: revisión final del README.
+- **Autorización necesaria:** ninguna para commit local.
+
+## CHK-046 - Redacción de IP LAN en registros de evidencia
+
+- **Fecha:** 2026-11-22
+- **Agente:** agente OMP
+- **Objetivo:** eliminar la IP LAN de Metro de los registros versionados.
+- **Estado:** `APROBADA` (cambio documental; GA-0 y GA-5 verificados).
+- **Requisitos asociados:** entrega académica (`docs/01` sección 6); rutas relativas y datos de máquina (`AGENTS.md` sección 10).
+- **Pruebas asociadas:** verificación documental.
+- **Commit real:** pendiente de commit local (este checkpoint).
+- **Archivos cambiados:**
+ - `docs/03-PLAN-PRUEBAS.md`: líneas 59 y 63, `EV-11` y `EV-18`.
+ - `docs/04-BITACORA.md`: líneas 309, 546, 1040 y 1042; `CHK-046`.
+- **Verificaciones:** `grep -rn "192\.168\.1\.81"` en `README.md`, `AGENTS.md` y `docs/`: sin coincidencias (exit 1).
+- **Riesgos:** ninguno nuevo. Texto de CHK-045 línea 1037 corregido en esta misma entrega.
+- **Siguiente acción:** equipo: revisión final del README.
 - **Autorización necesaria:** ninguna para commit local.
