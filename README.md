@@ -131,7 +131,7 @@ Resultados de los casos manuales (detalle en [`docs/03`](./docs/03-PLAN-PRUEBAS.
 | CP-MOV-02 | RF-11 | APROBADO | `EV-11`, `EV-12` | Miniatura visible en el detalle |
 | CP-MOV-03 | RF-11, RUB-02 | APROBADO | `EV-18` a `EV-24`, `EV-20` (emulador) | Cámara denegada: aviso no bloqueante |
 | CP-MOV-04 | RF-12 | APROBADO | `EV-08`, `EV-09` | Coordenadas visibles en tarjeta y detalle (teléfono físico) |
-| CP-MOV-05 | RF-12, RUB-02 | APROBADO por decisión del usuario | `EV-26` a `EV-28`, `EV-31`, `EV-32` | Tarea sin coordenadas. La captura del paso "denegar ubicación en Ajustes" no existe |
+| CP-MOV-05 | RF-12, RUB-02 | APROBADO por decisión del usuario | `EV-26` a `EV-28`, `EV-31` a `EV-34`, `EV-41` | Tarea sin coordenadas. Denegación de ubicación: `EV-41` ("No permitir", 9:05). Aviso no bloqueante no observado (sección 13) |
 | CP-MOV-06 | RF-13 | APROBADO por decisión del usuario con riesgo aceptado (CHK-047) | `EV-30`, `EV-44` | Reabrir sin red en Expo Go de desarrollo falla (`Failed to download remote update`) por conexión con Metro; persistencia verificada con red (CHK-016). Build nativo no ejecutado |
 
 Dispositivos de prueba:
@@ -227,7 +227,7 @@ Los archivos de prueba `*.test.ts(x)` están junto al código que prueban. No ha
 3. Al guardar la tarea, `foto_uri` se guarda en SQLite. Si no hubo foto, queda `NULL`.
 4. Para la ubicación, `ubicacion.ts` pide permiso y hace una única lectura con precisión `Balanced` (`docs/02`, decisión 10).
 5. La lectura tiene un timeout de 10 segundos. Si no responde o falla, se devuelve `null` y la tarea se guarda sin coordenadas. No se usa la última posición conocida.
-6. Si el permiso se deniega, la acción continúa sin el dato y se muestra un mensaje no bloqueante.
+6. Si el permiso se deniega, la acción continúa sin el dato. El aviso no bloqueante no se observó en `EV-27` ni en `EV-32` (sección 13).
 
 ---
 
@@ -359,7 +359,7 @@ Casos completos con pasos y resultados esperados en [`docs/03`](./docs/03-PLAN-P
 | CP-MOV-02 | Crear tarea → tomar foto → guardar → abrir detalle | Miniatura visible |
 | CP-MOV-03 | Denegar cámara → tomar foto → guardar | Tarea sin foto; aviso no bloqueante |
 | CP-MOV-04 | Crear tarea con GPS permitido → abrir detalle | Coordenadas visibles |
-| CP-MOV-05 | Denegar GPS → crear tarea → abrir detalle | Tarea sin coordenadas; aviso no bloqueante |
+| CP-MOV-05 | Denegar GPS → crear tarea → abrir detalle | Tarea sin coordenadas; aviso no bloqueante (no observado, sección 13) |
 | CP-MOV-06 | Modo avión → crear, editar y completar → cerrar y reabrir | Cambios persisten (ver sección 13) |
 
 ### 9.3. Qué no prueban las pruebas automatizadas
@@ -560,8 +560,8 @@ Los pendientes de decisión y bloqueos se registran en [`docs/04`](./docs/04-BIT
 | Archivo Word o PDF | NO CUMPLIDO | Decisión del usuario; riesgo en 16.1 |
 | Nombre de archivo | NO CUMPLIDO | Solo aplica a Word o PDF; ver 16.1 |
 | Arial 12, interlineado 1,15, justificado, páginas numeradas | NO CUMPLIDO | Formato de Word o PDF; el README es Markdown |
-| Evidencias de `docs/evidencias/` referenciadas | CUMPLIDO | EV-01 a EV-44 en sección 10; enlaces relativos resueltos (2026-11-22) |
-| Pantallazos en el informe | CUMPLIDO | Sección 16.4 (capturas embebidas) y sección 10 (EV-01 a EV-44) |
+| Evidencias de `docs/evidencias/` referenciadas | CUMPLIDO | EV-01 a EV-45 en sección 10; enlaces relativos resueltos (2026-11-22) |
+| Pantallazos en el informe | CUMPLIDO | Sección 16.4 (capturas embebidas) y sección 10 (EV-01 a EV-45) |
 | Exención de APIs | CUMPLIDO | Confirmada por escrito por el profesor (16.3) |
 | Riesgo de stack explicado | CUMPLIDO | Sección 6.1 y `docs/02`, sección 4 |
 
