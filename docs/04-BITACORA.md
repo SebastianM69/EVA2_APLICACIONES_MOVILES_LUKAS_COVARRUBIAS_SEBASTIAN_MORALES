@@ -726,3 +726,25 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
  - Causa del defecto no determinada; "View error log" no capturado.
 - **Siguiente acción:** ninguna en CP-MOV-06. Pendiente de CP-MOV-05: permiso de ubicación denegado (captura de Ubicación en Permisos de la app o Ajustes).
 - **Autorización necesaria:** ninguna.
+
+## CHK-032 - EV-31 aprobado y EV-32 registrado (CP-MOV-05)
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** registrar las capturas de permisos (`EV-31`) y de detalle (`EV-32`) para CP-MOV-05.
+- **Estado:** `EV-31` `APROBADO` por decisión del usuario ("con eso basta"). `EV-32` `PENDIENTE` de aprobación. CP-MOV-05 `VALIDACIÓN PARCIAL` hasta aprobar `EV-32`.
+- **Requisitos asociados:** RF-12, RUB-02.
+- **Pruebas asociadas:** CP-MOV-05.
+- **Commit real:** pendiente de commit local. Commit previo: `9b89c3c`.
+- **Archivos cambiados:**
+ - `docs/evidencias/capturas/EV-31-telefono-fisico-cp-mov-05-permisos-expo-go.jpeg`
+ - `docs/evidencias/capturas/EV-32-telefono-fisico-cp-mov-05-detalle-gps-denegado.jpeg`
+ - `docs/03-PLAN-PRUEBAS.md`: `EV-31`, `EV-32` y fila G3.
+ - `docs/04-BITACORA.md`: `CHK-032`.
+- **Verificaciones:** lectura visual de `EV-31` y `EV-32`; decisión del usuario sobre `EV-31`. Sin pruebas de software.
+- **Riesgos:**
+ - `EV-31` no muestra la fila Ubicación; la pantalla no distingue "denegado" de "nunca preguntado". Aceptado por el usuario.
+ - `EV-32` sin aprobación del equipo.
+ - Modalidad, commit y dispositivo de `EV-31` y `EV-32`: NO VERIFICADO (mismo teléfono que `EV-26`, por mapeo confirmado).
+- **Siguiente acción:** aprobar o rechazar `EV-32` para cerrar CP-MOV-05.
+- **Autorización necesaria:** aprobación de `EV-32` por el equipo.
