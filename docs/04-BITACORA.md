@@ -707,3 +707,22 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
  - Hora: nombre de archivo 9.28.32 PM; barra de estado 9:27 PM.
 - **Siguiente acción:** decidir la aprobación de `EV-30`; decidir si la desviación de CP-MOV-06 se reabre; obtener el log de error si el equipo lo requiere.
 - **Autorización necesaria:** aprobación de `EV-30` por el equipo.
+
+## CHK-031 - Aprobación de EV-30 y cierre de CP-MOV-06 sin reapertura
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** registrar la decisión del usuario sobre `EV-30`.
+- **Estado:** `EV-30` `APROBADO` por decisión del usuario. CP-MOV-06 no se reabre: sigue APROBADO con desviación (CHK-016). Defecto "Something went wrong" en modo avión: reproducido en Android físico, sin causa determinada.
+- **Requisitos asociados:** RF-13.
+- **Pruebas asociadas:** CP-MOV-06.
+- **Commit real:** pendiente de commit local. Commit previo: `c332751`.
+- **Archivos cambiados:**
+ - `docs/03-PLAN-PRUEBAS.md`: resultado de `EV-30`.
+ - `docs/04-BITACORA.md`: `CHK-031`.
+- **Verificaciones:** decisión explícita del usuario ("apruebo ev 30 y no reabriremos cp-mov-06"). Sin pruebas de software.
+- **Riesgos:**
+ - Desviación de CP-MOV-06 ("reapertura sin red no alcanzable") contradicha por `EV-30`; aceptada por el usuario sin reabrir.
+ - Causa del defecto no determinada; "View error log" no capturado.
+- **Siguiente acción:** ninguna en CP-MOV-06. Pendiente de CP-MOV-05: permiso de ubicación denegado (captura de Ubicación en Permisos de la app o Ajustes).
+- **Autorización necesaria:** ninguna.
