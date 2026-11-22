@@ -583,20 +583,20 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** CP-MOV-03 (Xiaomi físico, `EV-21` a `EV-24`).
 - **Commit real:** pendiente (ver autorización).
 - **Evidencias:**
- - `EV-21`: `./evidencias/capturas/EV-21-telefono-fisico-cp-mov-03-inicio-sesion-qa-mov01.jpeg`. Inicio con "QA MOV01", sin tareas.
- - `EV-22`: `./evidencias/capturas/EV-22-telefono-fisico-cp-mov-03-formulario-con-datos.jpeg`. Formulario con datos antes de `Tomar foto`.
- - `EV-23`: `./evidencias/capturas/EV-23-telefono-fisico-cp-mov-03-permiso-camara-denegado-con-red.jpeg`. Aviso de cámara denegada con red.
- - `EV-24`: `./evidencias/capturas/EV-24-telefono-fisico-cp-mov-03-permiso-camara-denegado-modo-avion.jpeg`. Aviso de cámara denegada en modo avión.
+- `EV-21`: `./evidencias/capturas/EV-21-telefono-fisico-cp-mov-03-inicio-sesion-qa-mov01.jpeg`. Inicio con "QA MOV01", sin tareas.
+- `EV-22`: `./evidencias/capturas/EV-22-telefono-fisico-cp-mov-03-formulario-con-datos.jpeg`. Formulario con datos antes de `Tomar foto`.
+- `EV-23`: `./evidencias/capturas/EV-23-telefono-fisico-cp-mov-03-permiso-camara-denegado-con-red.jpeg`. Aviso de cámara denegada con red.
+- `EV-24`: `./evidencias/capturas/EV-24-telefono-fisico-cp-mov-03-permiso-camara-denegado-modo-avion.jpeg`. Aviso de cámara denegada en modo avión.
 - **Verificaciones:**
- - Archivos JPEG 720x1600 confirmados con `file`; copias sin recorte.
- - Las capturas se revisaron visualmente por el agente; no se aprueban.
- - Teléfono no conectado a ADB (`adb devices` solo lista `emulator-5554`); no se reprodujo en el dispositivo.
+- Archivos JPEG 720x1600 confirmados con `file`; copias sin recorte.
+- Las capturas se revisaron visualmente por el agente; no se aprueban.
+- Teléfono no conectado a ADB (`adb devices` solo lista `emulator-5554`); no se reprodujo en el dispositivo.
 - **Riesgos:**
- - `EV-21` y `EV-22` no muestran el aviso; sirven como contexto del paso previo.
- - Pasos previos y modelo/Android del Xiaomi: NO VERIFICADO.
- - `EV-23` y `EV-24` no muestran el toque de `Tomar foto`; el orden de acciones queda sin registrar.
- - El defecto abierto (`Something went wrong` en Xiaomi) no se reproduce en estas capturas. No se descarta.
- - Revisión humana pendiente; el agente no puede aprobar.
+- `EV-21` y `EV-22` no muestran el aviso; sirven como contexto del paso previo.
+- Pasos previos y modelo/Android del Xiaomi: NO VERIFICADO.
+- `EV-23` y `EV-24` no muestran el toque de `Tomar foto`; el orden de acciones queda sin registrar.
+- El defecto abierto (`Something went wrong` en Xiaomi) no se reproduce en estas capturas. No se descarta.
+- Revisión humana pendiente; el agente no puede aprobar.
 - **Siguiente acción:** revisión visual del equipo de `EV-20` a `EV-24`; decidir si `EV-24` sustituye a `EV-20` como evidencia física de CP-MOV-03.
 - **Autorización necesaria:** commit local de `EV-21` a `EV-24`, `docs/03` y `docs/04` (permitido por `AGENTS.md` sección 5).
 
@@ -615,8 +615,8 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Estado del defecto:** `ABIERTO`, hipótesis no confirmada. Reintento previsto en CP-MOV-06 físico: Expo Go abierto con Metro antes de activar modo avión, cerrar app y reabrir.
 - **Verificaciones:** ninguna nueva en este checkpoint. La aprobación se basa en la decisión del usuario sobre evidencias ya registradas.
 - **Riesgos:**
- - La hipótesis no está confirmada; el reintento físico la confirma o descarta.
- - Modelo y versión Android del Xiaomi en `EV-21` a `EV-24`: NO VERIFICADO.
+- La hipótesis no está confirmada; el reintento físico la confirma o descarta.
+- Modelo y versión Android del Xiaomi en `EV-21` a `EV-24`: NO VERIFICADO.
 - **Siguiente acción:** CP-MOV-05 (GPS denegado) y CP-MOV-06 físico con la condición de Expo abierto antes de desactivar la red.
 - **Autorización necesaria:** ninguna. Commit local de `docs/03` y `docs/04` permitido por `AGENTS.md` sección 5.
 
@@ -632,14 +632,14 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Evidencia nueva:** `EV-25`, captura de la pantalla de información del teléfono aportada por el usuario. Ruta: `./evidencias/capturas/EV-25-telefono-fisico-info-dispositivo-modelo.png`.
 - **Datos verificados en `EV-25`:** modelo `2107113SG`; Android 13 (`TKQ1.220829.002`); MIUI Global 14.0.2; actualización de seguridad 2023-04-01; RAM 8.0 GB; hora de la barra de estado 9:16 PM.
 - **Archivos cambiados:**
- - `docs/03-PLAN-PRUEBAS.md`: `EV-21` a `EV-24` con modelo y Android (ver `EV-25`); `EV-25` nuevo.
- - `docs/04-BITACORA.md`: `CHK-027`.
- - `docs/evidencias/capturas/EV-25-telefono-fisico-info-dispositivo-modelo.png`.
+- `docs/03-PLAN-PRUEBAS.md`: `EV-21` a `EV-24` con modelo y Android (ver `EV-25`); `EV-25` nuevo.
+- `docs/04-BITACORA.md`: `CHK-027`.
+- `docs/evidencias/capturas/EV-25-telefono-fisico-info-dispositivo-modelo.png`.
 - **Verificaciones:** lectura visual de la imagen aportada. Sin pruebas de software.
 - **Riesgos:**
- - `EV-25` se tomó a las 9:16 PM; `EV-21` a `EV-24` a las 9:08-9:09 PM. Se asume el mismo teléfono; el usuario lo indicó, sin verificación adicional.
- - Modalidad de `EV-21` a `EV-24` sigue `NO VERIFICADO`.
- - Defecto "Something went wrong" sigue `ABIERTO` (CHK-026).
+- `EV-25` se tomó a las 9:16 PM; `EV-21` a `EV-24` a las 9:08-9:09 PM. Se asume el mismo teléfono; el usuario lo indicó, sin verificación adicional.
+- Modalidad de `EV-21` a `EV-24` sigue `NO VERIFICADO`.
+- Defecto "Something went wrong" sigue `ABIERTO` (CHK-026).
 - **Siguiente acción:** CP-MOV-05 (GPS denegado) y CP-MOV-06 físico con Expo abierto antes de desactivar la red.
 - **Autorización necesaria:** ninguna. Commit local permitido por `AGENTS.md` sección 5.
 
@@ -654,16 +654,16 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Commit real:** pendiente de commit local. Commit previo: `b1cbeba`.
 - **Evidencias nuevas:** `EV-26` (lista vacía, 9:21 PM), `EV-27` (formulario "Prueba GPS" / "GPS denegado", 9:22 PM), `EV-28` (tarjeta "Sin ubicación registrada", 9:22 PM), `EV-29` (misma tarjeta con modo avión, 9:22 PM).
 - **Archivos cambiados:**
- - `docs/03-PLAN-PRUEBAS.md`: `EV-26` a `EV-29`.
- - `docs/04-BITACORA.md`: `CHK-028`.
- - `docs/evidencias/capturas/EV-26` a `EV-29` (`.jpeg`).
+- `docs/03-PLAN-PRUEBAS.md`: `EV-26` a `EV-29`.
+- `docs/04-BITACORA.md`: `CHK-028`.
+- `docs/evidencias/capturas/EV-26` a `EV-29` (`.jpeg`).
 - **Verificaciones:** lectura visual de las capturas. Sin pruebas de software.
 - **Riesgos:**
- - Permiso de ubicación denegado: no visible en ninguna captura.
- - Pantalla de detalle con `Sin ubicación registrada`: no capturada.
- - Modelo del teléfono y modalidad Expo: NO VERIFICADO en estas capturas; se asume el mismo Xiaomi de `EV-25`.
- - `EV-28` y `EV-29` tienen la misma hora; el orden y el estado de red entre ambas son NO VERIFICADO.
- - `docs/03` (línea 3 y G3) aún cita CP-MOV-05 como OK por emulador (CHK-009); no se actualizó.
+- Permiso de ubicación denegado: no visible en ninguna captura.
+- Pantalla de detalle con `Sin ubicación registrada`: no capturada.
+- Modelo del teléfono y modalidad Expo: NO VERIFICADO en estas capturas; se asume el mismo Xiaomi de `EV-25`.
+- `EV-28` y `EV-29` tienen la misma hora; el orden y el estado de red entre ambas son NO VERIFICADO.
+- `docs/03` (línea 3 y G3) aún cita CP-MOV-05 como OK por emulador (CHK-009); no se actualizó.
 - **Siguiente acción:** capturar denegación de ubicación en Ajustes y pantalla de detalle; decidir si `EV-26` a `EV-28` quedan `APROBADO`.
 - **Autorización necesaria:** ninguna para registrar. Aprobación de `EV-26` a `EV-28` por el equipo.
 
@@ -677,13 +677,13 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** CP-MOV-05.
 - **Commit real:** pendiente de commit local. Commit previo: `b56ac21`.
 - **Archivos cambiados:**
- - `docs/03-PLAN-PRUEBAS.md`: resultado de `EV-26` a `EV-28`.
- - `docs/04-BITACORA.md`: `CHK-029`.
+- `docs/03-PLAN-PRUEBAS.md`: resultado de `EV-26` a `EV-28`.
+- `docs/04-BITACORA.md`: `CHK-029`.
 - **Verificaciones:** decisión explícita del usuario ("apruebo"). Sin pruebas de software.
 - **Riesgos:**
- - Permiso de ubicación denegado: sin captura.
- - Pantalla de detalle: sin captura.
- - `docs/03` línea 3 y fila G3 aún citan CP-MOV-05 como OK por emulador (CHK-009); pendiente de decisión.
+- Permiso de ubicación denegado: sin captura.
+- Pantalla de detalle: sin captura.
+- `docs/03` línea 3 y fila G3 aún citan CP-MOV-05 como OK por emulador (CHK-009); pendiente de decisión.
 - **Siguiente acción:** capturar denegación de ubicación en Ajustes y pantalla de detalle, o decidir cerrar CP-MOV-05 con el alcance actual.
 - **Autorización necesaria:** decisión del usuario para cerrar CP-MOV-05 sin las dos capturas.
 
@@ -697,14 +697,14 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** CP-MOV-06.
 - **Commit real:** pendiente de commit local. Commit previo: `da0f7ef`.
 - **Archivos cambiados:**
- - `docs/evidencias/capturas/EV-30-telefono-fisico-cp-mov-06-something-went-wrong-modo-avion.jpeg`: copia sin recorte.
- - `docs/03-PLAN-PRUEBAS.md`: entrada `EV-30`, línea 3 y fila G3 (defecto reproducido).
- - `docs/04-BITACORA.md`: `CHK-030`.
+- `docs/evidencias/capturas/EV-30-telefono-fisico-cp-mov-06-something-went-wrong-modo-avion.jpeg`: copia sin recorte.
+- `docs/03-PLAN-PRUEBAS.md`: entrada `EV-30`, línea 3 y fila G3 (defecto reproducido).
+- `docs/04-BITACORA.md`: `CHK-030`.
 - **Verificaciones:** lectura visual de la captura; sin pruebas de software. Mapeo de capturas confirmado por el usuario.
 - **Riesgos:**
- - `EV-30` contradice la premisa de la desviación de CP-MOV-06 ("reapertura sin red no alcanzable"): el intento de abrir Expo en modo avión sí se alcanza y falla.
- - Causa no determinada; "View error log" no capturado.
- - Hora: nombre de archivo 9.28.32 PM; barra de estado 9:27 PM.
+- `EV-30` contradice la premisa de la desviación de CP-MOV-06 ("reapertura sin red no alcanzable"): el intento de abrir Expo en modo avión sí se alcanza y falla.
+- Causa no determinada; "View error log" no capturado.
+- Hora: nombre de archivo 9.28.32 PM; barra de estado 9:27 PM.
 - **Siguiente acción:** decidir la aprobación de `EV-30`; decidir si la desviación de CP-MOV-06 se reabre; obtener el log de error si el equipo lo requiere.
 - **Autorización necesaria:** aprobación de `EV-30` por el equipo.
 
@@ -718,12 +718,12 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** CP-MOV-06.
 - **Commit real:** pendiente de commit local. Commit previo: `c332751`.
 - **Archivos cambiados:**
- - `docs/03-PLAN-PRUEBAS.md`: resultado de `EV-30`.
- - `docs/04-BITACORA.md`: `CHK-031`.
+- `docs/03-PLAN-PRUEBAS.md`: resultado de `EV-30`.
+- `docs/04-BITACORA.md`: `CHK-031`.
 - **Verificaciones:** decisión explícita del usuario ("apruebo ev 30 y no reabriremos cp-mov-06"). Sin pruebas de software.
 - **Riesgos:**
- - Desviación de CP-MOV-06 ("reapertura sin red no alcanzable") contradicha por `EV-30`; aceptada por el usuario sin reabrir.
- - Causa del defecto no determinada; "View error log" no capturado.
+- Desviación de CP-MOV-06 ("reapertura sin red no alcanzable") contradicha por `EV-30`; aceptada por el usuario sin reabrir.
+- Causa del defecto no determinada; "View error log" no capturado.
 - **Siguiente acción:** ninguna en CP-MOV-06. Pendiente de CP-MOV-05: permiso de ubicación denegado (captura de Ubicación en Permisos de la app o Ajustes).
 - **Autorización necesaria:** ninguna.
 
@@ -737,15 +737,15 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** CP-MOV-05.
 - **Commit real:** pendiente de commit local. Commit previo: `9b89c3c`.
 - **Archivos cambiados:**
- - `docs/evidencias/capturas/EV-31-telefono-fisico-cp-mov-05-permisos-expo-go.jpeg`
- - `docs/evidencias/capturas/EV-32-telefono-fisico-cp-mov-05-detalle-gps-denegado.jpeg`
- - `docs/03-PLAN-PRUEBAS.md`: `EV-31`, `EV-32` y fila G3.
- - `docs/04-BITACORA.md`: `CHK-032`.
+- `docs/evidencias/capturas/EV-31-telefono-fisico-cp-mov-05-permisos-expo-go.jpeg`
+- `docs/evidencias/capturas/EV-32-telefono-fisico-cp-mov-05-detalle-gps-denegado.jpeg`
+- `docs/03-PLAN-PRUEBAS.md`: `EV-31`, `EV-32` y fila G3.
+- `docs/04-BITACORA.md`: `CHK-032`.
 - **Verificaciones:** lectura visual de `EV-31` y `EV-32`; decisión del usuario sobre `EV-31`. Sin pruebas de software.
 - **Riesgos:**
- - `EV-31` no muestra la fila Ubicación; la pantalla no distingue "denegado" de "nunca preguntado". Aceptado por el usuario.
- - `EV-32` sin aprobación del equipo.
- - Modalidad, commit y dispositivo de `EV-31` y `EV-32`: NO VERIFICADO (mismo teléfono que `EV-26`, por mapeo confirmado).
+- `EV-31` no muestra la fila Ubicación; la pantalla no distingue "denegado" de "nunca preguntado". Aceptado por el usuario.
+- `EV-32` sin aprobación del equipo.
+- Modalidad, commit y dispositivo de `EV-31` y `EV-32`: NO VERIFICADO (mismo teléfono que `EV-26`, por mapeo confirmado).
 - **Siguiente acción:** aprobar o rechazar `EV-32` para cerrar CP-MOV-05.
 - **Autorización necesaria:** aprobación de `EV-32` por el equipo.
 
@@ -759,12 +759,12 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** CP-MOV-05.
 - **Commit real:** pendiente de commit local. Commit previo: `a6701af`.
 - **Archivos cambiados:**
- - `docs/03-PLAN-PRUEBAS.md`: resultado de `EV-32` y fila G3.
- - `docs/04-BITACORA.md`: `CHK-033`.
+- `docs/03-PLAN-PRUEBAS.md`: resultado de `EV-32` y fila G3.
+- `docs/04-BITACORA.md`: `CHK-033`.
 - **Verificaciones:** decisión explícita del usuario ("apruevo"). Sin pruebas de software.
 - **Riesgos:**
- - `EV-31` no muestra la fila Ubicación; la pantalla no distingue "denegado" de "nunca preguntado". Aceptado por el usuario en CHK-032.
- - Modalidad, commit y dispositivo de `EV-31` y `EV-32`: NO VERIFICADO.
+- `EV-31` no muestra la fila Ubicación; la pantalla no distingue "denegado" de "nunca preguntado". Aceptado por el usuario en CHK-032.
+- Modalidad, commit y dispositivo de `EV-31` y `EV-32`: NO VERIFICADO.
 - **Siguiente acción:** ninguna en CP-MOV-05. Pendiente general: `docs/03` línea 3 aún cita CP-MOV-05 como OK por emulador (CHK-009); revisar al cerrar la entrega.
 - **Autorización necesaria:** ninguna.
 
@@ -778,16 +778,16 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** ninguna nueva (cambio documental).
 - **Commit real:** pendiente de commit local.
 - **Archivos cambiados:**
- - `README.md`: reescrito.
- - `docs/04-BITACORA.md`: `CHK-034`.
+- `README.md`: reescrito.
+- `docs/04-BITACORA.md`: `CHK-034`.
 - **Verificaciones:**
- - `npx jest`: 7 suites, 22 pruebas OK (coincide con CHK-022).
- - `npm run lint`: sin errores. `npm run format:check`: pasa.
- - `node -v` v24.19.0; `npm -v` 11.17.0; `package-lock.json` existe.
- - Cifras de riesgo comprobadas en `docs/01` sección 3 (tope 52 sin RUB-04 y RUB-05) y sección 4; estado de CP-AUTH-01 a 03 en `docs/03` (aprobados por Jest, CHK-022).
+- `npx jest`: 7 suites, 22 pruebas OK (coincide con CHK-022).
+- `npm run lint`: sin errores. `npm run format:check`: pasa.
+- `node -v` v24.19.0; `npm -v` 11.17.0; `package-lock.json` existe.
+- Cifras de riesgo comprobadas en `docs/01` sección 3 (tope 52 sin RUB-04 y RUB-05) y sección 4; estado de CP-AUTH-01 a 03 en `docs/03` (aprobados por Jest, CHK-022).
 - **Errores e intentos:** el primer borrador del README afirmaba que `format:check` fallaba y que el emulador se arrancaba desde Android Studio. Ambas afirmaciones eran falsas o no verificadas; corregidas tras ejecutar los comandos.
 - **Riesgos:**
- - `docs/03` línea 3 aún cita CP-MOV-05 como OK por emulador (pendiente de CHK-009 y CHK-033).
+- `docs/03` línea 3 aún cita CP-MOV-05 como OK por emulador (pendiente de CHK-009 y CHK-033).
 - **Siguiente acción:** revisar enlaces relativos del README y commit local.
 - **Autorización necesaria:** ninguna para commit local.
 
@@ -801,8 +801,8 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** ninguna (documental).
 - **Commit real:** CHK-034 `8157362` (`docs: reescribe README con decisiones frente a rúbrica y registra CHK-034`). Este checkpoint: pendiente de commit local.
 - **Archivos cambiados:**
- - `docs/01-REQUISITOS-RUBRICA.md`: línea 4, estado actualizado.
- - `docs/04-BITACORA.md`: `CHK-035`.
+- `docs/01-REQUISITOS-RUBRICA.md`: línea 4, estado actualizado.
+- `docs/04-BITACORA.md`: `CHK-035`.
 - **Verificaciones:** `grep` de "no iniciada" y "por emulador" en `docs/01`, `docs/02`, `docs/03`, `AGENTS.md` y `README.md`: sin coincidencias.
 - **Riesgos:** ninguno nuevo.
 - **Siguiente acción:** ninguna en documentación.
@@ -818,24 +818,24 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** verificaciones de este checkpoint (abajo). Sin pruebas nuevas.
 - **Commit real:** pendiente de commit local (este checkpoint). Anterior: CHK-035 `8d0f69e`.
 - **Archivos cambiados:**
- - `README.md`: encabezado, sección 4.2, filas G1 y G4 de 4.4, fila Formato de 13, sección 16.
- - `docs/01-REQUISITOS-RUBRICA.md`: línea 4 y checklist de sección 6.
- - `docs/03-PLAN-PRUEBAS.md`: filas G1 y G4 de sección 3.
- - `docs/04-BITACORA.md`: `CHK-036`.
+- `README.md`: encabezado, sección 4.2, filas G1 y G4 de 4.4, fila Formato de 13, sección 16.
+- `docs/01-REQUISITOS-RUBRICA.md`: línea 4 y checklist de sección 6.
+- `docs/03-PLAN-PRUEBAS.md`: filas G1 y G4 de sección 3.
+- `docs/04-BITACORA.md`: `CHK-036`.
 - **Verificaciones (2026-11-22):**
- - `npx tsc --noEmit`: exit 0.
- - `npx jest`: 7 suites, 22/22 pruebas aprobadas.
- - `npm run lint` (`eslint .`): sin errores en la salida.
- - `npm run format:check`: pasa.
- - `npx prettier --check .`: falla en 4 archivos: `assets/expo.icon/icon.json`, `README.md`, `docs/03-PLAN-PRUEBAS.md`, `docs/04-BITACORA.md`. La afirmación previa de G1 que solo citaba `icon.json` era incorrecta y queda corregida.
- - Enlaces relativos de `README.md`, `AGENTS.md` y `docs/01` a `docs/04`: todos resuelven.
- - `docs/evidencias/capturas/`: 32 archivos, coinciden con EV-01 a EV-32 de `README.md` sección 10.
- - Versiones de `README.md` sección 5.1 frente a `package.json`: coinciden (expo ~58.0.26, expo-router ~58.0.32, expo-sqlite ~58.0.18, expo-location ~58.0.22, expo-camera ~58.0.14, expo-crypto ~58.0.8, expo-file-system ~58.0.14, typescript ~6.0.3, jest ~30.5.2, jest-expo ~58.0.15, RNTL ^14.1.0, eslint 9.39.5, prettier 3.9.10).
- - `README.md`: sin rutas de unidad ni de usuario.
+- `npx tsc --noEmit`: exit 0.
+- `npx jest`: 7 suites, 22/22 pruebas aprobadas.
+- `npm run lint` (`eslint .`): sin errores en la salida.
+- `npm run format:check`: pasa.
+- `npx prettier --check .`: falla en 4 archivos: `assets/expo.icon/icon.json`, `README.md`, `docs/03-PLAN-PRUEBAS.md`, `docs/04-BITACORA.md`. La afirmación previa de G1 que solo citaba `icon.json` era incorrecta y queda corregida.
+- Enlaces relativos de `README.md`, `AGENTS.md` y `docs/01` a `docs/04`: todos resuelven.
+- `docs/evidencias/capturas/`: 32 archivos, coinciden con EV-01 a EV-32 de `README.md` sección 10.
+- Versiones de `README.md` sección 5.1 frente a `package.json`: coinciden (expo ~58.0.26, expo-router ~58.0.32, expo-sqlite ~58.0.18, expo-location ~58.0.22, expo-camera ~58.0.14, expo-crypto ~58.0.8, expo-file-system ~58.0.14, typescript ~6.0.3, jest ~30.5.2, jest-expo ~58.0.15, RNTL ^14.1.0, eslint 9.39.5, prettier 3.9.10).
+- `README.md`: sin rutas de unidad ni de usuario.
 - **Riesgos:**
- - Entrega sin Word o PDF: penalización posible según el enunciado (decisión del usuario).
- - Portada incompleta: profesor NO VERIFICADO y logo no proporcionado.
- - `prettier --check .` falla en 3 Markdown: no corregido en esta tarea para no reformatear documentos fuera de alcance.
+- Entrega sin Word o PDF: penalización posible según el enunciado (decisión del usuario).
+- Portada incompleta: profesor NO VERIFICADO y logo no proporcionado.
+- `prettier --check .` falla en 3 Markdown: no corregido en esta tarea para no reformatear documentos fuera de alcance.
 - **Siguiente acción:** equipo: decidir si entrega Word o PDF; completar profesor y logo; revisión final del README.
 - **Autorización necesaria:** ninguna para commit local. Entrega o publicación: decisión del equipo.
 
@@ -849,16 +849,16 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** verificaciones de este checkpoint (abajo). Sin pruebas nuevas.
 - **Commit real:** pendiente de commit local (este checkpoint). Anterior: CHK-036 `10c3d19`.
 - **Archivos cambiados:**
- - `README.md`: encabezado (profesor), filas de exención en 2.3, 3.2, 6, 13 y 16.2, filas de pantallazos y portada, secciones 16.3 y 16.4.
- - `docs/01-REQUISITOS-RUBRICA.md`: línea 13, sección 4 (punto 1), checklist de sección 6 (portada y exención).
- - `docs/02-DECISIONES-ARQUITECTURA.md`: sección 6, riesgo de APIs.
- - `docs/04-BITACORA.md`: `CHK-037`.
+- `README.md`: encabezado (profesor), filas de exención en 2.3, 3.2, 6, 13 y 16.2, filas de pantallazos y portada, secciones 16.3 y 16.4.
+- `docs/01-REQUISITOS-RUBRICA.md`: línea 13, sección 4 (punto 1), checklist de sección 6 (portada y exención).
+- `docs/02-DECISIONES-ARQUITECTURA.md`: sección 6, riesgo de APIs.
+- `docs/04-BITACORA.md`: `CHK-037`.
 - **Verificaciones (2026-11-22):**
- - Enlaces de imágenes en `README.md`: las 32 rutas de `docs/evidencias/capturas/` existen; las 10 de la sección 16.4 están embebidas con ruta relativa.
- - Captura original del chat del docente: no versionada en el repositorio (contiene datos de terceros). Fecha exacta del mensaje: NO VERIFICADO (la captura solo muestra "Wednesday 8:50 PM").
+- Enlaces de imágenes en `README.md`: las 32 rutas de `docs/evidencias/capturas/` existen; las 10 de la sección 16.4 están embebidas con ruta relativa.
+- Captura original del chat del docente: no versionada en el repositorio (contiene datos de terceros). Fecha exacta del mensaje: NO VERIFICADO (la captura solo muestra "Wednesday 8:50 PM").
 - **Riesgos:**
- - Puntaje final según la rúbrica tras la excepción: NO VERIFICADO; el docente no indicó recálculo.
- - Logo institucional no proporcionado; formato Word/PDF del enunciado no cumplido en Markdown (decisión del usuario, CHK-036).
+- Puntaje final según la rúbrica tras la excepción: NO VERIFICADO; el docente no indicó recálculo.
+- Logo institucional no proporcionado; formato Word/PDF del enunciado no cumplido en Markdown (decisión del usuario, CHK-036).
 - **Siguiente acción:** equipo: decidir logo institucional y si entrega Word o PDF; revisión final del README.
 - **Autorización necesaria:** ninguna para commit local. Entrega o publicación: decisión del equipo.
 
@@ -871,23 +871,23 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Requisitos asociados:** RF-13 (CP-MOV-06); RF-12 (aviso GPS, CP-MOV-05).
 - **Pruebas asociadas:** CP-MOV-06 (sin prueba nueva); CP-MOV-05 (aviso, sin captura nueva).
 - **Verificaciones (2026-11-22):**
- - `npx tsc --noEmit`: exit 0.
- - `npx jest src/features/location`: 5/5 (incluye `leerPermisoUbicacion`).
- - `npx jest src/features/location src/features/tasks` tras reemplazar "Volver": 14/14; `grep 'label="Volver"' src`: sin coincidencias.
- - Flecha y aviso: sin verificación en Android.
+- `npx tsc --noEmit`: exit 0.
+- `npx jest src/features/location`: 5/5 (incluye `leerPermisoUbicacion`).
+- `npx jest src/features/location src/features/tasks` tras reemplazar "Volver": 14/14; `grep 'label="Volver"' src`: sin coincidencias.
+- Flecha y aviso: sin verificación en Android.
 - **Commit real:** `8a84fb9` (código, README y docs/03; CHK-038). Logo institucional: `0f91064`. Anterior: CHK-037 `fff2db7`.
 - **Archivos cambiados:**
- - `src/components/BackButton.tsx` (nuevo): flecha `<-`, 48×48, reemplaza "Volver".
- - `src/app/tasks/[id].tsx`, `src/app/tasks/detalle/[id].tsx`, `src/features/tasks/components/TaskForm.tsx`: uso de `BackButton`.
- - `src/app/tasks/new.tsx`: `avisarSinUbicacion` tras guardar sin ubicación.
- - `src/features/location/ubicacion.ts` y `ubicacion.test.ts`: `leerPermisoUbicacion`.
- - `README.md`: CP-MOV-06 en `VALIDACIÓN PARCIAL`; logo institucional (cambio del usuario, sin commit previo).
- - `docs/03-PLAN-PRUEBAS.md`: CP-MOV-06 en línea de estado, G2, G3 y entrada `EV-30`.
- - `docs/assets/logo-instituto-profesional-san-sebastian.png`: logo institucional (añadido por el usuario; referenciado en `README.md`).
- - `docs/04-BITACORA.md`: `CHK-038`.
+- `src/components/BackButton.tsx` (nuevo): flecha `<-`, 48×48, reemplaza "Volver".
+- `src/app/tasks/[id].tsx`, `src/app/tasks/detalle/[id].tsx`, `src/features/tasks/components/TaskForm.tsx`: uso de `BackButton`.
+- `src/app/tasks/new.tsx`: `avisarSinUbicacion` tras guardar sin ubicación.
+- `src/features/location/ubicacion.ts` y `ubicacion.test.ts`: `leerPermisoUbicacion`.
+- `README.md`: CP-MOV-06 en `VALIDACIÓN PARCIAL`; logo institucional (cambio del usuario, sin commit previo).
+- `docs/03-PLAN-PRUEBAS.md`: CP-MOV-06 en línea de estado, G2, G3 y entrada `EV-30`.
+- `docs/assets/logo-instituto-profesional-san-sebastian.png`: logo institucional (añadido por el usuario; referenciado en `README.md`).
+- `docs/04-BITACORA.md`: `CHK-038`.
 - **Riesgos:**
- - Aviso GPS: con `canAskAgain` true solo muestra "Aceptar"; el botón "Abrir ajustes" aparece solo cuando el permiso no puede pedirse de nuevo. Diverge de la opción aprobada (botón "Abrir ajustes" siempre). Pendiente de decisión.
- - Cambios de CP-MOV-05 (aviso nuevo) no revalidados en físico; aprobación previa de CP-MOV-05 sin el aviso.
+- Aviso GPS: con `canAskAgain` true solo muestra "Aceptar"; el botón "Abrir ajustes" aparece solo cuando el permiso no puede pedirse de nuevo. Diverge de la opción aprobada (botón "Abrir ajustes" siempre). Pendiente de decisión.
+- Cambios de CP-MOV-05 (aviso nuevo) no revalidados en físico; aprobación previa de CP-MOV-05 sin el aviso.
 - **Siguiente acción:** decidir si el aviso muestra "Abrir ajustes" también cuando `canAskAgain` es true; captura en Xiaomi del aviso (nuevo EV).
 - **Autorización necesaria:** ninguna para commit local.
 
@@ -901,23 +901,24 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** CP-MOV-05 (`EV-33` a `EV-36`, `EV-38`, `EV-39`, `EV-41`); CP-MOV-06 (`EV-40`, `EV-43`, `EV-44`); flecha Volver (`EV-35`, `EV-39`).
 - **Commit real:** pendiente de commit local (este checkpoint). Anterior: CHK-038 `8a84fb9`; logo `0f91064`; hashes `d15659e`.
 - **Archivos cambiados:**
- - `docs/evidencias/capturas/EV-33-…` a `EV-44-…` (12 archivos nuevos; copias de capturas del usuario, sin recorte).
- - `README.md`: sección 10 (filas EV-33 a EV-44) y referencias de evidencias en la sección 16.
- - `docs/03-PLAN-PRUEBAS.md`: sección 4 (EV-33 a EV-44).
- - `src/app/tasks/detalle/[id].tsx`: `BackButton` movido al inicio del `ScrollView` (arriba a la izquierda).
- - `docs/04-BITACORA.md`: `CHK-039`.
+- `docs/evidencias/capturas/EV-33-…` a `EV-44-…` (12 archivos nuevos; copias de capturas del usuario, sin recorte).
+- `README.md`: sección 10 (filas EV-33 a EV-44) y referencias de evidencias en la sección 16.
+- `docs/03-PLAN-PRUEBAS.md`: sección 4 (EV-33 a EV-44).
+- `src/app/tasks/detalle/[id].tsx`: `BackButton` movido al inicio del `ScrollView` (arriba a la izquierda).
+- `docs/04-BITACORA.md`: `CHK-039`.
 - **Observado:**
- - Flecha Volver: en detalle (`EV-35`) la flecha queda debajo del contenido; en "Nueva tarea" (`EV-39`) queda arriba a la izquierda. Defecto confirmado por el usuario: la flecha debe ir arriba a la izquierda. Corregido en código; verificación en físico NO VERIFICADA.
- - Aviso GPS denegado: sin captura del aviso tras guardar. La tarea se guardó con `Sin ubicación registrada` (`EV-34`, `EV-38`). Aviso: NO VERIFICADO.
- - Permiso de ubicación: `EV-41` muestra "No permitir" y `EV-36` muestra "Con permiso permanente", ambos a 9:05. No pueden ser simultáneos; el nombre de archivo de WhatsApp no garantiza cronología. Estado del permiso al guardar: NO VERIFICADO.
- - Reapertura sin red (CP-MOV-06): con modo avión activo, la app no abre (`EV-40`, `EV-43`). El error log muestra `java.io.IOException: Failed to download remote update` (`EV-44`).
- - Causa probable: [INFERENCIA] Expo Go en modo desarrollo descarga el bundle desde Metro; sin red no hay bundle. El fallo no prueba pérdida de datos, porque la app no llega a abrir.
+- Flecha Volver: en detalle (`EV-35`) la flecha queda debajo del contenido; en "Nueva tarea" (`EV-39`) queda arriba a la izquierda. Defecto confirmado por el usuario: la flecha debe ir arriba a la izquierda. Corregido en código; verificación en físico NO VERIFICADA.
+- Aviso GPS denegado: sin captura del aviso tras guardar. La tarea se guardó con `Sin ubicación registrada` (`EV-34`, `EV-38`). Aviso: NO VERIFICADO.
+- Permiso de ubicación: `EV-41` muestra "No permitir" y `EV-36` muestra "Con permiso permanente", ambos a 9:05. No pueden ser simultáneos; el nombre de archivo de WhatsApp no garantiza cronología. Estado del permiso al guardar: NO VERIFICADO.
+- Reapertura sin red (CP-MOV-06): con modo avión activo, la app no abre (`EV-40`, `EV-43`). El error log muestra `java.io.IOException: Failed to download remote update` (`EV-44`).
+- Causa probable: [INFERENCIA] Expo Go en modo desarrollo descarga el bundle desde Metro; sin red no hay bundle. El fallo no prueba pérdida de datos, porque la app no llega a abrir.
 - **Verificaciones:** sin código ni pruebas en este checkpoint (solo registro de evidencias).
 - **Riesgos:**
- - El criterio CP-MOV-06 (reabrir sin red) no es verificable en Expo Go en modo desarrollo. Alternativa: build de desarrollo o standalone; docs/02 decisión 16 la marca no viable en el equipo actual.
- - Aviso GPS denegado sin verificar en físico; CP-MOV-05 aprobado sin el aviso.
+- El criterio CP-MOV-06 (reabrir sin red) no es verificable en Expo Go en modo desarrollo. Alternativa: build de desarrollo o standalone; docs/02 decisión 16 la marca no viable en el equipo actual.
+- Aviso GPS denegado sin verificar en físico; CP-MOV-05 aprobado sin el aviso.
 - **Siguiente acción:** equipo: (1) verificar en Xiaomi la flecha arriba a la izquierda en detalle (corregida en código; `npx tsc --noEmit` y `npx jest` OK tras el cambio); (2) decidir si "Abrir ajustes" aparece también con `canAskAgain` true; (3) decidir tratamiento de CP-MOV-06 (aceptar limitación de Expo Go o build); (4) revisar y aprobar o rechazar EV-33 a EV-44; (5) capturar el aviso GPS denegado tras guardar.
 - **Autorización necesaria:** ninguna para commit local. Cambiar estado de CP-MOV-05/06 o aceptar limitación de Expo Go: decisión del usuario.
+
 ## CHK-040 - Verificación en Xiaomi de la flecha Volver en detalle (CP-MOV-05); EV-45
 
 - **Fecha:** 2026-11-22, 9:14 AM
@@ -928,10 +929,10 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** CP-MOV-05 (`EV-45`).
 - **Commit real:** código `651c98c`; capturas `22859c8`. Este checkpoint: pendiente de commit local.
 - **Archivos cambiados:**
- - `docs/evidencias/capturas/EV-45-telefono-fisico-cp-mov-05-detalle-flecha-arriba-0914.jpeg` (copia de la captura del usuario, sin recorte).
- - `docs/03-PLAN-PRUEBAS.md`: `EV-35` y `EV-45`.
- - `README.md`: filas `EV-35` y `EV-45`.
- - `docs/04-BITACORA.md`: `CHK-040`.
+- `docs/evidencias/capturas/EV-45-telefono-fisico-cp-mov-05-detalle-flecha-arriba-0914.jpeg` (copia de la captura del usuario, sin recorte).
+- `docs/03-PLAN-PRUEBAS.md`: `EV-35` y `EV-45`.
+- `README.md`: filas `EV-35` y `EV-45`.
+- `docs/04-BITACORA.md`: `CHK-040`.
 - **Acciones de proceso:** Metro reiniciado con `npx expo start --lan --port 8081 --clear` y `CI=0` (con `CI=true` las recargas quedaban desactivadas; con `CI=` vacío Expo falla). Expo Go recargado en el teléfono.
 - **Observado:** detalle "Prueba GPS" con `←` arriba a la izquierda, `GPS denegado`, `Sin foto`, `Sin ubicación registrada`.
 - **Verificaciones:** `npx tsc --noEmit` exit 0; `npx jest` 7 suites, 24/24 (ejecutados tras el cambio de código).
@@ -949,13 +950,14 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** CP-MOV-06 (`EV-30`, `EV-37`, `EV-40`, `EV-42`, `EV-43`, `EV-44`).
 - **Commit real:** NO VERIFICADO (pendiente de commit local).
 - **Archivos cambiados:**
- - `README.md`: fila CP-MOV-06 de la tabla de estado.
- - `docs/04-BITACORA.md`: `CHK-041`.
+- `README.md`: fila CP-MOV-06 de la tabla de estado.
+- `docs/04-BITACORA.md`: `CHK-041`.
 - **Decisión del usuario:** aceptar la limitación: en Expo Go de desarrollo, reabrir la app sin red falla (`Failed to download remote update`, `EV-44`). Persistencia offline no verificada en modo Expo Go.
 - **Abrir ajustes:** el botón aparece solo si `canAskAgain` es `false` (`src/app/tasks/new.tsx`, rama `puedePedirDeNuevo`). Con `canAskAgain` `true` el aviso tiene solo "Aceptar".
 - **Riesgos:** RF-13 sin validación offline en build nativo. Riesgo aceptado por el usuario para la entrega con Expo Go.
 - **Siguiente acción:** revisión de EV-33 a EV-44 por el usuario.
 - **Autorización necesaria:** ninguna para commit local.
+
 ## CHK-042 - Revisión humana de EV-33 a EV-44 (CP-MOV-05 y CP-MOV-06)
 
 - **Fecha:** 2026-11-22
@@ -966,13 +968,13 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** CP-MOV-05, CP-MOV-06.
 - **Commit real:** NO VERIFICADO (pendiente de commit local).
 - **Archivos cambiados:**
- - `docs/03-PLAN-PRUEBAS.md`: resultado de `EV-33`, `EV-34`, `EV-36`, `EV-38` a `EV-41`, `EV-43`, `EV-44`.
- - `README.md`: tabla de evidencias, mismas filas.
- - `docs/04-BITACORA.md`: `CHK-042`.
+- `docs/03-PLAN-PRUEBAS.md`: resultado de `EV-33`, `EV-34`, `EV-36`, `EV-38` a `EV-41`, `EV-43`, `EV-44`.
+- `README.md`: tabla de evidencias, mismas filas.
+- `docs/04-BITACORA.md`: `CHK-042`.
 - **Riesgos:**
- - `EV-36` ("Con permiso permanente") y `EV-41` ("No permitir"), ambas a 9:05 AM, se contradicen. Ambas aprobadas como captura de lo observado; el orden real es NO VERIFICADO. Resolver antes de presentar el caso.
- - `EV-39`: título "Editado" con contador `8/100` y 7 letras visibles (defecto de contador no resuelto; causa NO VERIFICADA, mismo patrón que `EV-22`).
- - "Abrir ajustes" solo aparece si `canAskAgain` es `false` (ver CHK-041). `EV-41` con `No permitir` no prueba esa rama; no hay captura del botón.
+- `EV-36` ("Con permiso permanente") y `EV-41` ("No permitir"), ambas a 9:05 AM, se contradicen. Ambas aprobadas como captura de lo observado; el orden real es NO VERIFICADO. Resolver antes de presentar el caso.
+- `EV-39`: título "Editado" con contador `8/100` y 7 letras visibles (defecto de contador no resuelto; causa NO VERIFICADA, mismo patrón que `EV-22`).
+- "Abrir ajustes" solo aparece si `canAskAgain` es `false` (ver CHK-041). `EV-41` con `No permitir` no prueba esa rama; no hay captura del botón.
 - **Siguiente acción:** decidir cómo tratar la contradicción `EV-36`/`EV-41` y el contador de `EV-39`; capturar el aviso GPS denegado tras guardar (pendiente de CHK-039).
 - **Autorización necesaria:** ninguna para commit local.
 
@@ -986,17 +988,19 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** CP-MOV-01 a CP-MOV-06 (sin cambios de estado en esta entrada).
 - **Commit real:** `fad01e8` (CHK-041 y CHK-042). Este checkpoint: pendiente de commit local.
 - **Archivos cambiados:**
- - `docs/04-BITACORA.md`: `CHK-043`.
+- `docs/04-BITACORA.md`: `CHK-043`.
 - **Decisiones de cierre (tomadas por el agente, sin aprobar evidencia):**
- 1. `EV-36` y `EV-41` quedan tal como el usuario las aprobó (CHK-042). La contradicción de permiso (9:05 AM) se registra como riesgo abierto en CP-MOV-05; no se reabre el caso ni se cambia su estado.
- 2. Contador `8/100` de `EV-39` se registra como defecto conocido, no corregido en esta etapa. Corregirlo requiere cambio de código y nueva evidencia; fuera del alcance de cierre.
- 3. Aviso GPS denegado tras guardar (CHK-039) queda como captura pendiente, no bloquea el cierre de CP-MOV-05 porque el caso aprobado es "tarea sin coordenadas, sin bloqueo".
- 4. No se abren nuevas etapas ni cambios de código en esta sesión.
+
+1.  `EV-36` y `EV-41` quedan tal como el usuario las aprobó (CHK-042). La contradicción de permiso (9:05 AM) se registra como riesgo abierto en CP-MOV-05; no se reabre el caso ni se cambia su estado.
+2.  Contador `8/100` de `EV-39` se registra como defecto conocido, no corregido en esta etapa. Corregirlo requiere cambio de código y nueva evidencia; fuera del alcance de cierre.
+3.  Aviso GPS denegado tras guardar (CHK-039) queda como captura pendiente, no bloquea el cierre de CP-MOV-05 porque el caso aprobado es "tarea sin coordenadas, sin bloqueo".
+4.  No se abren nuevas etapas ni cambios de código en esta sesión.
+
 - **Riesgos abiertos (no resueltos):**
- - Contradicción `EV-36`/`EV-41` en CP-MOV-05.
- - Defecto de contador `EV-39`.
- - RF-13 offline sin validación en build nativo (riesgo aceptado por el usuario, CHK-041).
- - "Abrir ajustes" sin captura de la rama `canAskAgain: false`.
+- Contradicción `EV-36`/`EV-41` en CP-MOV-05.
+- Defecto de contador `EV-39`.
+- RF-13 offline sin validación en build nativo (riesgo aceptado por el usuario, CHK-041).
+- "Abrir ajustes" sin captura de la rama `canAskAgain: false`.
 - **Verificaciones:** `git status --short` limpio tras `fad01e8`.
 - **Siguiente acción:** ninguna del agente. Equipo: decidir si captura pendiente y contradicción se resuelven antes de la entrega o se declaran como riesgo en el informe.
 - **Autorización necesaria:** ninguna para commit local.
@@ -1011,9 +1015,9 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** ninguna (documental).
 - **Commit real:** logo `0f91064` (ya existente, añadido por el usuario). CHK-044: `692b54b`.
 - **Archivos cambiados:**
- - `docs/01-REQUISITOS-RUBRICA.md`: línea 69, portada.
- - `docs/03-PLAN-PRUEBAS.md`: fila G4.
- - `docs/04-BITACORA.md`: `CHK-044`.
+- `docs/01-REQUISITOS-RUBRICA.md`: línea 69, portada.
+- `docs/03-PLAN-PRUEBAS.md`: fila G4.
+- `docs/04-BITACORA.md`: `CHK-044`.
 - **Verificaciones:** `git ls-files docs/assets` lista el logo; `git log -- docs/assets/...` muestra `0f91064`; README línea 3 lo referencia.
 - **Riesgos:** ninguno nuevo. Los checkpoints CHK-036, CHK-038 y CHK-043 dicen "logo no proporcionado" como estado de su fecha; no se reescriben (historial).
 - **Siguiente acción:** equipo: confirmar si la entrega es solo README (Markdown) o también Word o PDF.
@@ -1029,16 +1033,16 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** verificación documental (G5).
 - **Commit real:** CHK-045: `cc8be62`.
 - **Archivos cambiados:**
- - `docs/01-REQUISITOS-RUBRICA.md`: línea 71, Word o PDF.
- - `docs/03-PLAN-PRUEBAS.md`: fila G4.
- - `docs/04-BITACORA.md`: `CHK-045`.
+- `docs/01-REQUISITOS-RUBRICA.md`: línea 71, Word o PDF.
+- `docs/03-PLAN-PRUEBAS.md`: fila G4.
+- `docs/04-BITACORA.md`: `CHK-045`.
 - **Verificaciones:**
- - Script sobre `README.md`, `AGENTS.md` y `docs/*.md`: 6 archivos, 75 enlaces relativos, 0 rotos, 0 absolutos (`/`, `C:`, `\`).
- - `grep` de rutas de usuario y unidades (`Desktop`, `sandr`, `Users`, `C:\`): sin coincidencias en `README.md`; coincidencias en `docs/03` y `docs/04` solo en IP LAN de Metro (redactada en CHK-046) y `localhost`/`127.0.0.1` dentro de registros históricos de evidencias.
+- Script sobre `README.md`, `AGENTS.md` y `docs/*.md`: 6 archivos, 75 enlaces relativos, 0 rotos, 0 absolutos (`/`, `C:`, `\`).
+- `grep` de rutas de usuario y unidades (`Desktop`, `sandr`, `Users`, `C:\`): sin coincidencias en `README.md`; coincidencias en `docs/03` y `docs/04` solo en IP LAN de Metro (redactada en CHK-046) y `localhost`/`127.0.0.1` dentro de registros históricos de evidencias.
 - **Riesgos:**
- - Entrega sin Word o PDF: incumple el formato del enunciado; aceptado por el usuario.
- - IP LAN de Metro: redactada en `docs/03` y `docs/04` (CHK-046). Riesgo cerrado.
- - Riesgos abiertos de CHK-043 sin cambio.
+- Entrega sin Word o PDF: incumple el formato del enunciado; aceptado por el usuario.
+- IP LAN de Metro: redactada en `docs/03` y `docs/04` (CHK-046). Riesgo cerrado.
+- Riesgos abiertos de CHK-043 sin cambio.
 - **Siguiente acción:** equipo: revisión final del README.
 - **Autorización necesaria:** ninguna para commit local.
 
@@ -1052,8 +1056,8 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** verificación documental.
 - **Commit real:** CHK-046: `af79031`.
 - **Archivos cambiados:**
- - `docs/03-PLAN-PRUEBAS.md`: líneas 59 y 63, `EV-11` y `EV-18`.
- - `docs/04-BITACORA.md`: líneas 309, 546, 1040 y 1042; `CHK-046`.
+- `docs/03-PLAN-PRUEBAS.md`: líneas 59 y 63, `EV-11` y `EV-18`.
+- `docs/04-BITACORA.md`: líneas 309, 546, 1040 y 1042; `CHK-046`.
 - **Verificaciones:** `grep -rn "192\.168\.1\.81"` en `README.md`, `AGENTS.md` y `docs/`: sin coincidencias (exit 1).
 - **Riesgos:** ninguno nuevo. Texto de CHK-045 línea 1037 corregido en esta misma entrega.
 - **Siguiente acción:** equipo: revisión final del README.
@@ -1069,16 +1073,16 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** CP-MOV-05 y CP-MOV-06 (estado por decisión del usuario; sin nueva ejecución).
 - **Commit real:** `e55b13c` (`docs: unifica estado de CP-MOV-06 y RF-13 y registra CHK-047`), rama `main`, sin remoto.
 - **Archivos cambiados:**
- - `docs/03-PLAN-PRUEBAS.md`: líneas 3, 43, 44, 83, 87 y 104 (estado de CP-MOV-05/06 y RF-13).
- - `README.md`: líneas 94, 135, 148 y 510.
- - `docs/04-BITACORA.md`: `CHK-047`.
+- `docs/03-PLAN-PRUEBAS.md`: líneas 3, 43, 44, 83, 87 y 104 (estado de CP-MOV-05/06 y RF-13).
+- `README.md`: líneas 94, 135, 148 y 510.
+- `docs/04-BITACORA.md`: `CHK-047`.
 - **Decisiones del usuario:**
- - CP-MOV-06 `APROBADO` con riesgo aceptado: el fallo al reabrir sin red en Expo Go de desarrollo (`EV-30`, `EV-44`) se atribuye a conexión con Metro; no se corrige en esta etapa; build nativo no ejecutado.
- - `EV-41` ("No permitir") es el estado vigente del permiso de ubicación; `EV-36` queda `REEMPLAZADA` como historial.
+- CP-MOV-06 `APROBADO` con riesgo aceptado: el fallo al reabrir sin red en Expo Go de desarrollo (`EV-30`, `EV-44`) se atribuye a conexión con Metro; no se corrige en esta etapa; build nativo no ejecutado.
+- `EV-41` ("No permitir") es el estado vigente del permiso de ubicación; `EV-36` queda `REEMPLAZADA` como historial.
 - **Verificaciones:** `grep` de `VALIDADO`, `ACEPTADO` y `VALIDACIÓN PARCIAL` en `README.md`, `AGENTS.md` y `docs/`: sin estados vigentes obsoletos; las ocurrencias restantes son historial de checkpoints anteriores (CHK-003 a CHK-038) o reglas de `AGENTS.md`. `grep` de `CHK-047`: definido en esta bitácora y referenciado en `README.md` y `docs/03`.
 - **Riesgos:**
- - Cierre de la app al cortar red: aceptado; causa probable conexión con Metro, sin verificar en build nativo.
- - Contradicción de permiso (`EV-36`/`EV-41`, 9:05 AM): resuelta por decisión del usuario; orden cronológico sigue como [INFERENCIA].
+- Cierre de la app al cortar red: aceptado; causa probable conexión con Metro, sin verificar en build nativo.
+- Contradicción de permiso (`EV-36`/`EV-41`, 9:05 AM): resuelta por decisión del usuario; orden cronológico sigue como [INFERENCIA].
 - **Siguiente acción:** equipo: revisión final del README.
 - **Autorización necesaria:** ninguna para commit local.
 
@@ -1092,12 +1096,12 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Pruebas asociadas:** ninguna (documental). Verificación: logo de portada existe en `docs/assets/`; profesor confirmado en README 16.3 (CHK-044).
 - **Commit real:** este checkpoint se commitea junto con `README.md`; hash visible en `git log`, no escrito aquí para evitar autorreferencia.
 - **Archivos cambiados:**
- - `README.md`: líneas 1-21, portada académica (institución, logo, título, asignatura, integrantes, profesor, fecha).
- - `docs/04-BITACORA.md`: `CHK-047` (commit real `e55b13c`) y `CHK-048`.
+- `README.md`: líneas 1-21, portada académica (institución, logo, título, asignatura, integrantes, profesor, fecha).
+- `docs/04-BITACORA.md`: `CHK-047` (commit real `e55b13c`) y `CHK-048`.
 - **Decisiones del usuario:** cerrar el proyecto; documento de entrega en Markdown (`README.md`), sin Word/PDF.
 - **Riesgos:**
- - G1 `PARCIAL`: `prettier --check` falla en 4 archivos (`assets/expo.icon/icon.json`, `README.md`, `docs/03-PLAN-PRUEBAS.md`, `docs/04-BITACORA.md`).
- - G4 `PARCIAL`: formato Word/PDF (nombre de archivo, Arial 12, interlineado, numeración) no cumplido.
- - Riesgos de CHK-047 sin cambio.
+- G1 `PARCIAL`: `prettier --check` falla en 4 archivos (`assets/expo.icon/icon.json`, `README.md`, `docs/03-PLAN-PRUEBAS.md`, `docs/04-BITACORA.md`).
+- G4 `PARCIAL`: formato Word/PDF (nombre de archivo, Arial 12, interlineado, numeración) no cumplido.
+- Riesgos de CHK-047 sin cambio.
 - **Siguiente acción:** ninguna en el repositorio. Revisión humana final del equipo.
 - **Autorización necesaria:** push, merge o publicación no realizados; requieren autorización del equipo.
