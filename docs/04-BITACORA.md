@@ -1018,3 +1018,26 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Riesgos:** ninguno nuevo. Los checkpoints CHK-036, CHK-038 y CHK-043 dicen "logo no proporcionado" como estado de su fecha; no se reescriben (historial).
 - **Siguiente acción:** equipo: confirmar si la entrega es solo README (Markdown) o también Word o PDF.
 - **Autorización necesaria:** ninguna para commit local.
+
+## CHK-045 - Entrega solo en Markdown; verificación final de rutas relativas
+
+- **Fecha:** 2026-11-22
+- **Agente:** agente OMP
+- **Objetivo:** cerrar la entrega en `README.md` sin Word ni PDF y verificar rutas relativas.
+- **Estado:** G4 `APROBADO` por decisión del usuario, con excepción de formato Word o PDF del enunciado (registrada).
+- **Requisitos asociados:** entrega académica (`docs/01` sección 6); RUB-05 riesgo por exención de APIs ya registrado.
+- **Pruebas asociadas:** verificación documental (G5).
+- **Commit real:** pendiente de commit local (este checkpoint).
+- **Archivos cambiados:**
+ - `docs/01-REQUISITOS-RUBRICA.md`: línea 71, Word o PDF.
+ - `docs/03-PLAN-PRUEBAS.md`: fila G4.
+ - `docs/04-BITACORA.md`: `CHK-045`.
+- **Verificaciones:**
+ - Script sobre `README.md`, `AGENTS.md` y `docs/*.md`: 6 archivos, 75 enlaces relativos, 0 rotos, 0 absolutos (`/`, `C:`, `\`).
+ - `grep` de rutas de usuario y unidades (`Desktop`, `sandr`, `Users`, `C:\`): sin coincidencias en `README.md`; coincidencias en `docs/03` y `docs/04` solo en IP LAN de Metro (`192.168.1.81`) y `localhost`/`127.0.0.1` dentro de registros históricos de evidencias.
+- **Riesgos:**
+ - Entrega sin Word o PDF: incumple el formato del enunciado; aceptado por el usuario.
+ - IP LAN `192.168.1.81` en `docs/03` y `docs/04` (registros de evidencia); no es ruta de archivo, pero identifica la red local. Decisión del equipo si se redacta antes de publicar.
+ - Riesgos abiertos de CHK-043 sin cambio.
+- **Siguiente acción:** equipo: decidir si se redacta la IP LAN en los registros históricos; revisión final del README.
+- **Autorización necesaria:** ninguna para commit local.
