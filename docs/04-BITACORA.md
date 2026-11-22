@@ -642,3 +642,27 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
  - Defecto "Something went wrong" sigue `ABIERTO` (CHK-026).
 - **Siguiente acción:** CP-MOV-05 (GPS denegado) y CP-MOV-06 físico con Expo abierto antes de desactivar la red.
 - **Autorización necesaria:** ninguna. Commit local permitido por `AGENTS.md` sección 5.
+
+## CHK-028 - Evidencias EV-26 a EV-29 de CP-MOV-05 (GPS denegado) en Xiaomi
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** registrar capturas aportadas por el usuario para CP-MOV-05 en teléfono físico.
+- **Estado:** `VALIDACIÓN PARCIAL` para CP-MOV-05. Faltan captura del permiso de ubicación denegado y de la pantalla de detalle.
+- **Requisitos asociados:** RF-12, RUB-02.
+- **Pruebas asociadas:** CP-MOV-05.
+- **Commit real:** pendiente de commit local. Commit previo: `b1cbeba`.
+- **Evidencias nuevas:** `EV-26` (lista vacía, 9:21 PM), `EV-27` (formulario "Prueba GPS" / "GPS denegado", 9:22 PM), `EV-28` (tarjeta "Sin ubicación registrada", 9:22 PM), `EV-29` (misma tarjeta con modo avión, 9:22 PM).
+- **Archivos cambiados:**
+ - `docs/03-PLAN-PRUEBAS.md`: `EV-26` a `EV-29`.
+ - `docs/04-BITACORA.md`: `CHK-028`.
+ - `docs/evidencias/capturas/EV-26` a `EV-29` (`.jpeg`).
+- **Verificaciones:** lectura visual de las capturas. Sin pruebas de software.
+- **Riesgos:**
+ - Permiso de ubicación denegado: no visible en ninguna captura.
+ - Pantalla de detalle con `Sin ubicación registrada`: no capturada.
+ - Modelo del teléfono y modalidad Expo: NO VERIFICADO en estas capturas; se asume el mismo Xiaomi de `EV-25`.
+ - `EV-28` y `EV-29` tienen la misma hora; el orden y el estado de red entre ambas son NO VERIFICADO.
+ - `docs/03` (línea 3 y G3) aún cita CP-MOV-05 como OK por emulador (CHK-009); no se actualizó.
+- **Siguiente acción:** capturar denegación de ubicación en Ajustes y pantalla de detalle; decidir si `EV-26` a `EV-28` quedan `APROBADO`.
+- **Autorización necesaria:** ninguna para registrar. Aprobación de `EV-26` a `EV-28` por el equipo.
