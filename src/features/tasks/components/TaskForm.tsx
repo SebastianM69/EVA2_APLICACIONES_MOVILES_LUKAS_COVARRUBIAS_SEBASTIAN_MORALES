@@ -14,6 +14,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ActionButton } from '@/components/ActionButton';
+import { BackButton } from '@/components/BackButton';
 import { colors, spacing } from '@/theme/tokens';
 import {
   TASK_DESCRIPTION_MAX_LENGTH,
@@ -125,12 +126,7 @@ export function TaskForm({
           contentContainerStyle={styles.content}
           keyboardShouldPersistTaps="handled"
         >
-          <ActionButton
-            label="Volver"
-            variant="secondary"
-            accessibilityLabel="Volver a mis tareas"
-            onPress={requestCancel}
-          />
+          <BackButton onPress={requestCancel} />
 
           <View style={styles.headingGroup}>
             <Text style={styles.heading}>{heading}</Text>

@@ -39,3 +39,19 @@ export async function obtenerUbicacionActual(): Promise<UbicacionTarea | null> {
     return null;
   }
 }
+
+// Estado del permiso tras una lectura sin coordenadas. Devuelve null si la consulta falla.
+export async function leerPermisoUbicacion(): Promise<{
+  concedido: boolean;
+  puedePedirDeNuevo: boolean;
+} | null> {
+  try {
+    const permiso = await Location.getForegroundPermissionsAsync();
+    return {
+      concedido: permiso.granted,
+      puedePedirDeNuevo: permiso.canAskAgain,
+    };
+  } catch {
+    return null;
+  }
+}

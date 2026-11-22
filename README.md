@@ -1,5 +1,7 @@
 # To-Do móvil ampliada — Desarrollo de Aplicaciones Móviles, Unidad 2
 
+<img src="./docs/assets/logo-instituto-profesional-san-sebastian.png" alt="Logo Instituto Profesional San Sebastián" width="220">
+
 **Trabajo:** EVA2 — Aplicación To-Do móvil ampliada con cámara, GPS y autenticación local.
 **Asignatura:** Desarrollo de Aplicaciones Móviles, Unidad 2.
 **Integrantes:** Lukas Covarrubias y Sebastian Morales.
@@ -89,7 +91,7 @@ El alcance completo y su justificación están en [`docs/01`](./docs/01-REQUISIT
 | RF-10 | Validación de campos            | Límites de caracteres, recorte de espacios, contadores y mensajes no bloqueantes.   | CP-TAR-01                       |
 | RF-11 | Foto adjunta a tarea            | Foto con cámara; se guarda `foto_uri`; se muestra en el detalle.                    | CP-PER-01, CP-PER-02, CP-MOV-02, CP-MOV-03 |
 | RF-12 | Ubicación GPS al crear tarea    | Lectura única; se guardan `latitud` y `longitud`; se muestran en el detalle.        | CP-GPS-01, CP-GPS-02, CP-MOV-04, CP-MOV-05 |
-| RF-13 | Persistencia sin conexión       | Tareas, usuarios y sesión sobreviven cierre y reapertura en modo avión.             | CP-MOV-06 (con desviación)      |
+| RF-13 | Persistencia sin conexión       | Tareas, usuarios y sesión sobreviven cierre y reapertura en modo avión.             | CP-MOV-06 (VALIDACIÓN PARCIAL)      |
 
 Nota sobre "Manual (sin caso propio)": RF-07 se verifica en la navegación de la app, pero no tiene caso de prueba numerado en `docs/03`. Queda como pendiente de evidencia.
 
@@ -130,7 +132,7 @@ Resultados de los casos manuales (detalle en [`docs/03`](./docs/03-PLAN-PRUEBAS.
 | CP-MOV-03 | RF-11, RUB-02 | APROBADO | `EV-18` a `EV-24`, `EV-20` (emulador) | Cámara denegada: aviso no bloqueante |
 | CP-MOV-04 | RF-12 | APROBADO | `EV-08`, `EV-09` | Coordenadas visibles en tarjeta y detalle (teléfono físico) |
 | CP-MOV-05 | RF-12, RUB-02 | APROBADO por decisión del usuario | `EV-26` a `EV-28`, `EV-31`, `EV-32` | Tarea sin coordenadas. La captura del paso "denegar ubicación en Ajustes" no existe |
-| CP-MOV-06 | RF-13 | APROBADO con desviación | `EV-30` | Reabrir en modo avión falla (defecto abierto, sección 13) |
+| CP-MOV-06 | RF-13 | VALIDACIÓN PARCIAL | `EV-30` | Reabrir en modo avión falla (defecto abierto, sección 13); validación pendiente |
 
 Dispositivos de prueba:
 
@@ -143,9 +145,9 @@ Dispositivos de prueba:
 | --- | --- | --- |
 | G0 — Planificación | Reglas, requisitos y decisiones aprobados por el usuario | APROBADO (2026-11-21) |
 | G1 — Reproducibilidad | `npm ci`, `expo install --check`, Jest, arranque con Expo | PARCIAL: `npm run format:check` pasa. `prettier --check .` falla en 4 archivos: `assets/expo.icon/icon.json` (asset generado) y los Markdown `README.md`, `docs/03-PLAN-PRUEBAS.md`, `docs/04-BITACORA.md` (sin corregir; decisión pendiente) |
-| G2 — Funciones esenciales | RF-01 a RF-13 y casos automatizados aprobados | PARCIAL: RF-13 con desviación aceptada (CP-MOV-06) |
+| G2 — Funciones esenciales | RF-01 a RF-13 y casos automatizados aprobados | PARCIAL: RF-13 en VALIDACIÓN PARCIAL (CP-MOV-06) |
 | G3 — UX Android | CP-MOV-01 a CP-MOV-06 con evidencia auténtica y revisión humana | PARCIAL: defecto abierto al cortar red (`EV-30`) |
-| G4 — Entrega | Checklist de la sección 16 completo | PARCIAL: README como documento de entrega (decisión del usuario, 2026-11-22). Pendientes: profesor, logo y formato Word/PDF (sección 16) |
+| G4 — Entrega | Checklist de la sección 16 completo | PARCIAL: README como documento de entrega (decisión del usuario, 2026-11-22). Pendiente: formato Word/PDF (sección 16) |
 
 ---
 
@@ -492,7 +494,7 @@ Verificación de dependencias: `npx expo install --check` (CHK-003).
 | --- | --- | --- | --- |
 | Exención | Sin APIs externas, sincronización ni importación (RUB-04 y RUB-05, 48 puntos) | Tope de 52/100 si la rúbrica no se recalcula (NO VERIFICADO) | Confirmada por escrito por el profesor (sección 16.3): solo se evalúan APIs internas del dispositivo |
 | Stack | React Native + Expo en lugar de Ionic + Capacitor | Penalización posible por incumplir el enunciado | Aceptado; explicado en la sección 6.1 y en `docs/02` |
-| Defecto abierto | "Something went wrong" en Expo Go al abrir la app en modo avión (`EV-30`, reproducido en CHK-030) | CP-MOV-06 tiene desviación; reapertura offline no verificada en físico | Registrado. Causa NO VERIFICADO; "View error log" no capturado |
+| Defecto abierto | "Something went wrong" en Expo Go al abrir la app en modo avión (`EV-30`, reproducido en CHK-030) | CP-MOV-06 en VALIDACIÓN PARCIAL; reapertura offline no verificada en físico | Registrado. Causa NO VERIFICADO; "View error log" no capturado |
 | Emulador | No entrega posición a la app aunque `emu geo fix` responda OK (decisión 17) | RF-12 solo se verifica en teléfono físico | Aceptado por decisión del usuario |
 | Latencia GPS | Lectura única con timeout de 10 s; si vence, la tarea se guarda sin coordenadas | Coordenadas ausentes en lecturas lentas (una prueba en emulador tardó 13 s) | Decisión del equipo: sin fallback. Código en `src/features/location/ubicacion.ts` |
 | Expo Go | Los módulos nativos se limitan a los incluidos en Expo Go del SDK 58 | Sin build de release propio | Aceptado; build nativo descartado (decisión 16) |
@@ -532,7 +534,7 @@ Los pendientes de decisión y bloqueos se registran en [`docs/04`](./docs/04-BIT
 
 - Documento de entrega: este `README.md`, en Markdown. Decisión del usuario (2026-11-22): no se genera un documento Word o PDF aparte; este README cubre los ítems temáticos, el detalle de decisiones de stack y las evidencias.
 - Riesgo: el enunciado exige Word o PDF. Si el docente lo exige, el archivo `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES` aún no existe. El nombre sigue la decisión de CHK-002, que difiere de `EVU2_APELLIDO_NOMBRE`. Penalización posible.
-- Profesor: Boris Marcelo Belmar Muñoz (ver sección 16.3). Logo institucional: no proporcionado.
+- Profesor: Boris Marcelo Belmar Muñoz (ver sección 16.3). Logo institucional: `./docs/assets/logo-instituto-profesional-san-sebastian.png`.
 
 ### 16.2. Checklist (formato del enunciado)
 
@@ -540,7 +542,7 @@ Los pendientes de decisión y bloqueos se registran en [`docs/04`](./docs/04-BIT
 | --- | --- | --- |
 | Portada: título, asignatura, integrantes | CUMPLIDO | Encabezado de este README (Lukas Covarrubias y Sebastian Morales) |
 | Portada: profesor | CUMPLIDO | Boris Marcelo Belmar Muñoz, según el chat del docente (16.3) |
-| Portada: logo institucional | NO CUMPLIDO | No proporcionado |
+| Portada: logo institucional | CUMPLIDO | Logo del Instituto Profesional San Sebastián en el encabezado |
 | Desarrollo de los ítems temáticos | CUMPLIDO | Secciones 1 a 15 |
 | Archivo Word o PDF | NO CUMPLIDO | Decisión del usuario; riesgo en 16.1 |
 | Nombre de archivo | NO CUMPLIDO | Solo aplica a Word o PDF; ver 16.1 |
@@ -550,11 +552,11 @@ Los pendientes de decisión y bloqueos se registran en [`docs/04`](./docs/04-BIT
 | Exención de APIs | CUMPLIDO | Confirmada por escrito por el profesor (16.3) |
 | Riesgo de stack explicado | CUMPLIDO | Sección 6.1 y `docs/02`, sección 4 |
 
-Estado de los gates de entrega: G4 `PARCIAL` (sección 4.4). Pendientes del equipo: logo institucional y formato Word/PDF.
+Estado de los gates de entrega: G4 `PARCIAL` (sección 4.4). Pendiente del equipo: formato Word/PDF.
 
 ### 16.3. Confirmación escrita del profesor (APIs)
 
-Texto del chat de la asignatura, transcrito de la captura del docente (`Boris Marcelo Belmar Muñoz`, miércoles 8:50 PM según la captura; fecha exacta NO VERIFICADA):
+Texto del chat de la asignatura, transcrito de la captura del docente (`Boris Marcelo Belmar Muñoz`, miércoles 18 de noviembre de 2026, 8:50 PM; fecha confirmada por el equipo):
 
 > Hola a todos muchachos,
 >

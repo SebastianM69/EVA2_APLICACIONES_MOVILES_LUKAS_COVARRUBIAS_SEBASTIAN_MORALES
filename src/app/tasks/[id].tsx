@@ -1,7 +1,7 @@
 import { useLocalSearchParams } from 'expo-router';
 import { Alert, Image, StyleSheet, Text, View } from 'react-native';
 
-import { ActionButton } from '@/components/ActionButton';
+import { BackButton } from '@/components/BackButton';
 import { TaskForm } from '@/features/tasks/components/TaskForm';
 import { textoUbicacion, type TaskInput } from '@/features/tasks/model/task';
 import { volverAListaTareas } from '@/features/tasks/navigation';
@@ -19,12 +19,7 @@ export default function EditTaskScreen() {
         <Text style={styles.missingText}>
           La tarea no existe o fue eliminada.
         </Text>
-        <ActionButton
-          label="Volver"
-          variant="secondary"
-          accessibilityLabel="Volver a mis tareas"
-          onPress={volverAListaTareas}
-        />
+        <BackButton onPress={volverAListaTareas} />
       </View>
     );
   }

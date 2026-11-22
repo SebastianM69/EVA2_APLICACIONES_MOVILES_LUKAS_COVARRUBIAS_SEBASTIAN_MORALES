@@ -1,14 +1,33 @@
 import { useRef, useState } from 'react';
-import { Alert, Image, StyleSheet, View } from 'react-native';
+import { Alert, Image, Linking, StyleSheet, View } from 'react-native';
 
 import { ActionButton } from '@/components/ActionButton';
 import { CameraCapture } from '@/features/camera/CameraCapture';
-import { obtenerUbicacionActual } from '@/features/location/ubicacion';
+import {
+  leerPermisoUbicacion,
+  obtenerUbicacionActual,
+} from '@/features/location/ubicacion';
 import { TaskForm } from '@/features/tasks/components/TaskForm';
 import type { TaskInput } from '@/features/tasks/model/task';
 import { volverAListaTareas } from '@/features/tasks/navigation';
 import { useTasks } from '@/features/tasks/tasks-context';
 import { colors, spacing } from '@/theme/tokens';
+
+// La tarea ya está guardada: el aviso no bloquea. Solo se muestra si el permiso está denegado.
+async function avisarSinUbicacion() {
+  const permiso = await leerPermisoUbicacion();
+  if (!permiso || permiso.concedido) return;
+  Alert.alert(
+    'Sin ubicación',
+    'La tarea se guardó sin ubicación porque el permiso de ubicación está denegado.',
+    permiso.puedePedirDeNuevo
+      ? [{ text: 'Aceptar' }]
+      : [
+          { text: 'Cancelar', style: 'cancel' },
+          { text: 'Abrir ajustes', onPress: () => void Linking.openSettings() },
+        ],
+  );
+}
 
 export default function NewTaskScreen() {
   const { crear } = useTasks();
@@ -34,6 +53,7 @@ export default function NewTaskScreen() {
       }
       guardada = true;
       volverAListaTareas();
+      if (!ubicacion) void avisarSinUbicacion();
       return true;
     } catch {
       Alert.alert('No se pudo guardar', 'Intenta nuevamente.');

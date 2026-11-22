@@ -2,7 +2,7 @@ import { useLocalSearchParams } from 'expo-router';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { ActionButton } from '@/components/ActionButton';
+import { BackButton } from '@/components/BackButton';
 import { textoUbicacion } from '@/features/tasks/model/task';
 import { volverAListaTareas } from '@/features/tasks/navigation';
 import { useTasks } from '@/features/tasks/tasks-context';
@@ -20,12 +20,7 @@ export default function TaskDetailScreen() {
           <Text style={styles.missingText}>
             La tarea no existe o fue eliminada.
           </Text>
-          <ActionButton
-            label="Volver"
-            variant="secondary"
-            accessibilityLabel="Volver a mis tareas"
-            onPress={volverAListaTareas}
-          />
+          <BackButton onPress={volverAListaTareas} />
         </View>
       </SafeAreaView>
     );
@@ -48,12 +43,7 @@ export default function TaskDetailScreen() {
         )}
         <Text style={styles.dato}>{textoUbicacion(tarea)}</Text>
 
-        <ActionButton
-          label="Volver"
-          variant="secondary"
-          accessibilityLabel="Volver a mis tareas"
-          onPress={volverAListaTareas}
-        />
+        <BackButton onPress={volverAListaTareas} />
       </ScrollView>
     </SafeAreaView>
   );

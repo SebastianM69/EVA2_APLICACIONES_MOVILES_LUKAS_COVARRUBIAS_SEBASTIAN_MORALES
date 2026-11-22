@@ -861,3 +861,32 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
  - Logo institucional no proporcionado; formato Word/PDF del enunciado no cumplido en Markdown (decisión del usuario, CHK-036).
 - **Siguiente acción:** equipo: decidir logo institucional y si entrega Word o PDF; revisión final del README.
 - **Autorización necesaria:** ninguna para commit local. Entrega o publicación: decisión del equipo.
+
+## CHK-038 - CP-MOV-06 a VALIDACIÓN PARCIAL; flecha Volver; aviso GPS sin ubicación
+
+- **Fecha:** 2026-11-22
+- **Agente:** agente OMP
+- **Objetivo:** aplicar la decisión del usuario sobre CP-MOV-06 (`VALIDACIÓN PARCIAL`); sustituir los botones de texto "Volver" por flecha; implementar el aviso de GPS denegado sin bloquear el guardado.
+- **Estado:** CP-MOV-06 `VALIDACIÓN PARCIAL`: `EV-30` aprobado como evidencia del defecto; reapertura offline no verificada en físico. Aviso GPS implementado; sin captura en Xiaomi: NO EJECUTADO.
+- **Requisitos asociados:** RF-13 (CP-MOV-06); RF-12 (aviso GPS, CP-MOV-05).
+- **Pruebas asociadas:** CP-MOV-06 (sin prueba nueva); CP-MOV-05 (aviso, sin captura nueva).
+- **Verificaciones (2026-11-22):**
+ - `npx tsc --noEmit`: exit 0.
+ - `npx jest src/features/location`: 5/5 (incluye `leerPermisoUbicacion`).
+ - `npx jest src/features/location src/features/tasks` tras reemplazar "Volver": 14/14; `grep 'label="Volver"' src`: sin coincidencias.
+ - Flecha y aviso: sin verificación en Android.
+- **Commit real:** pendiente de commit local (este checkpoint). Anterior: CHK-037 `fff2db7`.
+- **Archivos cambiados:**
+ - `src/components/BackButton.tsx` (nuevo): flecha `<-`, 48×48, reemplaza "Volver".
+ - `src/app/tasks/[id].tsx`, `src/app/tasks/detalle/[id].tsx`, `src/features/tasks/components/TaskForm.tsx`: uso de `BackButton`.
+ - `src/app/tasks/new.tsx`: `avisarSinUbicacion` tras guardar sin ubicación.
+ - `src/features/location/ubicacion.ts` y `ubicacion.test.ts`: `leerPermisoUbicacion`.
+ - `README.md`: CP-MOV-06 en `VALIDACIÓN PARCIAL`; logo institucional (cambio del usuario, sin commit previo).
+ - `docs/03-PLAN-PRUEBAS.md`: CP-MOV-06 en línea de estado, G2, G3 y entrada `EV-30`.
+ - `docs/assets/logo-instituto-profesional-san-sebastian.png`: logo institucional (añadido por el usuario; referenciado en `README.md`).
+ - `docs/04-BITACORA.md`: `CHK-038`.
+- **Riesgos:**
+ - Aviso GPS: con `canAskAgain` true solo muestra "Aceptar"; el botón "Abrir ajustes" aparece solo cuando el permiso no puede pedirse de nuevo. Diverge de la opción aprobada (botón "Abrir ajustes" siempre). Pendiente de decisión.
+ - Cambios de CP-MOV-05 (aviso nuevo) no revalidados en físico; aprobación previa de CP-MOV-05 sin el aviso.
+- **Siguiente acción:** decidir si el aviso muestra "Abrir ajustes" también cuando `canAskAgain` es true; captura en Xiaomi del aviso (nuevo EV).
+- **Autorización necesaria:** ninguna para commit local.

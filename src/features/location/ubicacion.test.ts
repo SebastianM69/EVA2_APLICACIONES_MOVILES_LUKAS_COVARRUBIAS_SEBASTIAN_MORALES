@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 import * as Location from 'expo-location';
 
-import { obtenerUbicacionActual } from './ubicacion';
+import { leerPermisoUbicacion, obtenerUbicacionActual } from './ubicacion';
 
 jest.mock('expo-location', () => ({
   PermissionStatus: { GRANTED: 'granted', DENIED: 'denied' },
@@ -58,5 +58,29 @@ describe('CP-GPS-02: ubicación con permiso denegado', () => {
     leerPosicion.mockRejectedValue(new Error('GPS desactivado'));
 
     await expect(obtenerUbicacionActual()).resolves.toBeNull();
+  });
+});
+
+describe('leerPermisoUbicacion: estado del permiso tras lectura sin coordenadas', () => {
+  it('indica denegado sin nueva solicitud cuando canAskAgain es false', async () => {
+    jest.mocked(Location.getForegroundPermissionsAsync).mockResolvedValue({
+      granted: false,
+      canAskAgain: false,
+      expires: 'never',
+      status: Location.PermissionStatus.DENIED,
+    });
+
+    await expect(leerPermisoUbicacion()).resolves.toEqual({
+      concedido: false,
+      puedePedirDeNuevo: false,
+    });
+  });
+
+  it('devuelve null si la consulta del permiso falla', async () => {
+    jest
+      .mocked(Location.getForegroundPermissionsAsync)
+      .mockRejectedValue(new Error('sin servicio'));
+
+    await expect(leerPermisoUbicacion()).resolves.toBeNull();
   });
 });
