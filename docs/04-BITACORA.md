@@ -1067,7 +1067,7 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Estado:** `APROBADA` (cambio documental; GA-0 y GA-5 verificados).
 - **Requisitos asociados:** RF-12 (CP-MOV-05), RF-13 (CP-MOV-06).
 - **Pruebas asociadas:** CP-MOV-05 y CP-MOV-06 (estado por decisión del usuario; sin nueva ejecución).
-- **Commit real:** NO VERIFICADO (pendiente de commit local).
+- **Commit real:** `e55b13c` (`docs: unifica estado de CP-MOV-06 y RF-13 y registra CHK-047`), rama `main`, sin remoto.
 - **Archivos cambiados:**
  - `docs/03-PLAN-PRUEBAS.md`: líneas 3, 43, 44, 83, 87 y 104 (estado de CP-MOV-05/06 y RF-13).
  - `README.md`: líneas 94, 135, 148 y 510.
@@ -1081,3 +1081,23 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
  - Contradicción de permiso (`EV-36`/`EV-41`, 9:05 AM): resuelta por decisión del usuario; orden cronológico sigue como [INFERENCIA].
 - **Siguiente acción:** equipo: revisión final del README.
 - **Autorización necesaria:** ninguna para commit local.
+
+## CHK-048 - Portada académica del README y cierre del proyecto
+
+- **Fecha:** 2026-11-22
+- **Agente:** agente OMP
+- **Objetivo:** convertir la portada del README en portada académica y cerrar el proyecto con los gates reales.
+- **Estado:** `VALIDACIÓN PARCIAL`: cierre documental por decisión del usuario; G1 y G4 siguen `PARCIAL` (sección 4.4 del README).
+- **Requisitos asociados:** RF-01 a RF-13 (estado); entrega académica (sección 16 del README).
+- **Pruebas asociadas:** ninguna (documental). Verificación: logo de portada existe en `docs/assets/`; profesor confirmado en README 16.3 (CHK-044).
+- **Commit real:** este checkpoint se commitea junto con `README.md`; hash visible en `git log`, no escrito aquí para evitar autorreferencia.
+- **Archivos cambiados:**
+ - `README.md`: líneas 1-21, portada académica (institución, logo, título, asignatura, integrantes, profesor, fecha).
+ - `docs/04-BITACORA.md`: `CHK-047` (commit real `e55b13c`) y `CHK-048`.
+- **Decisiones del usuario:** cerrar el proyecto; documento de entrega en Markdown (`README.md`), sin Word/PDF.
+- **Riesgos:**
+ - G1 `PARCIAL`: `prettier --check` falla en 4 archivos (`assets/expo.icon/icon.json`, `README.md`, `docs/03-PLAN-PRUEBAS.md`, `docs/04-BITACORA.md`).
+ - G4 `PARCIAL`: formato Word/PDF (nombre de archivo, Arial 12, interlineado, numeración) no cumplido.
+ - Riesgos de CHK-047 sin cambio.
+- **Siguiente acción:** ninguna en el repositorio. Revisión humana final del equipo.
+- **Autorización necesaria:** push, merge o publicación no realizados; requieren autorización del equipo.

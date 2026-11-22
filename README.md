@@ -1,12 +1,22 @@
-# To-Do móvil ampliada — Desarrollo de Aplicaciones Móviles, Unidad 2
+<div align="center">
+
+**Instituto Profesional San Sebastián**
 
 <img src="./docs/assets/logo-instituto-profesional-san-sebastian.png" alt="Logo Instituto Profesional San Sebastián" width="220">
 
-**Trabajo:** EVA2 — Aplicación To-Do móvil ampliada con cámara, GPS y autenticación local.
-**Asignatura:** Desarrollo de Aplicaciones Móviles, Unidad 2.
-**Integrantes:** Lukas Covarrubias y Sebastian Morales.
-**Profesor:** Boris Marcelo Belmar Muñoz (nombre según el chat del docente; ver sección 16.3).
-**Estado del documento:** 2026-11-22. RF-01 a RF-13 implementados; entrega académica con gates parciales (ver [Estado de avance](#4-estado-de-avance) y [Entrega académica](#16-entrega-académica)). Este README es el documento de entrega (decisión del usuario, 2026-11-22).
+# To-Do móvil ampliada
+
+**Informe de entrega EVA2: aplicación To-Do móvil ampliada con cámara, GPS y autenticación local**
+
+**Asignatura:** Desarrollo de Aplicaciones Móviles, Unidad 2
+
+**Integrantes:** Lukas Covarrubias y Sebastian Morales
+
+**Profesor:** Boris Marcelo Belmar Muñoz
+
+**Fecha:** 22 de noviembre de 2026
+
+</div>
 
 ---
 
