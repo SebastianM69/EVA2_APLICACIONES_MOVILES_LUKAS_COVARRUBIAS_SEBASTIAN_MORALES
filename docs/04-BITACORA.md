@@ -748,3 +748,22 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
  - Modalidad, commit y dispositivo de `EV-31` y `EV-32`: NO VERIFICADO (mismo teléfono que `EV-26`, por mapeo confirmado).
 - **Siguiente acción:** aprobar o rechazar `EV-32` para cerrar CP-MOV-05.
 - **Autorización necesaria:** aprobación de `EV-32` por el equipo.
+
+## CHK-033 - Aprobación de EV-32 y cierre de CP-MOV-05
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** registrar la decisión del usuario sobre `EV-32`.
+- **Estado:** `EV-32` `APROBADO` por decisión del usuario. CP-MOV-05 cerrado con `EV-26` a `EV-28`, `EV-31` y `EV-32`.
+- **Requisitos asociados:** RF-12, RUB-02.
+- **Pruebas asociadas:** CP-MOV-05.
+- **Commit real:** pendiente de commit local. Commit previo: `a6701af`.
+- **Archivos cambiados:**
+ - `docs/03-PLAN-PRUEBAS.md`: resultado de `EV-32` y fila G3.
+ - `docs/04-BITACORA.md`: `CHK-033`.
+- **Verificaciones:** decisión explícita del usuario ("apruevo"). Sin pruebas de software.
+- **Riesgos:**
+ - `EV-31` no muestra la fila Ubicación; la pantalla no distingue "denegado" de "nunca preguntado". Aceptado por el usuario en CHK-032.
+ - Modalidad, commit y dispositivo de `EV-31` y `EV-32`: NO VERIFICADO.
+- **Siguiente acción:** ninguna en CP-MOV-05. Pendiente general: `docs/03` línea 3 aún cita CP-MOV-05 como OK por emulador (CHK-009); revisar al cerrar la entrega.
+- **Autorización necesaria:** ninguna.
