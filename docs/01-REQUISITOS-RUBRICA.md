@@ -1,7 +1,7 @@
 # 01 — Requisitos, alcance y trazabilidad de la rúbrica
 
 > **Proyecto:** To-Do móvil ampliada — Desarrollo de Aplicaciones Móviles, Unidad 2
-> **Estado:** reglas aprobadas por el usuario el 2026-11-21; implementación en curso: RF-01 a RF-13 implementados, pruebas Android registradas en `docs/03`.
+> **Estado:** reglas aprobadas por el usuario el 2026-11-21; RF-01 a RF-13 implementados. Entrega académica en curso: README como documento de entrega (decisión del usuario, 2026-11-22); G1 y G4 `PARCIAL` (`docs/03`, sección 3).
 > **Fuentes académicas:** `Evaluación_U2.pdf` (enunciado) y `Rúbrica_U2.pdf` (rúbrica), no versionados en este repositorio.
 > **Objetivo académico:** nivel **Sobresaliente (90 %–100 %)** para los indicadores cubribles; ver riesgo aceptado en la sección 4.
 
@@ -66,11 +66,11 @@ Puntajes leídos de `Rúbrica_U2.pdf` (niveles Bajo / Medio / Alto / Sobresalien
 
 ## 6. Checklist de entrega (formato del enunciado)
 
-- [ ] Portada: título del trabajo, asignatura, logo institucional, nombre del profesor y de los integrantes: Lukas Covarrubias y Sebastian Morales.
-- [ ] Desarrollo de los ítems temáticos o instrucciones de la tarea.
-- [ ] Archivo Word o PDF.
-- [ ] Nombre del archivo: `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES` (decisión del usuario; difiere de `EVU2_APELLIDO_NOMBRE` del enunciado, ver `docs/04` CHK-002).
-- [ ] Arial 12; interlineado 1,15; alineación justificada; páginas numeradas.
-- [ ] Evidencias de `docs/evidencias/` referenciadas, solo si existen.
+- [ ] Portada: título, asignatura e integrantes (Lukas Covarrubias y Sebastian Morales) presentes en el README. Profesor NO VERIFICADO; logo institucional no proporcionado.
+- [x] Desarrollo de los ítems temáticos o instrucciones de la tarea: README secciones 1 a 15.
+- [ ] Archivo Word o PDF: NO CUMPLIDO. Decisión del usuario (2026-11-22): README como entrega; riesgo en README sección 16.1.
+- [ ] Nombre del archivo: `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES` (decisión del usuario; difiere de `EVU2_APELLIDO_NOMBRE` del enunciado, ver `docs/04` CHK-002). NO CUMPLIDO sin archivo Word o PDF.
+- [ ] Arial 12; interlineado 1,15; alineación justificada; páginas numeradas: NO CUMPLIDO en Markdown.
+- [x] Evidencias de `docs/evidencias/` referenciadas en README sección 10 (EV-01 a EV-32).
 - [x] Exención de APIs: orden explícita del profesor en clases; constancia escrita no requerida (ver sección 4).
-- [ ] Riesgo de stack explicado.
+- [x] Riesgo de stack explicado: README sección 6.1 y `docs/02`, sección 4.

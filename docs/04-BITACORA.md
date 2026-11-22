@@ -807,3 +807,34 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Riesgos:** ninguno nuevo.
 - **Siguiente acción:** ninguna en documentación.
 - **Autorización necesaria:** ninguna para commit local.
+
+## CHK-036 - README como documento de entrega; verificación de formato y enlaces
+
+- **Fecha:** 2026-11-22
+- **Agente:** agente OMP
+- **Objetivo:** cerrar la entrega académica sin documento Word o PDF aparte (decisión del usuario, 2026-11-22), manteniendo el detalle de decisiones de stack en `README.md`. Corregir afirmaciones de formato.
+- **Estado:** `VALIDACIÓN PARCIAL` (G1 y G4 `PARCIAL`). Documentación actualizada; entrega con pendientes.
+- **Requisitos asociados:** RF-01 a RF-13 (estado); RUB-04 y RUB-05 (riesgo aceptado); requisitos de formato y portada del enunciado.
+- **Pruebas asociadas:** verificaciones de este checkpoint (abajo). Sin pruebas nuevas.
+- **Commit real:** pendiente de commit local (este checkpoint). Anterior: CHK-035 `8d0f69e`.
+- **Archivos cambiados:**
+ - `README.md`: encabezado, sección 4.2, filas G1 y G4 de 4.4, fila Formato de 13, sección 16.
+ - `docs/01-REQUISITOS-RUBRICA.md`: línea 4 y checklist de sección 6.
+ - `docs/03-PLAN-PRUEBAS.md`: filas G1 y G4 de sección 3.
+ - `docs/04-BITACORA.md`: `CHK-036`.
+- **Verificaciones (2026-11-22):**
+ - `npx tsc --noEmit`: exit 0.
+ - `npx jest`: 7 suites, 22/22 pruebas aprobadas.
+ - `npm run lint` (`eslint .`): sin errores en la salida.
+ - `npm run format:check`: pasa.
+ - `npx prettier --check .`: falla en 4 archivos: `assets/expo.icon/icon.json`, `README.md`, `docs/03-PLAN-PRUEBAS.md`, `docs/04-BITACORA.md`. La afirmación previa de G1 que solo citaba `icon.json` era incorrecta y queda corregida.
+ - Enlaces relativos de `README.md`, `AGENTS.md` y `docs/01` a `docs/04`: todos resuelven.
+ - `docs/evidencias/capturas/`: 32 archivos, coinciden con EV-01 a EV-32 de `README.md` sección 10.
+ - Versiones de `README.md` sección 5.1 frente a `package.json`: coinciden (expo ~58.0.26, expo-router ~58.0.32, expo-sqlite ~58.0.18, expo-location ~58.0.22, expo-camera ~58.0.14, expo-crypto ~58.0.8, expo-file-system ~58.0.14, typescript ~6.0.3, jest ~30.5.2, jest-expo ~58.0.15, RNTL ^14.1.0, eslint 9.39.5, prettier 3.9.10).
+ - `README.md`: sin rutas de unidad ni de usuario.
+- **Riesgos:**
+ - Entrega sin Word o PDF: penalización posible según el enunciado (decisión del usuario).
+ - Portada incompleta: profesor NO VERIFICADO y logo no proporcionado.
+ - `prettier --check .` falla en 3 Markdown: no corregido en esta tarea para no reformatear documentos fuera de alcance.
+- **Siguiente acción:** equipo: decidir si entrega Word o PDF; completar profesor y logo; revisión final del README.
+- **Autorización necesaria:** ninguna para commit local. Entrega o publicación: decisión del equipo.

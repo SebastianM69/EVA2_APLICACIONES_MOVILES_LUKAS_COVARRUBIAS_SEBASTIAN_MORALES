@@ -3,8 +3,8 @@
 **Trabajo:** EVA2 — Aplicación To-Do móvil ampliada con cámara, GPS y autenticación local.
 **Asignatura:** Desarrollo de Aplicaciones Móviles, Unidad 2.
 **Integrantes:** Lukas Covarrubias y Sebastian Morales.
-**Profesor:** NO VERIFICADO (dato de portada pendiente de completar por el equipo).
-**Estado del documento:** 2026-11-21. Implementación en curso; ver [Estado de avance](#4-estado-de-avance).
+**Profesor:** NO VERIFICADO (el equipo no proporcionó el dato al 2026-11-22).
+**Estado del documento:** 2026-11-22. RF-01 a RF-13 implementados; entrega académica con gates parciales (ver [Estado de avance](#4-estado-de-avance) y [Entrega académica](#16-entrega-académica)). Este README es el documento de entrega (decisión del usuario, 2026-11-22).
 
 ---
 
@@ -117,7 +117,7 @@ Nota sobre "Manual (sin caso propio)": RF-07 se verifica en la navegación de la
 ### 4.2. Pruebas automatizadas
 
 - Suite Jest: última ejecución completa registrada 7 suites y 22 pruebas aprobadas (CHK-022 en [`docs/04`](./docs/04-BITACORA.md)).
-- Verificación de tipos (`tsc --noEmit`) y lint sin errores en la última verificación registrada (CHK-034).
+- Verificación de tipos (`tsc --noEmit`) y lint sin errores (CHK-034; repetido en CHK-036, 2026-11-22: `tsc` exit 0 y `eslint .` sin errores).
 
 ### 4.3. Pruebas en Android
 
@@ -142,10 +142,10 @@ Dispositivos de prueba:
 | Gate | Criterio | Estado |
 | --- | --- | --- |
 | G0 — Planificación | Reglas, requisitos y decisiones aprobados por el usuario | APROBADO (2026-11-21) |
-| G1 — Reproducibilidad | `npm ci`, `expo install --check`, Jest, arranque con Expo | PARCIAL: `prettier --check .` falla solo en `assets/expo.icon/icon.json` (asset generado; decisión pendiente) |
+| G1 — Reproducibilidad | `npm ci`, `expo install --check`, Jest, arranque con Expo | PARCIAL: `npm run format:check` pasa. `prettier --check .` falla en 4 archivos: `assets/expo.icon/icon.json` (asset generado) y los Markdown `README.md`, `docs/03-PLAN-PRUEBAS.md`, `docs/04-BITACORA.md` (sin corregir; decisión pendiente) |
 | G2 — Funciones esenciales | RF-01 a RF-13 y casos automatizados aprobados | PARCIAL: RF-13 con desviación aceptada (CP-MOV-06) |
 | G3 — UX Android | CP-MOV-01 a CP-MOV-06 con evidencia auténtica y revisión humana | PARCIAL: defecto abierto al cortar red (`EV-30`) |
-| G4 — Entrega | Checklist de la sección 16 completo | NO EJECUTADO |
+| G4 — Entrega | Checklist de la sección 16 completo | PARCIAL: README como documento de entrega (decisión del usuario, 2026-11-22). Pendientes: profesor, logo y formato Word/PDF (sección 16) |
 
 ---
 
@@ -496,7 +496,7 @@ Verificación de dependencias: `npx expo install --check` (CHK-003).
 | Emulador | No entrega posición a la app aunque `emu geo fix` responda OK (decisión 17) | RF-12 solo se verifica en teléfono físico | Aceptado por decisión del usuario |
 | Latencia GPS | Lectura única con timeout de 10 s; si vence, la tarea se guarda sin coordenadas | Coordenadas ausentes en lecturas lentas (una prueba en emulador tardó 13 s) | Decisión del equipo: sin fallback. Código en `src/features/location/ubicacion.ts` |
 | Expo Go | Los módulos nativos se limitan a los incluidos en Expo Go del SDK 58 | Sin build de release propio | Aceptado; build nativo descartado (decisión 16) |
-| Formato | `prettier --check .` falla solo en `assets/expo.icon/icon.json` (asset generado) | Afecta G1 | Pendiente de decisión del equipo |
+| Formato | `prettier --check .` falla en 4 archivos: `assets/expo.icon/icon.json` (asset generado) y tres Markdown (`README.md`, `docs/03`, `docs/04`) | Afecta G1 | Pendiente de decisión del equipo |
 | Aviso GPS | Con ubicación denegada no se observó el aviso no bloqueante (`EV-27`, `EV-32`) | CP-MOV-05 aprobado por decisión del usuario sin ese aviso | Pendiente de decisión del equipo |
 | Hash | SHA-256 con salt, sin KDF dedicado | Riesgo menor para el alcance académico | Aceptado en `docs/02` decisión 7 |
 
@@ -528,20 +528,25 @@ Los pendientes de decisión y bloqueos se registran en [`docs/04`](./docs/04-BIT
 
 ## 16. Entrega académica
 
-### 16.1. Archivo
+### 16.1. Documento de entrega
 
-Nombre: `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES` (formato Word o PDF).
-
-Este nombre sigue la decisión del usuario (CHK-002). Difiere del formato `EVU2_APELLIDO_NOMBRE` del enunciado; riesgo de penalización (`docs/04`).
+- Documento de entrega: este `README.md`, en Markdown. Decisión del usuario (2026-11-22): no se genera un documento Word o PDF aparte; este README cubre los ítems temáticos, el detalle de decisiones de stack y las evidencias.
+- Riesgo: el enunciado exige Word o PDF. Si el docente lo exige, el archivo `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES` aún no existe. El nombre sigue la decisión de CHK-002, que difiere de `EVU2_APELLIDO_NOMBRE`. Penalización posible.
+- Profesor: NO VERIFICADO. Logo institucional: no proporcionado.
 
 ### 16.2. Checklist (formato del enunciado)
 
-- [ ] Portada: título, asignatura, logo institucional, profesor, integrantes (Lukas Covarrubias y Sebastian Morales).
-- [ ] Desarrollo de los ítems temáticos.
-- [ ] Archivo Word o PDF con nombre indicado.
-- [ ] Arial 12, interlineado 1,15, texto justificado, páginas numeradas.
-- [ ] Evidencias de `docs/evidencias/` referenciadas.
-- [x] Exención de APIs: orden explícita del profesor en clases; constancia escrita no requerida.
-- [ ] Riesgo de stack explicado (sección 6.1).
+| Ítem del enunciado | Estado | Nota |
+| --- | --- | --- |
+| Portada: título, asignatura, integrantes | CUMPLIDO | Encabezado de este README (Lukas Covarrubias y Sebastian Morales) |
+| Portada: profesor | NO VERIFICADO | Dato no proporcionado al 2026-11-22 |
+| Portada: logo institucional | NO CUMPLIDO | No proporcionado |
+| Desarrollo de los ítems temáticos | CUMPLIDO | Secciones 1 a 15 |
+| Archivo Word o PDF | NO CUMPLIDO | Decisión del usuario; riesgo en 16.1 |
+| Nombre de archivo | NO CUMPLIDO | Solo aplica a Word o PDF; ver 16.1 |
+| Arial 12, interlineado 1,15, justificado, páginas numeradas | NO CUMPLIDO | Formato de Word o PDF; el README es Markdown |
+| Evidencias de `docs/evidencias/` referenciadas | CUMPLIDO | EV-01 a EV-32 en sección 10; enlaces relativos resueltos (2026-11-22) |
+| Exención de APIs | CUMPLIDO | Orden explícita del profesor en clases; constancia escrita no requerida |
+| Riesgo de stack explicado | CUMPLIDO | Sección 6.1 y `docs/02`, sección 4 |
 
-Estado de los gates de entrega: G4 `NO EJECUTADO` (sección 4.4).
+Estado de los gates de entrega: G4 `PARCIAL` (sección 4.4). Pendientes del equipo: profesor, logo y formato Word/PDF.
