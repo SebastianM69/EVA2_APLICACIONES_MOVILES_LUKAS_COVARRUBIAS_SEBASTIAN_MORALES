@@ -619,3 +619,26 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
  - Modelo y versión Android del Xiaomi en `EV-21` a `EV-24`: NO VERIFICADO.
 - **Siguiente acción:** CP-MOV-05 (GPS denegado) y CP-MOV-06 físico con la condición de Expo abierto antes de desactivar la red.
 - **Autorización necesaria:** ninguna. Commit local de `docs/03` y `docs/04` permitido por `AGENTS.md` sección 5.
+
+## CHK-027 - Identificación del dispositivo Xiaomi para EV-18 a EV-24 (EV-25)
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** registrar modelo y versión de Android del teléfono físico, que `EV-21` a `EV-24` dejaban como `NO VERIFICADO`.
+- **Estado:** registrado. CP-MOV-03 sin cambios respecto a CHK-026.
+- **Requisitos asociados:** RF-11, RUB-02.
+- **Pruebas asociadas:** CP-MOV-03 (solo trazabilidad de dispositivo).
+- **Commit real:** pendiente de commit local. Commit de CHK-026: `035b497`.
+- **Evidencia nueva:** `EV-25`, captura de la pantalla de información del teléfono aportada por el usuario. Ruta: `./evidencias/capturas/EV-25-telefono-fisico-info-dispositivo-modelo.png`.
+- **Datos verificados en `EV-25`:** modelo `2107113SG`; Android 13 (`TKQ1.220829.002`); MIUI Global 14.0.2; actualización de seguridad 2023-04-01; RAM 8.0 GB; hora de la barra de estado 9:16 PM.
+- **Archivos cambiados:**
+ - `docs/03-PLAN-PRUEBAS.md`: `EV-21` a `EV-24` con modelo y Android (ver `EV-25`); `EV-25` nuevo.
+ - `docs/04-BITACORA.md`: `CHK-027`.
+ - `docs/evidencias/capturas/EV-25-telefono-fisico-info-dispositivo-modelo.png`.
+- **Verificaciones:** lectura visual de la imagen aportada. Sin pruebas de software.
+- **Riesgos:**
+ - `EV-25` se tomó a las 9:16 PM; `EV-21` a `EV-24` a las 9:08-9:09 PM. Se asume el mismo teléfono; el usuario lo indicó, sin verificación adicional.
+ - Modalidad de `EV-21` a `EV-24` sigue `NO VERIFICADO`.
+ - Defecto "Something went wrong" sigue `ABIERTO` (CHK-026).
+- **Siguiente acción:** CP-MOV-05 (GPS denegado) y CP-MOV-06 físico con Expo abierto antes de desactivar la red.
+- **Autorización necesaria:** ninguna. Commit local permitido por `AGENTS.md` sección 5.
