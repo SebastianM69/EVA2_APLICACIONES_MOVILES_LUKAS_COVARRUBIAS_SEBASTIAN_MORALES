@@ -666,3 +666,23 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
  - `docs/03` (línea 3 y G3) aún cita CP-MOV-05 como OK por emulador (CHK-009); no se actualizó.
 - **Siguiente acción:** capturar denegación de ubicación en Ajustes y pantalla de detalle; decidir si `EV-26` a `EV-28` quedan `APROBADO`.
 - **Autorización necesaria:** ninguna para registrar. Aprobación de `EV-26` a `EV-28` por el equipo.
+
+## CHK-029 - Aprobación de EV-26 a EV-28 (CP-MOV-05)
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** registrar la decisión del usuario sobre las evidencias `EV-26` a `EV-28`.
+- **Estado:** `EV-26`, `EV-27` y `EV-28` `APROBADO` por decisión del usuario. CP-MOV-05 sigue `VALIDACIÓN PARCIAL`: falta captura del permiso de ubicación denegado y de la pantalla de detalle.
+- **Requisitos asociados:** RF-12, RUB-02.
+- **Pruebas asociadas:** CP-MOV-05.
+- **Commit real:** pendiente de commit local. Commit previo: `b56ac21`.
+- **Archivos cambiados:**
+ - `docs/03-PLAN-PRUEBAS.md`: resultado de `EV-26` a `EV-28`.
+ - `docs/04-BITACORA.md`: `CHK-029`.
+- **Verificaciones:** decisión explícita del usuario ("apruebo"). Sin pruebas de software.
+- **Riesgos:**
+ - Permiso de ubicación denegado: sin captura.
+ - Pantalla de detalle: sin captura.
+ - `docs/03` línea 3 y fila G3 aún citan CP-MOV-05 como OK por emulador (CHK-009); pendiente de decisión.
+- **Siguiente acción:** capturar denegación de ubicación en Ajustes y pantalla de detalle, o decidir cerrar CP-MOV-05 con el alcance actual.
+- **Autorización necesaria:** decisión del usuario para cerrar CP-MOV-05 sin las dos capturas.
