@@ -875,7 +875,7 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
  - `npx jest src/features/location`: 5/5 (incluye `leerPermisoUbicacion`).
  - `npx jest src/features/location src/features/tasks` tras reemplazar "Volver": 14/14; `grep 'label="Volver"' src`: sin coincidencias.
  - Flecha y aviso: sin verificación en Android.
-- **Commit real:** pendiente de commit local (este checkpoint). Anterior: CHK-037 `fff2db7`.
+- **Commit real:** `8a84fb9` (código, README y docs/03; CHK-038). Logo institucional: `0f91064`. Anterior: CHK-037 `fff2db7`.
 - **Archivos cambiados:**
  - `src/components/BackButton.tsx` (nuevo): flecha `<-`, 48×48, reemplaza "Volver".
  - `src/app/tasks/[id].tsx`, `src/app/tasks/detalle/[id].tsx`, `src/features/tasks/components/TaskForm.tsx`: uso de `BackButton`.
