@@ -132,7 +132,7 @@ Resultados de los casos manuales (detalle en [`docs/03`](./docs/03-PLAN-PRUEBAS.
 | CP-MOV-03 | RF-11, RUB-02 | APROBADO | `EV-18` a `EV-24`, `EV-20` (emulador) | Cámara denegada: aviso no bloqueante |
 | CP-MOV-04 | RF-12 | APROBADO | `EV-08`, `EV-09` | Coordenadas visibles en tarjeta y detalle (teléfono físico) |
 | CP-MOV-05 | RF-12, RUB-02 | APROBADO por decisión del usuario | `EV-26` a `EV-28`, `EV-31`, `EV-32` | Tarea sin coordenadas. La captura del paso "denegar ubicación en Ajustes" no existe |
-| CP-MOV-06 | RF-13 | VALIDACIÓN PARCIAL | `EV-30` | Reabrir en modo avión falla (defecto abierto, sección 13); validación pendiente |
+| CP-MOV-06 | RF-13 | VALIDACIÓN PARCIAL (limitación de Expo Go aceptada por el usuario, CHK-041) | `EV-30`, `EV-44` | Reabrir sin red en Expo Go de desarrollo falla (`Failed to download remote update`); persistencia verificada con red (CHK-016). Build nativo no ejecutado |
 
 Dispositivos de prueba:
 
@@ -408,19 +408,19 @@ Evidencias en [`./docs/evidencias/capturas/`](./docs/evidencias/capturas/). Mét
 | [EV-30](./docs/evidencias/capturas/EV-30-telefono-fisico-cp-mov-06-something-went-wrong-modo-avion.jpeg) | CP-MOV-06 | Físico | "Something went wrong" al abrir en modo avión | Defecto registrado (sección 13) |
 | [EV-31](./docs/evidencias/capturas/EV-31-telefono-fisico-cp-mov-05-permisos-expo-go.jpeg) | CP-MOV-05 | Físico | Permisos de Expo Go sin concesiones | APROBADO por decisión del usuario |
 | [EV-32](./docs/evidencias/capturas/EV-32-telefono-fisico-cp-mov-05-detalle-gps-denegado.jpeg) | CP-MOV-05 | Físico | Detalle "GPS denegado", sin ubicación | APROBADO por decisión del usuario |
-| [EV-33](./docs/evidencias/capturas/EV-33-telefono-fisico-cp-mov-05-permisos-expo-go-sin-permiso-0905.jpeg) | CP-MOV-05 | Físico | Permisos de Expo Go, sin permiso de ubicación (9:05) | PENDIENTE de decisión del usuario |
-| [EV-34](./docs/evidencias/capturas/EV-34-telefono-fisico-cp-mov-05-inicio-tarjeta-gps-denegado-0903.jpeg) | CP-MOV-05 | Físico | Inicio, tarjeta "Prueba GPS" con "GPS denegado" y "Sin ubicación registrada" | PENDIENTE de decisión del usuario |
+| [EV-33](./docs/evidencias/capturas/EV-33-telefono-fisico-cp-mov-05-permisos-expo-go-sin-permiso-0905.jpeg) | CP-MOV-05 | Físico | Permisos de Expo Go, sin permiso de ubicación (9:05) | APROBADO por decisión del usuario |
+| [EV-34](./docs/evidencias/capturas/EV-34-telefono-fisico-cp-mov-05-inicio-tarjeta-gps-denegado-0903.jpeg) | CP-MOV-05 | Físico | Inicio, tarjeta "Prueba GPS" con "GPS denegado" y "Sin ubicación registrada" | APROBADO por decisión del usuario |
 | [EV-35](./docs/evidencias/capturas/EV-35-telefono-fisico-cp-mov-05-detalle-flecha-inferior-0903.jpeg) | CP-MOV-05, flecha Volver | Físico | Detalle con flecha debajo del contenido (defecto antes de la corrección) | DEFECTO CORREGIDO; verificado en `EV-45` |
 | [EV-45](./docs/evidencias/capturas/EV-45-telefono-fisico-cp-mov-05-detalle-flecha-arriba-0914.jpeg) | CP-MOV-05, flecha Volver | Físico | Detalle con flecha arriba a la izquierda tras la corrección (9:14) | APROBADO por decisión del usuario |
-| [EV-36](./docs/evidencias/capturas/EV-36-telefono-fisico-cp-mov-05-permisos-ubicacion-permanente-0905.jpeg) | CP-MOV-05 | Físico | Ubicación con permiso permanente (9:05); contradice EV-41 | PENDIENTE de decisión del usuario |
+| [EV-36](./docs/evidencias/capturas/EV-36-telefono-fisico-cp-mov-05-permisos-ubicacion-permanente-0905.jpeg) | CP-MOV-05 | Físico | Ubicación con permiso permanente (9:05); contradice EV-41 | APROBADO por decisión del usuario; contradicción con EV-41 abierta (CHK-042) |
 | [EV-37](./docs/evidencias/capturas/EV-37-telefono-fisico-cp-mov-06-panel-modo-avion-0906.jpeg) | Contexto CP-MOV-06 | Físico | Panel de ajustes rápidos con Modo avión resaltado | NO APLICA como caso |
-| [EV-38](./docs/evidencias/capturas/EV-38-telefono-fisico-cp-mov-05-inicio-tarjeta-gps-denegado-0903.jpeg) | CP-MOV-05 | Físico | Inicio, tarjeta "GPS denegado" (duplica EV-34) | PENDIENTE de decisión del usuario |
-| [EV-39](./docs/evidencias/capturas/EV-39-telefono-fisico-cp-mov-05-nueva-tarea-flecha-superior-0904.jpeg) | CP-MOV-05, flecha Volver | Físico | Nueva tarea con flecha arriba a la izquierda | PENDIENTE de decisión del usuario |
-| [EV-40](./docs/evidencias/capturas/EV-40-telefono-fisico-cp-mov-06-expo-home-modo-avion-0906.jpeg) | Contexto CP-MOV-06 | Físico | Inicio de Expo Go con modo avión; la app no carga | PENDIENTE de decisión del usuario |
-| [EV-41](./docs/evidencias/capturas/EV-41-telefono-fisico-cp-mov-05-permiso-ubicacion-no-permitir-0905.jpeg) | CP-MOV-05 | Físico | Permiso de ubicación "No permitir" (9:05); contradice EV-36 | PENDIENTE de decisión del usuario |
+| [EV-38](./docs/evidencias/capturas/EV-38-telefono-fisico-cp-mov-05-inicio-tarjeta-gps-denegado-0903.jpeg) | CP-MOV-05 | Físico | Inicio, tarjeta "GPS denegado" (duplica EV-34) | APROBADO por decisión del usuario |
+| [EV-39](./docs/evidencias/capturas/EV-39-telefono-fisico-cp-mov-05-nueva-tarea-flecha-superior-0904.jpeg) | CP-MOV-05, flecha Volver | Físico | Nueva tarea con flecha arriba a la izquierda | APROBADO por decisión del usuario |
+| [EV-40](./docs/evidencias/capturas/EV-40-telefono-fisico-cp-mov-06-expo-home-modo-avion-0906.jpeg) | Contexto CP-MOV-06 | Físico | Inicio de Expo Go con modo avión; la app no carga | APROBADO por decisión del usuario |
+| [EV-41](./docs/evidencias/capturas/EV-41-telefono-fisico-cp-mov-05-permiso-ubicacion-no-permitir-0905.jpeg) | CP-MOV-05 | Físico | Permiso de ubicación "No permitir" (9:05); contradice EV-36 | APROBADO por decisión del usuario; contradicción con EV-36 abierta (CHK-042) |
 | [EV-42](./docs/evidencias/capturas/EV-42-telefono-fisico-cp-mov-06-expo-home-sin-modo-avion-0903.jpeg) | Referencia CP-MOV-06 | Físico | Inicio de Expo Go sin modo avión | NO APLICA como caso |
 | [EV-43](./docs/evidencias/capturas/EV-43-telefono-fisico-cp-mov-06-something-went-wrong-modo-avion-0906.jpeg) | CP-MOV-06 | Físico | "Something went wrong" con modo avión | Defecto reproducido (sección 13) |
-| [EV-44](./docs/evidencias/capturas/EV-44-telefono-fisico-cp-mov-06-error-log-failed-download-remote-update-0906.jpeg) | CP-MOV-06 | Físico | "View error log": `Failed to download remote update` | Causa documentada (sección 13); PENDIENTE de revisión |
+| [EV-44](./docs/evidencias/capturas/EV-44-telefono-fisico-cp-mov-06-error-log-failed-download-remote-update-0906.jpeg) | CP-MOV-06 | Físico | "View error log": `Failed to download remote update` | Causa documentada (sección 13); APROBADO por decisión del usuario |
 
 Notas sobre evidencias:
 

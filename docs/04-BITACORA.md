@@ -938,3 +938,40 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Riesgos:** ninguno nuevo. Aviso GPS denegado tras guardar sigue sin captura (CHK-039).
 - **Siguiente acción:** equipo: decidir tratamiento de CP-MOV-06 (limitación de Expo Go o build), decidir "Abrir ajustes" con `canAskAgain` true, capturar aviso GPS denegado tras guardar, y revisar EV-33 a EV-44.
 - **Autorización necesaria:** ninguna para commit local.
+
+## CHK-041 - Aceptación de limitación de Expo Go en CP-MOV-06 (RF-13)
+
+- **Fecha:** 2026-11-22
+- **Agente:** agente OMP
+- **Objetivo:** registrar la decisión del usuario sobre CP-MOV-06 y responder a los puntos pendientes de CHK-040.
+- **Estado:** CP-MOV-06 sigue `VALIDACIÓN PARCIAL`; limitación de Expo Go aceptada por decisión del usuario. No es `APROBADO`.
+- **Requisitos asociados:** RF-13, RUB-03.
+- **Pruebas asociadas:** CP-MOV-06 (`EV-30`, `EV-37`, `EV-40`, `EV-42`, `EV-43`, `EV-44`).
+- **Commit real:** NO VERIFICADO (pendiente de commit local).
+- **Archivos cambiados:**
+ - `README.md`: fila CP-MOV-06 de la tabla de estado.
+ - `docs/04-BITACORA.md`: `CHK-041`.
+- **Decisión del usuario:** aceptar la limitación: en Expo Go de desarrollo, reabrir la app sin red falla (`Failed to download remote update`, `EV-44`). Persistencia offline no verificada en modo Expo Go.
+- **Abrir ajustes:** el botón aparece solo si `canAskAgain` es `false` (`src/app/tasks/new.tsx`, rama `puedePedirDeNuevo`). Con `canAskAgain` `true` el aviso tiene solo "Aceptar".
+- **Riesgos:** RF-13 sin validación offline en build nativo. Riesgo aceptado por el usuario para la entrega con Expo Go.
+- **Siguiente acción:** revisión de EV-33 a EV-44 por el usuario.
+- **Autorización necesaria:** ninguna para commit local.
+## CHK-042 - Revisión humana de EV-33 a EV-44 (CP-MOV-05 y CP-MOV-06)
+
+- **Fecha:** 2026-11-22
+- **Agente:** agente OMP
+- **Objetivo:** registrar la decisión del usuario sobre las evidencias pendientes de CHK-039.
+- **Estado:** `APROBADO` por decisión del usuario: `EV-33`, `EV-34`, `EV-36`, `EV-38`, `EV-39`, `EV-40`, `EV-41`, `EV-43`, `EV-44`. `NO APLICA` como caso: `EV-37`, `EV-42` (ya registrados). CP-MOV-05 y CP-MOV-06 no cambian de estado por esta revisión.
+- **Requisitos asociados:** RF-12, RF-13, RUB-02, RUB-03.
+- **Pruebas asociadas:** CP-MOV-05, CP-MOV-06.
+- **Commit real:** NO VERIFICADO (pendiente de commit local).
+- **Archivos cambiados:**
+ - `docs/03-PLAN-PRUEBAS.md`: resultado de `EV-33`, `EV-34`, `EV-36`, `EV-38` a `EV-41`, `EV-43`, `EV-44`.
+ - `README.md`: tabla de evidencias, mismas filas.
+ - `docs/04-BITACORA.md`: `CHK-042`.
+- **Riesgos:**
+ - `EV-36` ("Con permiso permanente") y `EV-41` ("No permitir"), ambas a 9:05 AM, se contradicen. Ambas aprobadas como captura de lo observado; el orden real es NO VERIFICADO. Resolver antes de presentar el caso.
+ - `EV-39`: título "Editado" con contador `8/100` y 7 letras visibles (defecto de contador no resuelto; causa NO VERIFICADA, mismo patrón que `EV-22`).
+ - "Abrir ajustes" solo aparece si `canAskAgain` es `false` (ver CHK-041). `EV-41` con `No permitir` no prueba esa rama; no hay captura del botón.
+- **Siguiente acción:** decidir cómo tratar la contradicción `EV-36`/`EV-41` y el contador de `EV-39`; capturar el aviso GPS denegado tras guardar (pendiente de CHK-039).
+- **Autorización necesaria:** ninguna para commit local.
