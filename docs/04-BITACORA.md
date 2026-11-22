@@ -1009,7 +1009,7 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Estado:** portada completa en README (profesor y logo). G4 sigue `PARCIAL` solo por formato Word o PDF.
 - **Requisitos asociados:** entrega académica (`docs/01` sección 6).
 - **Pruebas asociadas:** ninguna (documental).
-- **Commit real:** logo `0f91064` (ya existente, añadido por el usuario). Este checkpoint: pendiente de commit local.
+- **Commit real:** logo `0f91064` (ya existente, añadido por el usuario). CHK-044: `692b54b`.
 - **Archivos cambiados:**
  - `docs/01-REQUISITOS-RUBRICA.md`: línea 69, portada.
  - `docs/03-PLAN-PRUEBAS.md`: fila G4.
@@ -1027,7 +1027,7 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Estado:** G4 `APROBADO` por decisión del usuario, con excepción de formato Word o PDF del enunciado (registrada).
 - **Requisitos asociados:** entrega académica (`docs/01` sección 6); RUB-05 riesgo por exención de APIs ya registrado.
 - **Pruebas asociadas:** verificación documental (G5).
-- **Commit real:** pendiente de commit local (este checkpoint).
+- **Commit real:** CHK-045: `cc8be62`.
 - **Archivos cambiados:**
  - `docs/01-REQUISITOS-RUBRICA.md`: línea 71, Word o PDF.
  - `docs/03-PLAN-PRUEBAS.md`: fila G4.
@@ -1050,7 +1050,7 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Estado:** `APROBADA` (cambio documental; GA-0 y GA-5 verificados).
 - **Requisitos asociados:** entrega académica (`docs/01` sección 6); rutas relativas y datos de máquina (`AGENTS.md` sección 10).
 - **Pruebas asociadas:** verificación documental.
-- **Commit real:** pendiente de commit local (este checkpoint).
+- **Commit real:** CHK-046: `af79031`.
 - **Archivos cambiados:**
  - `docs/03-PLAN-PRUEBAS.md`: líneas 59 y 63, `EV-11` y `EV-18`.
  - `docs/04-BITACORA.md`: líneas 309, 546, 1040 y 1042; `CHK-046`.
