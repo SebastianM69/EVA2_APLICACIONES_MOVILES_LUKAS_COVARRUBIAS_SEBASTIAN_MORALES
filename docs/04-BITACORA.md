@@ -686,3 +686,24 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
  - `docs/03` línea 3 y fila G3 aún citan CP-MOV-05 como OK por emulador (CHK-009); pendiente de decisión.
 - **Siguiente acción:** capturar denegación de ubicación en Ajustes y pantalla de detalle, o decidir cerrar CP-MOV-05 con el alcance actual.
 - **Autorización necesaria:** decisión del usuario para cerrar CP-MOV-05 sin las dos capturas.
+
+## CHK-030 - EV-30: defecto "Something went wrong" reproducido en Android físico con modo avión
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** registrar la captura `EV-30` aportada por el usuario y reflejar la reproducción del defecto CHK-023 en teléfono físico.
+- **Estado:** `EV-30` pendiente de aprobación. Defecto CHK-023 reproducido en Android físico. CP-MOV-06 sin cambio de estado por decisión del usuario (sigue APROBADO con desviación, CHK-016).
+- **Requisitos asociados:** RF-13.
+- **Pruebas asociadas:** CP-MOV-06.
+- **Commit real:** pendiente de commit local. Commit previo: `da0f7ef`.
+- **Archivos cambiados:**
+ - `docs/evidencias/capturas/EV-30-telefono-fisico-cp-mov-06-something-went-wrong-modo-avion.jpeg`: copia sin recorte.
+ - `docs/03-PLAN-PRUEBAS.md`: entrada `EV-30`, línea 3 y fila G3 (defecto reproducido).
+ - `docs/04-BITACORA.md`: `CHK-030`.
+- **Verificaciones:** lectura visual de la captura; sin pruebas de software. Mapeo de capturas confirmado por el usuario.
+- **Riesgos:**
+ - `EV-30` contradice la premisa de la desviación de CP-MOV-06 ("reapertura sin red no alcanzable"): el intento de abrir Expo en modo avión sí se alcanza y falla.
+ - Causa no determinada; "View error log" no capturado.
+ - Hora: nombre de archivo 9.28.32 PM; barra de estado 9:27 PM.
+- **Siguiente acción:** decidir la aprobación de `EV-30`; decidir si la desviación de CP-MOV-06 se reabre; obtener el log de error si el equipo lo requiere.
+- **Autorización necesaria:** aprobación de `EV-30` por el equipo.
