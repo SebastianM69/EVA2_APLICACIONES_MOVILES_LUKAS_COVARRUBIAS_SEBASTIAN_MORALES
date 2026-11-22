@@ -918,3 +918,23 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
  - Aviso GPS denegado sin verificar en físico; CP-MOV-05 aprobado sin el aviso.
 - **Siguiente acción:** equipo: (1) verificar en Xiaomi la flecha arriba a la izquierda en detalle (corregida en código; `npx tsc --noEmit` y `npx jest` OK tras el cambio); (2) decidir si "Abrir ajustes" aparece también con `canAskAgain` true; (3) decidir tratamiento de CP-MOV-06 (aceptar limitación de Expo Go o build); (4) revisar y aprobar o rechazar EV-33 a EV-44; (5) capturar el aviso GPS denegado tras guardar.
 - **Autorización necesaria:** ninguna para commit local. Cambiar estado de CP-MOV-05/06 o aceptar limitación de Expo Go: decisión del usuario.
+## CHK-040 - Verificación en Xiaomi de la flecha Volver en detalle (CP-MOV-05); EV-45
+
+- **Fecha:** 2026-11-22, 9:14 AM
+- **Agente:** agente OMP
+- **Objetivo:** verificar en el teléfono físico la corrección de la flecha Volver (`EV-35`, CHK-039).
+- **Estado:** `EV-35` DEFECTO CORREGIDO; `EV-45` APROBADO por decisión del usuario.
+- **Requisitos asociados:** RF-12, RUB-02 (CP-MOV-05).
+- **Pruebas asociadas:** CP-MOV-05 (`EV-45`).
+- **Commit real:** código `651c98c`; capturas `22859c8`. Este checkpoint: pendiente de commit local.
+- **Archivos cambiados:**
+ - `docs/evidencias/capturas/EV-45-telefono-fisico-cp-mov-05-detalle-flecha-arriba-0914.jpeg` (copia de la captura del usuario, sin recorte).
+ - `docs/03-PLAN-PRUEBAS.md`: `EV-35` y `EV-45`.
+ - `README.md`: filas `EV-35` y `EV-45`.
+ - `docs/04-BITACORA.md`: `CHK-040`.
+- **Acciones de proceso:** Metro reiniciado con `npx expo start --lan --port 8081 --clear` y `CI=0` (con `CI=true` las recargas quedaban desactivadas; con `CI=` vacío Expo falla). Expo Go recargado en el teléfono.
+- **Observado:** detalle "Prueba GPS" con `←` arriba a la izquierda, `GPS denegado`, `Sin foto`, `Sin ubicación registrada`.
+- **Verificaciones:** `npx tsc --noEmit` exit 0; `npx jest` 7 suites, 24/24 (ejecutados tras el cambio de código).
+- **Riesgos:** ninguno nuevo. Aviso GPS denegado tras guardar sigue sin captura (CHK-039).
+- **Siguiente acción:** equipo: decidir tratamiento de CP-MOV-06 (limitación de Expo Go o build), decidir "Abrir ajustes" con `canAskAgain` true, capturar aviso GPS denegado tras guardar, y revisar EV-33 a EV-44.
+- **Autorización necesaria:** ninguna para commit local.
