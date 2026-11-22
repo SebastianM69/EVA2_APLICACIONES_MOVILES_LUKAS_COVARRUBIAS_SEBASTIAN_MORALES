@@ -29,6 +29,7 @@ export default function TaskDetailScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.content}>
+        <BackButton onPress={volverAListaTareas} />
         <Text style={styles.title}>{tarea.title}</Text>
         <Text style={styles.description}>{tarea.description}</Text>
 
@@ -42,8 +43,6 @@ export default function TaskDetailScreen() {
           <Text style={styles.dato}>Sin foto</Text>
         )}
         <Text style={styles.dato}>{textoUbicacion(tarea)}</Text>
-
-        <BackButton onPress={volverAListaTareas} />
       </ScrollView>
     </SafeAreaView>
   );

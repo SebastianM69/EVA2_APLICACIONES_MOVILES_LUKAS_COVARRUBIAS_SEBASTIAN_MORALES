@@ -890,3 +890,31 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
  - Cambios de CP-MOV-05 (aviso nuevo) no revalidados en físico; aprobación previa de CP-MOV-05 sin el aviso.
 - **Siguiente acción:** decidir si el aviso muestra "Abrir ajustes" también cuando `canAskAgain` es true; captura en Xiaomi del aviso (nuevo EV).
 - **Autorización necesaria:** ninguna para commit local.
+
+## CHK-039 - Pruebas Xiaomi de CP-MOV-05 y CP-MOV-06: EV-33 a EV-44; causa probable del fallo en Expo Go
+
+- **Fecha:** 2026-11-22
+- **Agente:** agente OMP
+- **Objetivo:** registrar las 12 capturas del Xiaomi enviadas por el usuario y comprobar la flecha Volver, el aviso GPS denegado y la reapertura sin red.
+- **Estado:** CP-MOV-05 y CP-MOV-06 sin cambio de estado (`VALIDACIÓN PARCIAL` según CHK-038). Evidencias EV-33 a EV-44 registradas, pendientes de decisión del usuario.
+- **Requisitos asociados:** RF-12 (CP-MOV-05), RF-13 (CP-MOV-06), RUB-02.
+- **Pruebas asociadas:** CP-MOV-05 (`EV-33` a `EV-36`, `EV-38`, `EV-39`, `EV-41`); CP-MOV-06 (`EV-40`, `EV-43`, `EV-44`); flecha Volver (`EV-35`, `EV-39`).
+- **Commit real:** pendiente de commit local (este checkpoint). Anterior: CHK-038 `8a84fb9`; logo `0f91064`; hashes `d15659e`.
+- **Archivos cambiados:**
+ - `docs/evidencias/capturas/EV-33-…` a `EV-44-…` (12 archivos nuevos; copias de capturas del usuario, sin recorte).
+ - `README.md`: sección 10 (filas EV-33 a EV-44) y referencias de evidencias en la sección 16.
+ - `docs/03-PLAN-PRUEBAS.md`: sección 4 (EV-33 a EV-44).
+ - `src/app/tasks/detalle/[id].tsx`: `BackButton` movido al inicio del `ScrollView` (arriba a la izquierda).
+ - `docs/04-BITACORA.md`: `CHK-039`.
+- **Observado:**
+ - Flecha Volver: en detalle (`EV-35`) la flecha queda debajo del contenido; en "Nueva tarea" (`EV-39`) queda arriba a la izquierda. Defecto confirmado por el usuario: la flecha debe ir arriba a la izquierda. Corregido en código; verificación en físico NO VERIFICADA.
+ - Aviso GPS denegado: sin captura del aviso tras guardar. La tarea se guardó con `Sin ubicación registrada` (`EV-34`, `EV-38`). Aviso: NO VERIFICADO.
+ - Permiso de ubicación: `EV-41` muestra "No permitir" y `EV-36` muestra "Con permiso permanente", ambos a 9:05. No pueden ser simultáneos; el nombre de archivo de WhatsApp no garantiza cronología. Estado del permiso al guardar: NO VERIFICADO.
+ - Reapertura sin red (CP-MOV-06): con modo avión activo, la app no abre (`EV-40`, `EV-43`). El error log muestra `java.io.IOException: Failed to download remote update` (`EV-44`).
+ - Causa probable: [INFERENCIA] Expo Go en modo desarrollo descarga el bundle desde Metro; sin red no hay bundle. El fallo no prueba pérdida de datos, porque la app no llega a abrir.
+- **Verificaciones:** sin código ni pruebas en este checkpoint (solo registro de evidencias).
+- **Riesgos:**
+ - El criterio CP-MOV-06 (reabrir sin red) no es verificable en Expo Go en modo desarrollo. Alternativa: build de desarrollo o standalone; docs/02 decisión 16 la marca no viable en el equipo actual.
+ - Aviso GPS denegado sin verificar en físico; CP-MOV-05 aprobado sin el aviso.
+- **Siguiente acción:** equipo: (1) verificar en Xiaomi la flecha arriba a la izquierda en detalle (corregida en código; `npx tsc --noEmit` y `npx jest` OK tras el cambio); (2) decidir si "Abrir ajustes" aparece también con `canAskAgain` true; (3) decidir tratamiento de CP-MOV-06 (aceptar limitación de Expo Go o build); (4) revisar y aprobar o rechazar EV-33 a EV-44; (5) capturar el aviso GPS denegado tras guardar.
+- **Autorización necesaria:** ninguna para commit local. Cambiar estado de CP-MOV-05/06 o aceptar limitación de Expo Go: decisión del usuario.

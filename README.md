@@ -408,6 +408,18 @@ Evidencias en [`./docs/evidencias/capturas/`](./docs/evidencias/capturas/). Mét
 | [EV-30](./docs/evidencias/capturas/EV-30-telefono-fisico-cp-mov-06-something-went-wrong-modo-avion.jpeg) | CP-MOV-06 | Físico | "Something went wrong" al abrir en modo avión | Defecto registrado (sección 13) |
 | [EV-31](./docs/evidencias/capturas/EV-31-telefono-fisico-cp-mov-05-permisos-expo-go.jpeg) | CP-MOV-05 | Físico | Permisos de Expo Go sin concesiones | APROBADO por decisión del usuario |
 | [EV-32](./docs/evidencias/capturas/EV-32-telefono-fisico-cp-mov-05-detalle-gps-denegado.jpeg) | CP-MOV-05 | Físico | Detalle "GPS denegado", sin ubicación | APROBADO por decisión del usuario |
+| [EV-33](./docs/evidencias/capturas/EV-33-telefono-fisico-cp-mov-05-permisos-expo-go-sin-permiso-0905.jpeg) | CP-MOV-05 | Físico | Permisos de Expo Go, sin permiso de ubicación (9:05) | PENDIENTE de decisión del usuario |
+| [EV-34](./docs/evidencias/capturas/EV-34-telefono-fisico-cp-mov-05-inicio-tarjeta-gps-denegado-0903.jpeg) | CP-MOV-05 | Físico | Inicio, tarjeta "Prueba GPS" con "GPS denegado" y "Sin ubicación registrada" | PENDIENTE de decisión del usuario |
+| [EV-35](./docs/evidencias/capturas/EV-35-telefono-fisico-cp-mov-05-detalle-flecha-inferior-0903.jpeg) | CP-MOV-05, flecha Volver | Físico | Detalle con flecha debajo del contenido (defecto) | Corregido en código (CHK-039); PENDIENTE de verificación en físico |
+| [EV-36](./docs/evidencias/capturas/EV-36-telefono-fisico-cp-mov-05-permisos-ubicacion-permanente-0905.jpeg) | CP-MOV-05 | Físico | Ubicación con permiso permanente (9:05); contradice EV-41 | PENDIENTE de decisión del usuario |
+| [EV-37](./docs/evidencias/capturas/EV-37-telefono-fisico-cp-mov-06-panel-modo-avion-0906.jpeg) | Contexto CP-MOV-06 | Físico | Panel de ajustes rápidos con Modo avión resaltado | NO APLICA como caso |
+| [EV-38](./docs/evidencias/capturas/EV-38-telefono-fisico-cp-mov-05-inicio-tarjeta-gps-denegado-0903.jpeg) | CP-MOV-05 | Físico | Inicio, tarjeta "GPS denegado" (duplica EV-34) | PENDIENTE de decisión del usuario |
+| [EV-39](./docs/evidencias/capturas/EV-39-telefono-fisico-cp-mov-05-nueva-tarea-flecha-superior-0904.jpeg) | CP-MOV-05, flecha Volver | Físico | Nueva tarea con flecha arriba a la izquierda | PENDIENTE de decisión del usuario |
+| [EV-40](./docs/evidencias/capturas/EV-40-telefono-fisico-cp-mov-06-expo-home-modo-avion-0906.jpeg) | Contexto CP-MOV-06 | Físico | Inicio de Expo Go con modo avión; la app no carga | PENDIENTE de decisión del usuario |
+| [EV-41](./docs/evidencias/capturas/EV-41-telefono-fisico-cp-mov-05-permiso-ubicacion-no-permitir-0905.jpeg) | CP-MOV-05 | Físico | Permiso de ubicación "No permitir" (9:05); contradice EV-36 | PENDIENTE de decisión del usuario |
+| [EV-42](./docs/evidencias/capturas/EV-42-telefono-fisico-cp-mov-06-expo-home-sin-modo-avion-0903.jpeg) | Referencia CP-MOV-06 | Físico | Inicio de Expo Go sin modo avión | NO APLICA como caso |
+| [EV-43](./docs/evidencias/capturas/EV-43-telefono-fisico-cp-mov-06-something-went-wrong-modo-avion-0906.jpeg) | CP-MOV-06 | Físico | "Something went wrong" con modo avión | Defecto reproducido (sección 13) |
+| [EV-44](./docs/evidencias/capturas/EV-44-telefono-fisico-cp-mov-06-error-log-failed-download-remote-update-0906.jpeg) | CP-MOV-06 | Físico | "View error log": `Failed to download remote update` | Causa documentada (sección 13); PENDIENTE de revisión |
 
 Notas sobre evidencias:
 
@@ -547,8 +559,8 @@ Los pendientes de decisión y bloqueos se registran en [`docs/04`](./docs/04-BIT
 | Archivo Word o PDF | NO CUMPLIDO | Decisión del usuario; riesgo en 16.1 |
 | Nombre de archivo | NO CUMPLIDO | Solo aplica a Word o PDF; ver 16.1 |
 | Arial 12, interlineado 1,15, justificado, páginas numeradas | NO CUMPLIDO | Formato de Word o PDF; el README es Markdown |
-| Evidencias de `docs/evidencias/` referenciadas | CUMPLIDO | EV-01 a EV-32 en sección 10; enlaces relativos resueltos (2026-11-22) |
-| Pantallazos en el informe | CUMPLIDO | Sección 16.4 (capturas embebidas) y sección 10 (EV-01 a EV-32) |
+| Evidencias de `docs/evidencias/` referenciadas | CUMPLIDO | EV-01 a EV-44 en sección 10; enlaces relativos resueltos (2026-11-22) |
+| Pantallazos en el informe | CUMPLIDO | Sección 16.4 (capturas embebidas) y sección 10 (EV-01 a EV-44) |
 | Exención de APIs | CUMPLIDO | Confirmada por escrito por el profesor (16.3) |
 | Riesgo de stack explicado | CUMPLIDO | Sección 6.1 y `docs/02`, sección 4 |
 
