@@ -975,3 +975,28 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
  - "Abrir ajustes" solo aparece si `canAskAgain` es `false` (ver CHK-041). `EV-41` con `No permitir` no prueba esa rama; no hay captura del botón.
 - **Siguiente acción:** decidir cómo tratar la contradicción `EV-36`/`EV-41` y el contador de `EV-39`; capturar el aviso GPS denegado tras guardar (pendiente de CHK-039).
 - **Autorización necesaria:** ninguna para commit local.
+
+## CHK-043 - Cierre de la etapa de evidencias; decisiones de cierre
+
+- **Fecha:** 2026-11-22
+- **Agente:** agente OMP
+- **Objetivo:** cerrar la etapa de revisión de evidencias y dejar el estado final sin pendientes abiertos ejecutables por el agente.
+- **Estado:** etapa cerrada. Estado final por caso: CP-MOV-01 a CP-MOV-05 `APROBADO` (CP-MOV-05 con riesgo abierto, ver abajo); CP-MOV-06 `VALIDACIÓN PARCIAL` (limitación de Expo Go aceptada, CHK-041).
+- **Requisitos asociados:** RF-01 a RF-13; RUB-02, RUB-03.
+- **Pruebas asociadas:** CP-MOV-01 a CP-MOV-06 (sin cambios de estado en esta entrada).
+- **Commit real:** `fad01e8` (CHK-041 y CHK-042). Este checkpoint: pendiente de commit local.
+- **Archivos cambiados:**
+ - `docs/04-BITACORA.md`: `CHK-043`.
+- **Decisiones de cierre (tomadas por el agente, sin aprobar evidencia):**
+ 1. `EV-36` y `EV-41` quedan tal como el usuario las aprobó (CHK-042). La contradicción de permiso (9:05 AM) se registra como riesgo abierto en CP-MOV-05; no se reabre el caso ni se cambia su estado.
+ 2. Contador `8/100` de `EV-39` se registra como defecto conocido, no corregido en esta etapa. Corregirlo requiere cambio de código y nueva evidencia; fuera del alcance de cierre.
+ 3. Aviso GPS denegado tras guardar (CHK-039) queda como captura pendiente, no bloquea el cierre de CP-MOV-05 porque el caso aprobado es "tarea sin coordenadas, sin bloqueo".
+ 4. No se abren nuevas etapas ni cambios de código en esta sesión.
+- **Riesgos abiertos (no resueltos):**
+ - Contradicción `EV-36`/`EV-41` en CP-MOV-05.
+ - Defecto de contador `EV-39`.
+ - RF-13 offline sin validación en build nativo (riesgo aceptado por el usuario, CHK-041).
+ - "Abrir ajustes" sin captura de la rama `canAskAgain: false`.
+- **Verificaciones:** `git status --short` limpio tras `fad01e8`.
+- **Siguiente acción:** ninguna del agente. Equipo: decidir si captura pendiente y contradicción se resuelven antes de la entrega o se declaran como riesgo en el informe.
+- **Autorización necesaria:** ninguna para commit local.
