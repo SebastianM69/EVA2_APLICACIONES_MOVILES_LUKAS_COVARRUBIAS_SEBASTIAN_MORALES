@@ -91,7 +91,7 @@ El alcance completo y su justificación están en [`docs/01`](./docs/01-REQUISIT
 | RF-10 | Validación de campos            | Límites de caracteres, recorte de espacios, contadores y mensajes no bloqueantes.   | CP-TAR-01                       |
 | RF-11 | Foto adjunta a tarea            | Foto con cámara; se guarda `foto_uri`; se muestra en el detalle.                    | CP-PER-01, CP-PER-02, CP-MOV-02, CP-MOV-03 |
 | RF-12 | Ubicación GPS al crear tarea    | Lectura única; se guardan `latitud` y `longitud`; se muestran en el detalle.        | CP-GPS-01, CP-GPS-02, CP-MOV-04, CP-MOV-05 |
-| RF-13 | Persistencia sin conexión       | Tareas, usuarios y sesión sobreviven cierre y reapertura en modo avión.             | CP-MOV-06 (VALIDACIÓN PARCIAL)      |
+| RF-13 | Persistencia sin conexión       | Tareas, usuarios y sesión sobreviven cierre y reapertura en modo avión.             | CP-MOV-06 (APROBADO por decisión del usuario con riesgo aceptado, CHK-047) |
 
 Nota sobre "Manual (sin caso propio)": RF-07 se verifica en la navegación de la app, pero no tiene caso de prueba numerado en `docs/03`. Queda como pendiente de evidencia.
 
@@ -132,7 +132,7 @@ Resultados de los casos manuales (detalle en [`docs/03`](./docs/03-PLAN-PRUEBAS.
 | CP-MOV-03 | RF-11, RUB-02 | APROBADO | `EV-18` a `EV-24`, `EV-20` (emulador) | Cámara denegada: aviso no bloqueante |
 | CP-MOV-04 | RF-12 | APROBADO | `EV-08`, `EV-09` | Coordenadas visibles en tarjeta y detalle (teléfono físico) |
 | CP-MOV-05 | RF-12, RUB-02 | APROBADO por decisión del usuario | `EV-26` a `EV-28`, `EV-31`, `EV-32` | Tarea sin coordenadas. La captura del paso "denegar ubicación en Ajustes" no existe |
-| CP-MOV-06 | RF-13 | VALIDACIÓN PARCIAL (limitación de Expo Go aceptada por el usuario, CHK-041) | `EV-30`, `EV-44` | Reabrir sin red en Expo Go de desarrollo falla (`Failed to download remote update`); persistencia verificada con red (CHK-016). Build nativo no ejecutado |
+| CP-MOV-06 | RF-13 | APROBADO por decisión del usuario con riesgo aceptado (CHK-047) | `EV-30`, `EV-44` | Reabrir sin red en Expo Go de desarrollo falla (`Failed to download remote update`) por conexión con Metro; persistencia verificada con red (CHK-016). Build nativo no ejecutado |
 
 Dispositivos de prueba:
 
@@ -145,8 +145,8 @@ Dispositivos de prueba:
 | --- | --- | --- |
 | G0 — Planificación | Reglas, requisitos y decisiones aprobados por el usuario | APROBADO (2026-11-21) |
 | G1 — Reproducibilidad | `npm ci`, `expo install --check`, Jest, arranque con Expo | PARCIAL: `npm run format:check` pasa. `prettier --check .` falla en 4 archivos: `assets/expo.icon/icon.json` (asset generado) y los Markdown `README.md`, `docs/03-PLAN-PRUEBAS.md`, `docs/04-BITACORA.md` (sin corregir; decisión pendiente) |
-| G2 — Funciones esenciales | RF-01 a RF-13 y casos automatizados aprobados | PARCIAL: RF-13 en VALIDACIÓN PARCIAL (CP-MOV-06) |
-| G3 — UX Android | CP-MOV-01 a CP-MOV-06 con evidencia auténtica y revisión humana | PARCIAL: defecto abierto al cortar red (`EV-30`) |
+| G2 — Funciones esenciales | RF-01 a RF-13 y casos automatizados aprobados | APROBADO: RF-13 por decisión del usuario con riesgo aceptado (CHK-047); build nativo no ejecutado |
+| G3 — UX Android | CP-MOV-01 a CP-MOV-06 con evidencia auténtica y revisión humana | Defecto aceptado al cortar red por conexión con Metro (`EV-30`, CHK-047) |
 | G4 — Entrega | Checklist de la sección 16 completo | PARCIAL: README como documento de entrega (decisión del usuario, 2026-11-22). Pendiente: formato Word/PDF (sección 16) |
 
 ---
@@ -412,12 +412,12 @@ Evidencias en [`./docs/evidencias/capturas/`](./docs/evidencias/capturas/). Mét
 | [EV-34](./docs/evidencias/capturas/EV-34-telefono-fisico-cp-mov-05-inicio-tarjeta-gps-denegado-0903.jpeg) | CP-MOV-05 | Físico | Inicio, tarjeta "Prueba GPS" con "GPS denegado" y "Sin ubicación registrada" | APROBADO por decisión del usuario |
 | [EV-35](./docs/evidencias/capturas/EV-35-telefono-fisico-cp-mov-05-detalle-flecha-inferior-0903.jpeg) | CP-MOV-05, flecha Volver | Físico | Detalle con flecha debajo del contenido (defecto antes de la corrección) | DEFECTO CORREGIDO; verificado en `EV-45` |
 | [EV-45](./docs/evidencias/capturas/EV-45-telefono-fisico-cp-mov-05-detalle-flecha-arriba-0914.jpeg) | CP-MOV-05, flecha Volver | Físico | Detalle con flecha arriba a la izquierda tras la corrección (9:14) | APROBADO por decisión del usuario |
-| [EV-36](./docs/evidencias/capturas/EV-36-telefono-fisico-cp-mov-05-permisos-ubicacion-permanente-0905.jpeg) | CP-MOV-05 | Físico | Ubicación con permiso permanente (9:05); contradice EV-41 | APROBADO por decisión del usuario; contradicción con EV-41 abierta (CHK-042) |
+| [EV-36](./docs/evidencias/capturas/EV-36-telefono-fisico-cp-mov-05-permisos-ubicacion-permanente-0905.jpeg) | CP-MOV-05 | Físico | Ubicación con permiso permanente (9:05); estado anterior a EV-41 | REEMPLAZADA por EV-41 (CHK-047) |
 | [EV-37](./docs/evidencias/capturas/EV-37-telefono-fisico-cp-mov-06-panel-modo-avion-0906.jpeg) | Contexto CP-MOV-06 | Físico | Panel de ajustes rápidos con Modo avión resaltado | NO APLICA como caso |
 | [EV-38](./docs/evidencias/capturas/EV-38-telefono-fisico-cp-mov-05-inicio-tarjeta-gps-denegado-0903.jpeg) | CP-MOV-05 | Físico | Inicio, tarjeta "GPS denegado" (duplica EV-34) | APROBADO por decisión del usuario |
 | [EV-39](./docs/evidencias/capturas/EV-39-telefono-fisico-cp-mov-05-nueva-tarea-flecha-superior-0904.jpeg) | CP-MOV-05, flecha Volver | Físico | Nueva tarea con flecha arriba a la izquierda | APROBADO por decisión del usuario |
 | [EV-40](./docs/evidencias/capturas/EV-40-telefono-fisico-cp-mov-06-expo-home-modo-avion-0906.jpeg) | Contexto CP-MOV-06 | Físico | Inicio de Expo Go con modo avión; la app no carga | APROBADO por decisión del usuario |
-| [EV-41](./docs/evidencias/capturas/EV-41-telefono-fisico-cp-mov-05-permiso-ubicacion-no-permitir-0905.jpeg) | CP-MOV-05 | Físico | Permiso de ubicación "No permitir" (9:05); contradice EV-36 | APROBADO por decisión del usuario; contradicción con EV-36 abierta (CHK-042) |
+| [EV-41](./docs/evidencias/capturas/EV-41-telefono-fisico-cp-mov-05-permiso-ubicacion-no-permitir-0905.jpeg) | CP-MOV-05 | Físico | Permiso de ubicación "No permitir" (9:05); estado vigente | APROBADO por decisión del usuario (CHK-042); vigente (CHK-047) |
 | [EV-42](./docs/evidencias/capturas/EV-42-telefono-fisico-cp-mov-06-expo-home-sin-modo-avion-0903.jpeg) | Referencia CP-MOV-06 | Físico | Inicio de Expo Go sin modo avión | NO APLICA como caso |
 | [EV-43](./docs/evidencias/capturas/EV-43-telefono-fisico-cp-mov-06-something-went-wrong-modo-avion-0906.jpeg) | CP-MOV-06 | Físico | "Something went wrong" con modo avión | Defecto reproducido (sección 13) |
 | [EV-44](./docs/evidencias/capturas/EV-44-telefono-fisico-cp-mov-06-error-log-failed-download-remote-update-0906.jpeg) | CP-MOV-06 | Físico | "View error log": `Failed to download remote update` | Causa documentada (sección 13); APROBADO por decisión del usuario |
@@ -507,7 +507,7 @@ Verificación de dependencias: `npx expo install --check` (CHK-003).
 | --- | --- | --- | --- |
 | Exención | Sin APIs externas, sincronización ni importación (RUB-04 y RUB-05, 48 puntos) | Tope de 52/100 si la rúbrica no se recalcula (NO VERIFICADO) | Confirmada por escrito por el profesor (sección 16.3): solo se evalúan APIs internas del dispositivo |
 | Stack | React Native + Expo en lugar de Ionic + Capacitor | Penalización posible por incumplir el enunciado | Aceptado; explicado en la sección 6.1 y en `docs/02` |
-| Defecto abierto | "Something went wrong" en Expo Go al abrir la app en modo avión (`EV-30`, reproducido en CHK-030) | CP-MOV-06 en VALIDACIÓN PARCIAL; reapertura offline no verificada en físico | Registrado. Causa NO VERIFICADO; "View error log" no capturado |
+| Defecto aceptado | "Something went wrong" en Expo Go al abrir la app en modo avión (`EV-30`, reproducido en CHK-030) | CP-MOV-06 APROBADO por decisión del usuario con riesgo aceptado (CHK-047) | Causa probable: conexión con Metro; Expo Go de desarrollo descarga el bundle (`EV-44`). No corregido; build nativo no ejecutado |
 | Emulador | No entrega posición a la app aunque `emu geo fix` responda OK (decisión 17) | RF-12 solo se verifica en teléfono físico | Aceptado por decisión del usuario |
 | Latencia GPS | Lectura única con timeout de 10 s; si vence, la tarea se guarda sin coordenadas | Coordenadas ausentes en lecturas lentas (una prueba en emulador tardó 13 s) | Decisión del equipo: sin fallback. Código en `src/features/location/ubicacion.ts` |
 | Expo Go | Los módulos nativos se limitan a los incluidos en Expo Go del SDK 58 | Sin build de release propio | Aceptado; build nativo descartado (decisión 16) |

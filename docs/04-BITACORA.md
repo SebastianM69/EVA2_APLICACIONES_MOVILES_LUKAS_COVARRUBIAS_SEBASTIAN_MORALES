@@ -1058,3 +1058,26 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Riesgos:** ninguno nuevo. Texto de CHK-045 línea 1037 corregido en esta misma entrega.
 - **Siguiente acción:** equipo: revisión final del README.
 - **Autorización necesaria:** ninguna para commit local.
+
+## CHK-047 - Decisión del usuario sobre CP-MOV-06, RF-13 y permiso de ubicación (EV-36/EV-41)
+
+- **Fecha:** 2026-11-22
+- **Agente:** agente OMP
+- **Objetivo:** registrar decisiones del usuario y unificar estados en `docs/01`, `docs/03` y `README.md`.
+- **Estado:** `APROBADA` (cambio documental; GA-0 y GA-5 verificados).
+- **Requisitos asociados:** RF-12 (CP-MOV-05), RF-13 (CP-MOV-06).
+- **Pruebas asociadas:** CP-MOV-05 y CP-MOV-06 (estado por decisión del usuario; sin nueva ejecución).
+- **Commit real:** NO VERIFICADO (pendiente de commit local).
+- **Archivos cambiados:**
+ - `docs/03-PLAN-PRUEBAS.md`: líneas 3, 43, 44, 83, 87 y 104 (estado de CP-MOV-05/06 y RF-13).
+ - `README.md`: líneas 94, 135, 148 y 510.
+ - `docs/04-BITACORA.md`: `CHK-047`.
+- **Decisiones del usuario:**
+ - CP-MOV-06 `APROBADO` con riesgo aceptado: el fallo al reabrir sin red en Expo Go de desarrollo (`EV-30`, `EV-44`) se atribuye a conexión con Metro; no se corrige en esta etapa; build nativo no ejecutado.
+ - `EV-41` ("No permitir") es el estado vigente del permiso de ubicación; `EV-36` queda `REEMPLAZADA` como historial.
+- **Verificaciones:** `grep` de `VALIDADO`, `ACEPTADO` y `VALIDACIÓN PARCIAL` en `README.md`, `AGENTS.md` y `docs/`: sin estados vigentes obsoletos; las ocurrencias restantes son historial de checkpoints anteriores (CHK-003 a CHK-038) o reglas de `AGENTS.md`. `grep` de `CHK-047`: definido en esta bitácora y referenciado en `README.md` y `docs/03`.
+- **Riesgos:**
+ - Cierre de la app al cortar red: aceptado; causa probable conexión con Metro, sin verificar en build nativo.
+ - Contradicción de permiso (`EV-36`/`EV-41`, 9:05 AM): resuelta por decisión del usuario; orden cronológico sigue como [INFERENCIA].
+- **Siguiente acción:** equipo: revisión final del README.
+- **Autorización necesaria:** ninguna para commit local.
