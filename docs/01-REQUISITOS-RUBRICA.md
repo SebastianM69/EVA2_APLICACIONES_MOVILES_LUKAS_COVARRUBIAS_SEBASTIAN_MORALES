@@ -1,7 +1,7 @@
 # 01 — Requisitos, alcance y trazabilidad de la rúbrica
 
 > **Proyecto:** To-Do móvil ampliada — Desarrollo de Aplicaciones Móviles, Unidad 2
-> **Estado:** reglas aprobadas por el usuario el 2026-11-21; implementación no iniciada.
+> **Estado:** reglas aprobadas por el usuario el 2026-11-21; implementación en curso: RF-01 a RF-13 implementados, pruebas Android registradas en `docs/03`.
 > **Fuentes académicas:** `Evaluación_U2.pdf` (enunciado) y `Rúbrica_U2.pdf` (rúbrica), no versionados en este repositorio.
 > **Objetivo académico:** nivel **Sobresaliente (90 %–100 %)** para los indicadores cubribles; ver riesgo aceptado en la sección 4.
 

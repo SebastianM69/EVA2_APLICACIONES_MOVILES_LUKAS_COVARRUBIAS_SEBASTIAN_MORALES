@@ -790,3 +790,20 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
  - `docs/03` línea 3 aún cita CP-MOV-05 como OK por emulador (pendiente de CHK-009 y CHK-033).
 - **Siguiente acción:** revisar enlaces relativos del README y commit local.
 - **Autorización necesaria:** ninguna para commit local.
+
+## CHK-035 - Cierre de estado documental
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** cerrar discrepancias de estado tras CHK-034: `docs/01` decía "implementación no iniciada" y CHK-034 no tenía hash de commit.
+- **Estado:** `APROBADA` (cambio documental; GA-0 y GA-5 verificados).
+- **Requisitos asociados:** RF-01 a RF-13 (estado); RUB-04 y RUB-05 (riesgo aceptado).
+- **Pruebas asociadas:** ninguna (documental).
+- **Commit real:** CHK-034 `8157362` (`docs: reescribe README con decisiones frente a rúbrica y registra CHK-034`). Este checkpoint: pendiente de commit local.
+- **Archivos cambiados:**
+ - `docs/01-REQUISITOS-RUBRICA.md`: línea 4, estado actualizado.
+ - `docs/04-BITACORA.md`: `CHK-035`.
+- **Verificaciones:** `grep` de "no iniciada" y "por emulador" en `docs/01`, `docs/02`, `docs/03`, `AGENTS.md` y `README.md`: sin coincidencias.
+- **Riesgos:** ninguno nuevo.
+- **Siguiente acción:** ninguna en documentación.
+- **Autorización necesaria:** ninguna para commit local.
