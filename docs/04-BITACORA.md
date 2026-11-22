@@ -599,3 +599,23 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
  - Revisión humana pendiente; el agente no puede aprobar.
 - **Siguiente acción:** revisión visual del equipo de `EV-20` a `EV-24`; decidir si `EV-24` sustituye a `EV-20` como evidencia física de CP-MOV-03.
 - **Autorización necesaria:** commit local de `EV-21` a `EV-24`, `docs/03` y `docs/04` (permitido por `AGENTS.md` sección 5).
+
+## CHK-026 - Aprobación de EV-20 a EV-24 (CP-MOV-03); defecto abierto con condición nueva
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** registrar la aprobación de `EV-20` a `EV-24` por el usuario y documentar la condición del defecto "Something went wrong".
+- **Estado:** CP-MOV-03 `APROBADO` por decisión del usuario con `EV-18` a `EV-24`.
+- **Requisitos asociados:** RF-11, RUB-02.
+- **Pruebas asociadas:** CP-MOV-03 (físico: `EV-18`, `EV-19`, `EV-21` a `EV-24`; emulador: `EV-20`).
+- **Commit real:** `e83c513` (evidencias `EV-21` a `EV-24` y `CHK-025`). Este checkpoint: pendiente de commit local.
+- **Decisión del usuario:** las pruebas mostradas son suficientes. No ejecutar pruebas adicionales de CP-MOV-03.
+- **Defecto "Something went wrong":** queda abierto. Hipótesis del usuario: Expo Go estaba abierto antes de desactivar la red; al reabrir, Expo Go intenta descargar el bundle desde Metro y falla. Coincide con la causa documentada en CP-MOV-06 (`Failed to download remote update`).
+- **Por qué no se reprodujo en emulador:** `pm revoke` cierra Expo Go (ver CHK-024). El modo avión se activó con la app recién abierta, así que la secuencia no cumplió la condición del usuario.
+- **Estado del defecto:** `ABIERTO`, hipótesis no confirmada. Reintento previsto en CP-MOV-06 físico: Expo Go abierto con Metro antes de activar modo avión, cerrar app y reabrir.
+- **Verificaciones:** ninguna nueva en este checkpoint. La aprobación se basa en la decisión del usuario sobre evidencias ya registradas.
+- **Riesgos:**
+ - La hipótesis no está confirmada; el reintento físico la confirma o descarta.
+ - Modelo y versión Android del Xiaomi en `EV-21` a `EV-24`: NO VERIFICADO.
+- **Siguiente acción:** CP-MOV-05 (GPS denegado) y CP-MOV-06 físico con la condición de Expo abierto antes de desactivar la red.
+- **Autorización necesaria:** ninguna. Commit local de `docs/03` y `docs/04` permitido por `AGENTS.md` sección 5.
