@@ -767,3 +767,26 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
  - Modalidad, commit y dispositivo de `EV-31` y `EV-32`: NO VERIFICADO.
 - **Siguiente acción:** ninguna en CP-MOV-05. Pendiente general: `docs/03` línea 3 aún cita CP-MOV-05 como OK por emulador (CHK-009); revisar al cerrar la entrega.
 - **Autorización necesaria:** ninguna.
+
+## CHK-034 - Reescritura del README y verificación de afirmaciones
+
+- **Fecha:** 2026-11-21
+- **Agente:** agente OMP
+- **Objetivo:** reescribir `README.md` con introducción, decisiones frente a la rúbrica y pasos de ejecución, sin afirmaciones no verificadas.
+- **Estado:** `EN VALIDACIÓN`.
+- **Requisitos asociados:** RF-01 a RF-13 (estado); RUB-04 y RUB-05 (riesgo aceptado).
+- **Pruebas asociadas:** ninguna nueva (cambio documental).
+- **Commit real:** pendiente de commit local.
+- **Archivos cambiados:**
+ - `README.md`: reescrito.
+ - `docs/04-BITACORA.md`: `CHK-034`.
+- **Verificaciones:**
+ - `npx jest`: 7 suites, 22 pruebas OK (coincide con CHK-022).
+ - `npm run lint`: sin errores. `npm run format:check`: pasa.
+ - `node -v` v24.19.0; `npm -v` 11.17.0; `package-lock.json` existe.
+ - Cifras de riesgo comprobadas en `docs/01` sección 3 (tope 52 sin RUB-04 y RUB-05) y sección 4; estado de CP-AUTH-01 a 03 en `docs/03` (aprobados por Jest, CHK-022).
+- **Errores e intentos:** el primer borrador del README afirmaba que `format:check` fallaba y que el emulador se arrancaba desde Android Studio. Ambas afirmaciones eran falsas o no verificadas; corregidas tras ejecutar los comandos.
+- **Riesgos:**
+ - `docs/03` línea 3 aún cita CP-MOV-05 como OK por emulador (pendiente de CHK-009 y CHK-033).
+- **Siguiente acción:** revisar enlaces relativos del README y commit local.
+- **Autorización necesaria:** ninguna para commit local.
