@@ -838,3 +838,26 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
  - `prettier --check .` falla en 3 Markdown: no corregido en esta tarea para no reformatear documentos fuera de alcance.
 - **Siguiente acción:** equipo: decidir si entrega Word o PDF; completar profesor y logo; revisión final del README.
 - **Autorización necesaria:** ninguna para commit local. Entrega o publicación: decisión del equipo.
+
+## CHK-037 - Excepción de APIs confirmada por escrito; profesor y pantallazos
+
+- **Fecha:** 2026-11-22
+- **Agente:** agente OMP
+- **Objetivo:** registrar la excepción escrita del docente (captura del chat de la asignatura) y aplicar sus requisitos al informe: solo se evalúa la conexión con APIs internas del dispositivo; el repo puede ser el mismo; el nombre del repo no importa; el informe puede ser `README.md` con pantallazos.
+- **Estado:** `VALIDACIÓN PARCIAL` (G4 `PARCIAL`: logo institucional y formato Word/PDF pendientes).
+- **Requisitos asociados:** RF-11, RF-12 (dispositivo); RUB-04 y RUB-05 (excluidos por la excepción escrita); portada y pantallazos del enunciado.
+- **Pruebas asociadas:** verificaciones de este checkpoint (abajo). Sin pruebas nuevas.
+- **Commit real:** pendiente de commit local (este checkpoint). Anterior: CHK-036 `10c3d19`.
+- **Archivos cambiados:**
+ - `README.md`: encabezado (profesor), filas de exención en 2.3, 3.2, 6, 13 y 16.2, filas de pantallazos y portada, secciones 16.3 y 16.4.
+ - `docs/01-REQUISITOS-RUBRICA.md`: línea 13, sección 4 (punto 1), checklist de sección 6 (portada y exención).
+ - `docs/02-DECISIONES-ARQUITECTURA.md`: sección 6, riesgo de APIs.
+ - `docs/04-BITACORA.md`: `CHK-037`.
+- **Verificaciones (2026-11-22):**
+ - Enlaces de imágenes en `README.md`: las 32 rutas de `docs/evidencias/capturas/` existen; las 10 de la sección 16.4 están embebidas con ruta relativa.
+ - Captura original del chat del docente: no versionada en el repositorio (contiene datos de terceros). Fecha exacta del mensaje: NO VERIFICADO (la captura solo muestra "Wednesday 8:50 PM").
+- **Riesgos:**
+ - Puntaje final según la rúbrica tras la excepción: NO VERIFICADO; el docente no indicó recálculo.
+ - Logo institucional no proporcionado; formato Word/PDF del enunciado no cumplido en Markdown (decisión del usuario, CHK-036).
+- **Siguiente acción:** equipo: decidir logo institucional y si entrega Word o PDF; revisión final del README.
+- **Autorización necesaria:** ninguna para commit local. Entrega o publicación: decisión del equipo.

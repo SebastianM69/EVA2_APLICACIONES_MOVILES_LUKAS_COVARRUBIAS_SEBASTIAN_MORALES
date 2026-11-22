@@ -3,7 +3,7 @@
 **Trabajo:** EVA2 — Aplicación To-Do móvil ampliada con cámara, GPS y autenticación local.
 **Asignatura:** Desarrollo de Aplicaciones Móviles, Unidad 2.
 **Integrantes:** Lukas Covarrubias y Sebastian Morales.
-**Profesor:** NO VERIFICADO (el equipo no proporcionó el dato al 2026-11-22).
+**Profesor:** Boris Marcelo Belmar Muñoz (nombre según el chat del docente; ver sección 16.3).
 **Estado del documento:** 2026-11-22. RF-01 a RF-13 implementados; entrega académica con gates parciales (ver [Estado de avance](#4-estado-de-avance) y [Entrega académica](#16-entrega-académica)). Este README es el documento de entrega (decisión del usuario, 2026-11-22).
 
 ---
@@ -63,7 +63,7 @@ Funciones principales:
 
 ### 2.3. Excluido
 
-- Sincronización con servicio web o API externa, importación desde API y sincronización en tiempo real. Exención comunicada por el profesor en clases; sin constancia escrita. Corresponde a RUB-04 y RUB-05.
+- Sincronización con servicio web o API externa, importación desde API y sincronización en tiempo real. Exención confirmada por escrito por el profesor (sección 16.3). Corresponde a RUB-04 y RUB-05.
 - Seguimiento GPS continuo. Solo una lectura por tarea (`docs/02`, decisión 10).
 - Varias fotos por tarea. Solo una (`docs/02`, decisión 9).
 
@@ -103,7 +103,7 @@ Nota sobre "Manual (sin caso propio)": RF-07 se verifica en la navegación de la
 | Enunciado | Autenticación que proteja las tareas | Login local con hash; tareas filtradas por `usuario_id` |
 | Enunciado | Pruebas automatizadas de cámara y ubicación | Jest + `jest-expo` (`src/features/camera`, `src/features/location`) |
 | Enunciado | Ionic CLI y plugins de Capacitor | **No aplicado.** El equipo aprobó React Native + Expo. Riesgo aceptado (sección 13) |
-| Enunciado | Sincronización y APIs externas | **No aplicado.** Exención comunicada por el profesor (sección 13) |
+| Enunciado | Sincronización y APIs externas | **No aplicado.** Exención confirmada por escrito por el profesor (sección 16.3) |
 
 ---
 
@@ -240,7 +240,7 @@ Las decisiones aprobadas están en [`docs/02`](./docs/02-DECISIONES-ARQUITECTURA
 | 8 | Permisos | Solicitud al ejecutar la acción; denegado = continuar sin dato | Respeta la política de no pedir permisos al abrir la app | Denegado permanente: botón "Abrir ajustes" |
 | 9 | Cámara | `expo-camera`, una foto por tarea | Requisito RF-11 | Solo Expo Go como runtime |
 | 10 | GPS | `expo-location`, `Balanced`, lectura única | Requisito RF-12 | Sin seguimiento continuo |
-| 11 | APIs | Solo APIs internas del dispositivo | Exención del profesor | RUB-04 y RUB-05 sin cubrir |
+| 11 | APIs | Solo APIs internas del dispositivo | Exención confirmada por escrito por el profesor (sección 16.3) | RUB-04 y RUB-05 sin cubrir |
 | 16 | Ejecución | Expo Go + Metro; build nativo descartado | Ruta del proyecto supera MAX_PATH de Windows | Sin build de release verificado |
 | 17 | Verificación GPS | RF-12 se verifica en teléfono físico | Emulador no entrega posición a la app | Evidencia GPS depende de un dispositivo real |
 
@@ -490,7 +490,7 @@ Verificación de dependencias: `npx expo install --check` (CHK-003).
 
 | Tipo | Descripción | Impacto | Tratamiento |
 | --- | --- | --- | --- |
-| Exención | Sin APIs externas, sincronización ni importación (RUB-04 y RUB-05, 48 puntos) | Tope de 52/100 | Aceptado por el equipo; exención del profesor en clases, sin constancia escrita (`docs/01`, sección 4) |
+| Exención | Sin APIs externas, sincronización ni importación (RUB-04 y RUB-05, 48 puntos) | Tope de 52/100 si la rúbrica no se recalcula (NO VERIFICADO) | Confirmada por escrito por el profesor (sección 16.3): solo se evalúan APIs internas del dispositivo |
 | Stack | React Native + Expo en lugar de Ionic + Capacitor | Penalización posible por incumplir el enunciado | Aceptado; explicado en la sección 6.1 y en `docs/02` |
 | Defecto abierto | "Something went wrong" en Expo Go al abrir la app en modo avión (`EV-30`, reproducido en CHK-030) | CP-MOV-06 tiene desviación; reapertura offline no verificada en físico | Registrado. Causa NO VERIFICADO; "View error log" no capturado |
 | Emulador | No entrega posición a la app aunque `emu geo fix` responda OK (decisión 17) | RF-12 solo se verifica en teléfono físico | Aceptado por decisión del usuario |
@@ -532,21 +532,87 @@ Los pendientes de decisión y bloqueos se registran en [`docs/04`](./docs/04-BIT
 
 - Documento de entrega: este `README.md`, en Markdown. Decisión del usuario (2026-11-22): no se genera un documento Word o PDF aparte; este README cubre los ítems temáticos, el detalle de decisiones de stack y las evidencias.
 - Riesgo: el enunciado exige Word o PDF. Si el docente lo exige, el archivo `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES` aún no existe. El nombre sigue la decisión de CHK-002, que difiere de `EVU2_APELLIDO_NOMBRE`. Penalización posible.
-- Profesor: NO VERIFICADO. Logo institucional: no proporcionado.
+- Profesor: Boris Marcelo Belmar Muñoz (ver sección 16.3). Logo institucional: no proporcionado.
 
 ### 16.2. Checklist (formato del enunciado)
 
 | Ítem del enunciado | Estado | Nota |
 | --- | --- | --- |
 | Portada: título, asignatura, integrantes | CUMPLIDO | Encabezado de este README (Lukas Covarrubias y Sebastian Morales) |
-| Portada: profesor | NO VERIFICADO | Dato no proporcionado al 2026-11-22 |
+| Portada: profesor | CUMPLIDO | Boris Marcelo Belmar Muñoz, según el chat del docente (16.3) |
 | Portada: logo institucional | NO CUMPLIDO | No proporcionado |
 | Desarrollo de los ítems temáticos | CUMPLIDO | Secciones 1 a 15 |
 | Archivo Word o PDF | NO CUMPLIDO | Decisión del usuario; riesgo en 16.1 |
 | Nombre de archivo | NO CUMPLIDO | Solo aplica a Word o PDF; ver 16.1 |
 | Arial 12, interlineado 1,15, justificado, páginas numeradas | NO CUMPLIDO | Formato de Word o PDF; el README es Markdown |
 | Evidencias de `docs/evidencias/` referenciadas | CUMPLIDO | EV-01 a EV-32 en sección 10; enlaces relativos resueltos (2026-11-22) |
-| Exención de APIs | CUMPLIDO | Orden explícita del profesor en clases; constancia escrita no requerida |
+| Pantallazos en el informe | CUMPLIDO | Sección 16.4 (capturas embebidas) y sección 10 (EV-01 a EV-32) |
+| Exención de APIs | CUMPLIDO | Confirmada por escrito por el profesor (16.3) |
 | Riesgo de stack explicado | CUMPLIDO | Sección 6.1 y `docs/02`, sección 4 |
 
-Estado de los gates de entrega: G4 `PARCIAL` (sección 4.4). Pendientes del equipo: profesor, logo y formato Word/PDF.
+Estado de los gates de entrega: G4 `PARCIAL` (sección 4.4). Pendientes del equipo: logo institucional y formato Word/PDF.
+
+### 16.3. Confirmación escrita del profesor (APIs)
+
+Texto del chat de la asignatura, transcrito de la captura del docente (`Boris Marcelo Belmar Muñoz`, miércoles 8:50 PM según la captura; fecha exacta NO VERIFICADA):
+
+> Hola a todos muchachos,
+>
+> Esto lo mencioné en clases pero lo voy a dejar por escrito:
+>
+> - Solo se va a evaluar la conexión con API interna del dispositivo, no la conexión con APIs externas (Servicios web). Para que no consideren lo de los servicios web.
+> - Es el mismo proyecto, puede ser el mismo repo.
+> - Da igual el nombre del repo.
+> - El informe puede ser el mismo README.md. Incluyan pantallazos.
+
+Consecuencias para este documento:
+
+- Exención de APIs externas confirmada por escrito. Sin RUB-04 y RUB-05 en la evaluación; el puntaje según la rúbrica queda NO VERIFICADO (el docente no indicó recálculo).
+- Este README es el informe. El nombre del repositorio no es requisito.
+- Pantallazos: sección 16.4.
+- Captura original del chat: no versionada en el repositorio.
+
+### 16.4. Pantallazos del informe
+
+Capturas reales de la app en Xiaomi 11T Pro (Android 13, Expo Go). Lista completa en la sección 10.
+
+**EV-14** · CP-MOV-01 · registro con lista vacía
+
+<img src="./docs/evidencias/capturas/EV-14-telefono-fisico-cp-mov-01-registro-lista-vacia.jpeg" alt="EV-14 registro con lista vacía" width="260">
+
+**EV-15** · CP-MOV-01 · sesión iniciada
+
+<img src="./docs/evidencias/capturas/EV-15-telefono-fisico-cp-mov-01-login-lista-vacia.png" alt="EV-15 sesión iniciada" width="260">
+
+**EV-16** · CP-MOV-01 · cierre de sesión
+
+<img src="./docs/evidencias/capturas/EV-16-telefono-fisico-cp-mov-01-cierre-sesion.jpeg" alt="EV-16 cierre de sesión" width="260">
+
+**EV-18** · CP-MOV-03 · cámara denegada, sin red
+
+<img src="./docs/evidencias/capturas/EV-18-telefono-fisico-cp-mov-03-permiso-camara-denegado.jpeg" alt="EV-18 cámara denegada" width="260">
+
+**EV-22** · CP-MOV-03 · formulario con datos
+
+<img src="./docs/evidencias/capturas/EV-22-telefono-fisico-cp-mov-03-formulario-con-datos.jpeg" alt="EV-22 formulario con datos" width="260">
+
+**EV-11** · CP-MOV-02 · miniatura de la foto en detalle
+
+<img src="./docs/evidencias/capturas/EV-11-telefono-fisico-detalle-miniatura.jpeg" alt="EV-11 miniatura de foto" width="260">
+
+**EV-08** · CP-MOV-04 · tarjeta con ubicación
+
+<img src="./docs/evidencias/capturas/EV-08-telefono-fisico-tarjeta-ubicacion.jpeg" alt="EV-08 tarjeta con ubicación" width="260">
+
+**EV-09** · CP-MOV-04 · detalle con ubicación
+
+<img src="./docs/evidencias/capturas/EV-09-telefono-fisico-detalle-ubicacion.jpeg" alt="EV-09 detalle con ubicación" width="260">
+
+**EV-28** · CP-MOV-05 · tarjeta sin ubicación (GPS denegado)
+
+<img src="./docs/evidencias/capturas/EV-28-telefono-fisico-cp-mov-05-tarjeta-sin-ubicacion.jpeg" alt="EV-28 tarjeta sin ubicación" width="260">
+
+**EV-30** · CP-MOV-06 · defecto "Something went wrong" al abrir en modo avión (no resuelto)
+
+<img src="./docs/evidencias/capturas/EV-30-telefono-fisico-cp-mov-06-something-went-wrong-modo-avion.jpeg" alt="EV-30 defecto al abrir en modo avión" width="260">
+

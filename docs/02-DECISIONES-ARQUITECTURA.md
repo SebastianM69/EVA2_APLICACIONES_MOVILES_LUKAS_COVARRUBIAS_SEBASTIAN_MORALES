@@ -98,7 +98,7 @@ Ninguna ventaja se declara sin evidencia de la implementación. La columna se co
 
 ## 6. Riesgo aceptado
 
-- **APIs externas no implementadas.** RUB-04 y RUB-05 (48 puntos) no cubiertos. Exención comunicada por el profesor en clases; no hay documento escrito. Sin implementación, no se declara Sobresaliente.
+- **APIs externas no implementadas.** RUB-04 y RUB-05 (48 puntos) no cubiertos. Exención confirmada por escrito por el profesor (README sección 16.3): solo se evalúa la conexión con APIs internas del dispositivo. Sin implementación, no se declara Sobresaliente.
 - **Stack distinto del enunciado.** Ionic + Capacitor pedido; React Native + Expo aprobado. Explicar en la entrega con la tabla de la sección 4.
 - **Sin pruebas de integración de red** (no hay red que probar).
 - **Expo Go como runtime.** Compatibilidad de `expo-sqlite`, `expo-camera`, `expo-location` y `expo-crypto` con Expo Go del SDK 58: NO VERIFICADO; confirmar con Context7 antes de implementar (`AGENTS.md` sección 3).

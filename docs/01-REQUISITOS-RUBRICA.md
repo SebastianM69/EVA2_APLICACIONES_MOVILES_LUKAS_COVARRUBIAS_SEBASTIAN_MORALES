@@ -10,7 +10,7 @@
 Desde el enunciado (`Evaluación_U2.pdf`):
 
 - Ampliar la To-Do básica con periféricos del dispositivo: captura de imagen con cámara adjunta a tareas, y GPS para registrar dónde se crea cada tarea.
-- Sincronizar tareas con servicio web o API externa; importar tareas desde API externa; sincronización en tiempo real y datos adicionales por tarea. **Excluido por decisión del equipo (ver sección 4).**
+- Sincronizar tareas con servicio web o API externa; importar tareas desde API externa; sincronización en tiempo real y datos adicionales por tarea. **Excluido; exención confirmada por escrito por el profesor (README sección 16.3).**
 - Almacenamiento local que funcione sin conexión.
 - Autenticación de usuarios que proteja las tareas y permita múltiples usuarios.
 - Pruebas automatizadas de captura de imagen y obtención de ubicación.
@@ -49,7 +49,7 @@ Puntajes leídos de `Rúbrica_U2.pdf` (niveles Bajo / Medio / Alto / Sobresalien
 
 ## 4. Riesgo aceptado
 
-1. **APIs externas excluidas.** Decisión del equipo, comunicada por el profesor en clases: solo APIs internas del dispositivo. El profesor dio la orden explícita en clases; no se requiere constancia escrita (decisión del usuario, 2026-11-21). Sin RUB-04 y RUB-05 el máximo es 52/100, por lo que **no se declara Sobresaliente**.
+1. **APIs externas excluidas.** Confirmado por escrito por el profesor (README sección 16.3): solo se evalúa la conexión con APIs internas del dispositivo, no servicios web. Sin RUB-04 y RUB-05 el máximo es 52/100 si la rúbrica no se recalcula (NO VERIFICADO); por lo tanto **no se declara Sobresaliente**.
 2. **Stack distinto al enunciado.** El enunciado pide Ionic + Capacitor; el equipo usa React Native + Expo. La rúbrica no puntúa el stack, pero el enunciado sí lo pide. Riesgo de penalización. Debe presentarse explícitamente en la entrega junto con la comparación de `docs/02`.
 3. **Sustitución de la lista de tareas:** las funciones de la To-Do base de la Unidad 1 se rehacen sobre el nuevo modelo con usuario y SQLite.
 
@@ -66,11 +66,11 @@ Puntajes leídos de `Rúbrica_U2.pdf` (niveles Bajo / Medio / Alto / Sobresalien
 
 ## 6. Checklist de entrega (formato del enunciado)
 
-- [ ] Portada: título, asignatura e integrantes (Lukas Covarrubias y Sebastian Morales) presentes en el README. Profesor NO VERIFICADO; logo institucional no proporcionado.
+- [ ] Portada: título, asignatura e integrantes (Lukas Covarrubias y Sebastian Morales) presentes en el README. Profesor: Boris Marcelo Belmar Muñoz (chat del docente). Logo institucional no proporcionado.
 - [x] Desarrollo de los ítems temáticos o instrucciones de la tarea: README secciones 1 a 15.
 - [ ] Archivo Word o PDF: NO CUMPLIDO. Decisión del usuario (2026-11-22): README como entrega; riesgo en README sección 16.1.
 - [ ] Nombre del archivo: `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES` (decisión del usuario; difiere de `EVU2_APELLIDO_NOMBRE` del enunciado, ver `docs/04` CHK-002). NO CUMPLIDO sin archivo Word o PDF.
 - [ ] Arial 12; interlineado 1,15; alineación justificada; páginas numeradas: NO CUMPLIDO en Markdown.
 - [x] Evidencias de `docs/evidencias/` referenciadas en README sección 10 (EV-01 a EV-32).
-- [x] Exención de APIs: orden explícita del profesor en clases; constancia escrita no requerida (ver sección 4).
+- [x] Exención de APIs: confirmada por escrito por el profesor (README sección 16.3).
 - [x] Riesgo de stack explicado: README sección 6.1 y `docs/02`, sección 4.
