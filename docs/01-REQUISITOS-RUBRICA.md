@@ -66,7 +66,7 @@ Puntajes leídos de `Rúbrica_U2.pdf` (niveles Bajo / Medio / Alto / Sobresalien
 
 ## 6. Checklist de entrega (formato del enunciado)
 
-- [ ] Portada: título, asignatura e integrantes (Lukas Covarrubias y Sebastian Morales) presentes en el README. Profesor: Boris Marcelo Belmar Muñoz (chat del docente). Logo institucional no proporcionado.
+- [ ] Portada: título, asignatura e integrantes (Lukas Covarrubias y Sebastian Morales) presentes en el README. Profesor: Boris Marcelo Belmar Muñoz (chat del docente). Logo institucional: `./docs/assets/logo-instituto-profesional-san-sebastian.png` (commit `0f91064`).
 - [x] Desarrollo de los ítems temáticos o instrucciones de la tarea: README secciones 1 a 15.
 - [ ] Archivo Word o PDF: NO CUMPLIDO. Decisión del usuario (2026-11-22): README como entrega; riesgo en README sección 16.1.
 - [ ] Nombre del archivo: `EVA2_APLICACIONES_MOVILES_LUKAS_COVARRUBIAS_SEBASTIAN_MORALES` (decisión del usuario; difiere de `EVU2_APELLIDO_NOMBRE` del enunciado, ver `docs/04` CHK-002). NO CUMPLIDO sin archivo Word o PDF.

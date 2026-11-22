@@ -1000,3 +1000,21 @@ Autorización expresa del usuario para iniciar la etapa de implementación.
 - **Verificaciones:** `git status --short` limpio tras `fad01e8`.
 - **Siguiente acción:** ninguna del agente. Equipo: decidir si captura pendiente y contradicción se resuelven antes de la entrega o se declaran como riesgo en el informe.
 - **Autorización necesaria:** ninguna para commit local.
+
+## CHK-044 - Logo institucional y profesor confirmados en portada
+
+- **Fecha:** 2026-11-22
+- **Agente:** agente OMP
+- **Objetivo:** corregir documentos que daban como pendientes el profesor y el logo institucional.
+- **Estado:** portada completa en README (profesor y logo). G4 sigue `PARCIAL` solo por formato Word o PDF.
+- **Requisitos asociados:** entrega académica (`docs/01` sección 6).
+- **Pruebas asociadas:** ninguna (documental).
+- **Commit real:** logo `0f91064` (ya existente, añadido por el usuario). Este checkpoint: pendiente de commit local.
+- **Archivos cambiados:**
+ - `docs/01-REQUISITOS-RUBRICA.md`: línea 69, portada.
+ - `docs/03-PLAN-PRUEBAS.md`: fila G4.
+ - `docs/04-BITACORA.md`: `CHK-044`.
+- **Verificaciones:** `git ls-files docs/assets` lista el logo; `git log -- docs/assets/...` muestra `0f91064`; README línea 3 lo referencia.
+- **Riesgos:** ninguno nuevo. Los checkpoints CHK-036, CHK-038 y CHK-043 dicen "logo no proporcionado" como estado de su fecha; no se reescriben (historial).
+- **Siguiente acción:** equipo: confirmar si la entrega es solo README (Markdown) o también Word o PDF.
+- **Autorización necesaria:** ninguna para commit local.
